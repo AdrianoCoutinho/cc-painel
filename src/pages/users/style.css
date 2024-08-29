@@ -1,0 +1,192 @@
+#title-page-users {
+    font-size: 1.5rem;
+}
+
+#users-filter-box { 
+    border-radius: 22px;
+    border: 1px solid #39445B;
+    background: rgba(33, 40, 54, 0.50);
+    padding: 15px;
+    min-height: 85vh;
+}
+
+#top-card-new-users, #top-card-three-brokers, #top-card-three-users {
+    height: 219px;
+    border-radius: 22px;
+    border: 1px solid #39445B;
+    background: rgba(33, 40, 54, 0.50);
+    padding: 10px 10px 0 10px;
+}
+
+#top-three-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#top-three-body p {
+    width: 30%;
+    text-align: center;
+}
+
+#brokers-podium-select {
+    border-radius: 14px;
+    border: 1px solid #39445B;
+    background: #212836;
+    padding: 5px 0 5px 5px;
+    color: #fff;
+    width: 67px;
+}
+
+#brokers-users-select, #brokers-users-time-select {
+    font-size: 11px;
+}
+
+.filter-title {
+    margin-top: 15px !important;
+    margin-bottom: 5px !important;
+    font-size: 13px !important;
+}
+
+#brokers-podium-day-select{
+    border-radius: 14px;
+    border: 1px solid #39445B;
+    background: #212836;
+    padding: 5px 0 5px 5px;
+    color: #fff;
+    width: 120px;
+}
+
+#user-podium-states-select, #user-broker-select {
+    border-radius: 14px;
+    border: 1px solid #39445B;
+    background: #212836;
+    padding: 5px 0 5px 5px;
+    color: #fff;
+    margin-right: 5px;
+}
+
+#states-select, #broker-select, #brokers-users-select, #brokers-users-time-select,  #user-podium-day-select{
+    border-radius: 14px;
+    border: 1px solid #39445B;
+    background: #212836;
+    padding: 5px 0 5px 5px;
+    color: #fff;
+}
+
+.podium-titles {
+    font-size: 13px !important;
+}
+
+#filter-quantity {
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+#filter-quantity input {
+    width: 50%;
+    height: 18px;
+    border-radius: 7px;
+    border: 1px solid #39445B;
+    font-size: 12px;
+    background: rgba(33, 40, 54, 0.50);
+    color: #fff;
+}
+
+#filter-quantity span {
+    font-size: 12px;
+}
+
+#quantity-min {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#quantity-max {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#filter-quantity input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+#brokers-podium-top-selects {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#brokers-users-top-selects {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#new-users-icon-card {
+    padding: 5px 8px;
+    border-radius: 7px;
+    border: 0.5px solid #39445B;
+    background: rgba(57, 68, 91, 0.20);
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.green-text {
+    color: #00E074 !important;
+}
+
+.broker-top-name {
+    padding-right: 5px;
+    font-size: 13px !important;
+}
+
+.top-three-names img {
+    padding-right: 10px;
+}
+
+.broker-top-1 {
+    font-size: 13px !important;
+}
+
+#new-users-value {
+    margin: 18px 0;
+}
+
+#new-users-percent {
+    padding: 6px;
+    font-family: 'Sora', sans-serif;
+    font-size: 0.8rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 15px;
+    color: #00E074;
+    border: 1px solid #00E074;
+}
+
+.top-three-names, .top-three-brokers, .top-three-money {
+    display: flex;
+    align-items: center;
+}
+
+.top-three-names, .top-three-brokers, .top-three-money {
+    padding-top: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+#podium-users-select {
+    display: flex;
+}
+
+#users-table-box {
+    border-radius: 22px;
+    border: 1px solid #39445B;
+    background: linear-gradient(108deg, rgba(33, 40, 54, 0.50) 0%, rgba(33, 40, 54, 0.15) 101.49%);
+    box-shadow: 0px 0px 123.1px 0px rgba(0, 0, 0, 0.15);
+}

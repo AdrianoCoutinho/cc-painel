@@ -1,0 +1,110 @@
+#title-page-financial {
+    font-size: 1.5rem;
+}
+
+#financial-filter-box { 
+    border-radius: 22px;
+    border: 1px solid #39445B;
+    background: #21283680;
+    padding: 15px;
+}
+
+#top-card-three-financial {
+    height: 222px;
+    border-radius: 22px;
+    border: 1px solid #39445B;
+    background: rgba(33, 40, 54, 0.50);
+    padding: 10px 10px 0 5px;
+}
+
+#top-three-financial-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#top-three-financial-body p {
+    width: 30%;
+    text-align: center;
+}
+
+#pending-requests {
+    margin-left: 8px;
+    border-radius: 22px;
+    border: 1px solid rgba(226, 196, 36, 0.80);
+    background: linear-gradient(108deg, rgba(226, 196, 36, 0.40) 0%, rgba(226, 196, 36, 0.40) 0.01%, rgba(226, 196, 36, 0.08) 101.49%);
+    height: 230px;
+}
+
+#average-withdrawal-ticket, #amount-in-loot {
+    margin-left: 8px;
+    border-radius: 22px;
+    border: 1px solid #39445B;
+    background: linear-gradient(108deg, rgba(33, 40, 54, 0.50) 0%, rgba(33, 40, 54, 0.15) 101.49%);
+    height: 230px;
+}
+
+#top-card-financial-pending-requests-content, #top-card-financial-average-withdrawal-ticket-content, #top-card-financial-amount-in-loot-ticket-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px 15px 10px 10px;
+}
+
+#top-card-financial-pending-requests-title {
+    color: rgba(255, 255, 255, 0.50);
+    font-size: 19.109px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding: 5px 5px 5px 15px;
+}
+
+#top-card-financial-average-withdrawal-ticket-title, #top-card-financial-amount-in-loot-ticket-title {
+    color: rgba(255, 255, 255, 0.50);
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 8px;
+    padding: 5px 5px 5px 15px;
+}
+
+#top-card-financial-pending-requests-value, #top-card-financial-average-withdrawal-ticket-value {
+    color: #FFF;
+    font-size: 2.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding: 5px 5px 5px 15px;
+}
+
+#top-card-financial-amount-in-loot-ticket-value {
+    color: #FFF;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding: 5px 5px 5px 15px;
+}
+
+#top-card-financial-pending-requests-bottom-info, #top-card-financial-average-withdrawal-bottom-info, #top-card-financial-amount-in-loot-bottom-info {
+    display: flex;
+    text-align: center;
+    padding: 5px 5px 5px 15px;
+}
+
+.top-card-financial-pending-requests-bottom-broker {
+    font-family: 'Sora', sans-serif !important;
+    color: #FFF;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-radius: 15px;
+    padding: 5px;
+    border-radius: 16.874px;
+    border: 1.125px solid #FFF;
+    opacity: 0.5;   
+}

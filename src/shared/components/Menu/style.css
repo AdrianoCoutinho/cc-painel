@@ -1,0 +1,73 @@
+#logo {
+    display: flex;
+}
+
+#avatar {
+    margin-left: 8px;
+    margin-right: 8px;
+    color: #FFF;
+    font-family: 'Sora', sans-serif;
+    font-size: 19.109px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#avatar-name {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 8px;
+    font-family: 'Sora', sans-serif;
+    font-size: 19px;
+    font-weight: 400;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+
+#avatar-name span {
+    font-family: 'Sora', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #39445B;
+}
+
+#mailIcon {
+    width: 61px;
+    height: 61px;
+    border-radius: 22px;
+}
+
+
+.svg-link:hover .svg-path {
+    fill: #000 
+}
+
+.svg-link:hover .svg-path-stroke {
+    stroke: #000
+}
+
+#vertical-menu li:hover {
+    background-color: #00E074 !important;
+    background-image: url("../../../assets/images/bg-menu-item.png") !important;
+    background-size: contain;
+}
+
+#vertical-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+#vertical-menu li a {
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    padding: 13px 0;
+    text-decoration: none;
+}

@@ -1,0 +1,309 @@
+#white-label-brokers-list-card {
+    border-radius: 22px;
+    border: 1px solid #39445B;
+    background: rgba(33, 40, 54, 0.50);
+}
+
+#white-label-broker-list-card-title {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#white-label-broker-list-card-title h6{
+    font-size: 1rem;
+}
+
+.new-broker-button {
+    font-size: 11px !important;
+    padding: 5px 20px !important;
+}
+
+@media only screen and (max-width: 320px) {
+    .new-broker-button {
+        font-size: 9px !important;
+        padding: 5px 5px !important;
+    }
+}
+
+.white-label-broker-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2px;
+    padding: 8px;
+}
+
+#white-label-brokers-list {
+    overflow: auto;
+}
+
+#white-label-brokers-list::-webkit-scrollbar, #brokers-items-content::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+   
+  /* Handle */
+  #white-label-brokers-list::-webkit-scrollbar-thumb, #brokers-items-content::-webkit-scrollbar-thumb {
+    background: #39445B;
+    border-radius: 22px;
+  }
+  
+  /* Handle on hover */
+  #white-label-brokers-list::-webkit-scrollbar-thumb:hover, #brokers-items-content::-webkit-scrollbar-thumb:hover{
+    background: #39445B; 
+  }
+
+   /* fim scroll corretoras */
+
+#white-label-active-brokers {
+    padding: 20px;
+    border-radius: 22px;
+    border: 1px solid #39445B;
+    background: linear-gradient(108deg, rgba(33, 40, 54, 0.50) 0%, rgba(33, 40, 54, 0.15) 101.49%);
+}
+
+.top-cards-white-label-percent {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700 !important;
+    line-height: normal;
+    padding: 4px 8px;
+}
+
+.top-cards-white-label-percent-green {
+    color: #00E074;
+    border-radius: 15px;
+    border: 1px solid #00E074;
+}
+
+
+#broker-highest-volume {
+    padding: 15px 7px;
+    border-radius: 22px;
+    border: 1px solid rgba(0, 224, 116, 0.50);
+    background: linear-gradient(288deg, rgba(0, 224, 116, 0.04) 15.51%, rgba(0, 224, 116, 0.20) 121.52%);
+}
+
+#broker-lower-volume {
+    padding: 15px 7px;
+    border-radius: 22px;
+    border: 1px solid rgba(226, 36, 59, 0.50);
+    background: linear-gradient(288deg, rgba(226, 36, 59, 0.04) 15.51%, rgba(226, 36, 59, 0.20) 121.52%);   
+}
+
+#broker-highest-volume-top-filters, #broker-lower-volume-top-filters {
+    display: flex;
+    justify-content: flex-end;
+    /* padding: 15px 7px; */
+}
+
+.broker-highest-volume-selects{
+    border-radius: 14px;
+    border: 1px solid #00E074;
+    background: rgba(0, 224, 116, 0.20);
+    padding: 5px 0 5px 5px;
+    color: #fff;
+    margin-right: 5px;
+}
+
+.broker-highest-volume-selects option {
+    color: #ffffff; /* Cor do texto na opção */
+    border: 1px solid #39445B;
+    background: #212836;
+}
+
+.broker-lower-volume-selects{
+    border-radius: 14px;
+    border: 1px solid rgba(226, 36, 59, 0.50);
+    background: linear-gradient(288deg, rgba(226, 36, 59, 0.04) 15.51%, rgba(226, 36, 59, 0.20) 121.52%);  
+    padding: 5px 0 5px 5px;
+    color: #fff;
+    margin-right: 5px;
+}
+
+.broker-lower-volume-selects option {
+    color: #ffffff; /* Cor do texto na opção */
+    border: 1px solid #39445B;
+    background: #212836;
+}
+#white-label-ranking {
+    border-radius: 22px;
+    border: 1px solid #39445B;
+    background: rgba(33, 40, 54, 0.50);
+}
+
+#white-label-ranking-top-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #39445B;
+    padding: 10px;
+}
+
+.white-label-ranking-top-selects{
+    border-radius: 14px;
+    border: 1px solid #39445B;
+    background: #212836;
+    padding: 5px 0 5px 5px;
+    color: #fff;
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+@media only screen and (max-width: 340px) {
+    .white-label-ranking-top-selects{
+        border-radius: 14px;
+        border: 1px solid #39445B;
+        background: #212836;
+        padding: 5px 0 5px 5px;
+        color: #fff;
+        margin-right: 5px;
+        font-size: 7px;
+    }
+}
+
+@media only screen and (max-width: 1336px) {
+    .white-label-ranking-top-selects{
+        border-radius: 14px;
+        border: 1px solid #39445B;
+        background: #212836;
+        padding: 5px 0 5px 5px;
+        color: #fff;
+        margin-right: 5px;
+        font-size: 10px;
+    }
+}
+
+.broker-item-ranking {
+    display: flex;
+    justify-content: space-between; 
+    padding: 10px;
+}
+
+.broker-item-ranking p{
+    font-size: 14px !important;
+}
+
+#brokers-items-content {
+    margin-top: 3px;
+    overflow: auto;
+}
+
+#white-label-payments-card {
+    border-radius: 22px;
+    border: 1px solid #39445B;
+    background: linear-gradient(108deg, rgba(33, 40, 54, 0.50) 0%, rgba(33, 40, 54, 0.15) 101.49%);
+    border: 1px solid #39445B;
+}
+
+.white-label-payments-filter {
+    border-radius: 14px;
+    border: 1px solid #39445B;
+    background: #212836;
+    padding: 5px 0 5px 5px;
+    color: #fff;
+    margin-right: 5px;
+}
+
+#white-label-payments-item {
+    padding-bottom: 10px;
+}
+
+.white-label-payments-item-names-table {
+    color: #FFF;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    opacity: 0.5;
+    text-align: center;
+    margin: 10px 0 !important;
+}
+
+
+.white-label-payment-item-tr {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.white-label-payment-item {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+    padding: 4.2px;
+    border-radius: 15px;
+    border: 1px solid #534d24;
+    background: #1d212b;
+}
+
+#white-label-payments-item-title {
+    display: flex;
+    color: "#ffff"
+}
+
+#white-label-payments-item-title p{
+    color: #fff !important;
+    background-color: red;
+}
+
+.white-label-payment-title {
+    color: #FFF;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border: 0 !important;
+}
+
+.white-label-payment-item-date {
+    width: 21%;
+}
+
+.white-label-payment-item-name {
+    width: 20%;
+}
+
+.white-label-payment-item-state {
+    width: 10%;
+}
+
+.white-label-payment-item-roi {
+    width: 10%;
+}
+
+.white-label-payment-item-value {
+    width: 21%;
+}
+
+.white-label-payment-item-status-tr {
+    width: 15%;
+}
+
+.white-label-payment-item-status {
+    text-align: center;
+    font-size: 12px;
+    border-radius: 23px;
+    padding: 5px 10px;
+    width: 10%;
+}
+
+.white-label-payment-item-status-pending {
+    color: #E2C424;
+    background: rgba(226, 196, 36, 0.15);
+}
+
+.white-label-payment-item-status-paid{
+    color: #00E074;
+    background: rgba(0, 224, 116, 0.15);
+}
+
+.white-label-payment-item-status-overdue {
+    color: #E2243B;
+    background: rgba(226, 36, 59, 0.15);
+}
+
+.white-label-payment-item-options {
+    width: 3%;
+}

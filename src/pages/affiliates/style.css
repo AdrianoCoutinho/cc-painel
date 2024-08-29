@@ -1,0 +1,223 @@
+.top-cards-affiliates {
+    padding: 25px 20px 20px 20px;    
+    border-radius: 22px;
+    border: 1px solid #39445B;
+    background: linear-gradient(108deg, rgba(33, 40, 54, 0.50) 0%, rgba(33, 40, 54, 0.15) 101.49%);
+}
+
+.middle-content-cards-affiliates {
+    height: 330px;
+    padding: 25px 0 20px 20px;
+    border-radius: 22px;
+    border: 1px solid #39445B;
+    background: linear-gradient(108deg, rgba(33, 40, 54, 0.50) 0%, rgba(33, 40, 54, 0.15) 101.49%);
+}
+
+#affiliates-managers-list {
+    height: 250px;
+    overflow: auto;
+    margin-top: 5px;
+}
+
+#affiliates-affiliates-list {
+    height: 250px;
+    overflow: auto;
+    margin-top: 5px;
+}
+
+#affiliates-sub-affiliates-list {
+    height: 250px;
+    overflow: auto;
+    margin-top: 5px;
+}
+
+#affiliates-rankking-manages {
+    height: 468px;
+    overflow: auto;
+    margin-top: 5px;
+    margin-left: 0 !important;
+}
+
+/* inicio scroll gerente */
+
+#affiliates-managers-list::-webkit-scrollbar, #affiliates-affiliates-list::-webkit-scrollbar, #affiliates-sub-affiliates-list::-webkit-scrollbar, #affiliates-rankking-manages::-webkit-scrollbar{
+    width: 8px;
+  }
+  
+   
+  /* Handle */
+  #affiliates-managers-list::-webkit-scrollbar-thumb , #affiliates-affiliates-list::-webkit-scrollbar-thumb, #affiliates-sub-affiliates-list::-webkit-scrollbar-thumb, #affiliates-rankking-manages::-webkit-scrollbar-thumb {
+    background: #39445B;
+    border-radius: 22px;
+  }
+  
+  /* Handle on hover */
+  #affiliates-managers-list::-webkit-scrollbar-thumb:hover, #affiliates-affiliates-list::-webkit-scrollbar-thumb:hover, #affiliates-sub-affiliates-list::-webkit-scrollbar-thumb:hover {
+    background: #39445B; 
+  }
+
+   /* fim scroll gerente */
+
+.top-cards-affiliates-value {
+    color: #FFF;
+    font-size: 34px !important;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.top-cards-affiliates-percent {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700 !important;
+    line-height: normal;
+    padding: 4px 8px;
+}
+
+.top-cards-affiliates-percent-green {
+    color: #00E074;
+    border-radius: 15px;
+    border: 1px solid #00E074;
+}
+
+#new-manager-button{
+    border-radius: 446.317px;
+    background: #00E074;
+    box-shadow: 0px 0px 1.096px 0px rgba(0, 0, 0, 0.15);
+    font-size: 12px;
+    width: 140px;
+    height: 28px;
+    text-transform: none;
+}
+
+.middle-card-affiliates{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow-wrap: break-word;
+}
+
+.middle-card-affiliates-actions{
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.middle-card-affiliates-actions svg {
+    margin-left: 10px;
+}
+
+.affiliates-manager-info {
+    display: flex;
+}
+
+.affiliates-manager-info span {
+    font-size: 14px;
+}
+
+.affiliates-manager-info p {
+    font-size: 16px;
+}
+
+.affiliates-name-and-broker{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 5px;
+}
+
+.affiliates-manager-sections {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.affiliates-rank-managers-card{
+    padding: 10px;
+    border-radius: 22px;
+    border: 1px solid #39445B;
+    background: linear-gradient(108deg, rgba(33, 40, 54, 0.50) 0%, rgba(33, 40, 54, 0.15) 101.49%);
+}
+
+#affiliates-ranking-drop-filter {
+    display: flex;
+}
+
+#affiliates-ranking-drop-filter svg {
+    margin-top: 10px;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.affilitates-selects{
+    border-radius: 14px;
+    border: 1px solid #39445B;
+    background: #212836;
+    padding: 5px 0 5px 5px;
+    color: #fff;
+    /* width: 80px; */
+    margin-right: 5px;
+}
+
+#affiliates-top-info-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.affiliates-title-ranking-manager{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+.affiliates-middle-card-people {
+    text-overflow: auto;
+}
+
+.affiliates-ranking-name {
+    display: flex;
+}
+
+
+.affiliates-ranking-brokers-name{
+    text-align: center;
+    color: #FFF;
+    font-size: 0.8rem;
+}
+
+.affiliates-ranking-brokers-name{
+    margin: 9px 0 15px 0 !important;
+}
+
+.affiliates-ranking-broker-name {
+    display: flex;
+    align-items: center;
+}
+
+.affiliates-ranking-name {
+    display: flex;
+    align-items: center;
+}
+
+.affiliates-ranking-name span {
+    margin: 0 5px;
+}
+
+.affiliates-ranking-value {
+    color: #00E074;
+    margin-top: 7.5px;
+}
+
+.affiliates-ranking-content {
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 8px;
+}
+
+.affiliates-manager-mail-icon, .affiliates-affiliates-mail-icon, .affiliates-sub-affiliates-mail-icon {
+    margin-right: 10px;
+}

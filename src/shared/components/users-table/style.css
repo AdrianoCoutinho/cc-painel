@@ -1,0 +1,20 @@
+/* *{color: #fff;} */
+
+.users-table-id {
+    text-align: left;
+}
+
+.usersContainer {
+    cursor: pointer;
+    border-radius: 15px;
+    border: 1px solid #39445b62;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+.usersContainer:hover {
+    background: #ffffff0e;
+}
