@@ -8,7 +8,6 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { getUser } from "../../api";
 import changeCover from "../../assets/svg/button-change-cover.svg";
 import imageCover from "../../assets/temporary-images/capa-perfil.jpg";
 import FormEditProfile from "../../shared/interfaces/FormEditProfile.interface";
@@ -40,7 +39,7 @@ export const Profile: React.FC = () => {
   const [userDetails, setUserDetails] = useState({
     id: "",
     name: "",
-    email: "adriano.98@outlook.com",
+    email: "",
     real_balance: 0,
     profile_picture_url: ``,
   });
@@ -55,8 +54,13 @@ export const Profile: React.FC = () => {
   const handleClose = () => setOpen(false);
 
   const getUserDetails = async () => {
-    const result = await getUser();
-    setUserDetails(result.data);
+    setUserDetails({
+      id: "1234d",
+      name: "Administrador",
+      email: "admin@system.com",
+      real_balance: 1000,
+      profile_picture_url: ``,
+    });
   };
 
   const handleSubmitProfile = async (e: React.FormEvent) => {

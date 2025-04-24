@@ -15,7 +15,6 @@ import Typography from "@mui/material/Typography";
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getUser } from "../../../api";
 import logo from "../../../assets/images/optimux-logo.png";
 import { useAuthContext } from "../../contexts";
 import { MessagesDrawer } from "../messagesDrawer/MessagesDrawer";
@@ -86,8 +85,13 @@ export const AppBarMenu: React.FC = () => {
   };
 
   const getUserDetails = async () => {
-    const result = await getUser();
-    setUserDetails(result.data);
+    setUserDetails({
+      id: "3f35a26d-a5c4-4950-aa7a-e6c13646fca0",
+      name: "Administrador",
+      email: "admin@system.com",
+      real_balance: 1000,
+      profile_picture_url: `https://static.vecteezy.com/system/resources/previews/043/900/708/non_2x/user-profile-icon-illustration-vector.jpg`,
+    });
   };
 
   useEffect(() => {

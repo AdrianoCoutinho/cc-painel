@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ReactApexChart from "react-apexcharts";
-import {
-  getDepositsValuesOfMouth,
-  getExitstsValuesOfMouth,
-} from "../../../api";
 import "./style.css";
 
 export const LineChartMouth: React.FC = () => {
-  const [entries, setEntries] = useState<number[]>([]);
-  const [exits, seExits] = useState<number[]>([]);
   const options = {
     chart: {
       foreColor: "#ffffff",
     },
     xaxis: {
+      labels: {
+        hideOverlappingLabels: false,
+        rotate: -45,
+        rotateAlways: true,
+      },
       categories: [
         "Jan",
         "Fev",
@@ -55,24 +54,13 @@ export const LineChartMouth: React.FC = () => {
   const series = [
     {
       name: "Entradas",
-      data: entries,
+      data: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 2000, 3000],
     },
     {
       name: "Saídas",
-      data: exits,
+      data: [0, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 1000],
     },
   ];
-
-  const getArrayMouth = async () => {
-    const resultDeposits = await getDepositsValuesOfMouth();
-    const resultExits = await getExitstsValuesOfMouth();
-    setEntries(resultDeposits);
-    seExits(resultExits);
-  };
-
-  useEffect(() => {
-    getArrayMouth();
-  }, []);
 
   return (
     <div className="line-chart-mouth">
@@ -80,7 +68,7 @@ export const LineChartMouth: React.FC = () => {
         options={options}
         series={series}
         type="line"
-        height={225}
+        height={212}
       />
     </div>
   );

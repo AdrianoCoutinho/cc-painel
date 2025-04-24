@@ -56,7 +56,7 @@ export const DonoutChart: React.FC<DonutChartProps> = ({
         options={options}
         series={seriesData}
         type="donut"
-        width="150"
+        width={150}
       />
     </div>
   );

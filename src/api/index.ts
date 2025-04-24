@@ -187,10 +187,9 @@ export const recipeOfTheDay = async (): Promise<any> => {
       for (let i = 0; i < sumsDeposits.length; i++) {
         resultado.push(sumsDeposits[i] - sumsWithdrawals[i]);
       }
-      console.log(resultado);
       return { resultado };
     } else {
-      console.log("Os arrays não têm o mesmo comprimento.");
+      alert("Os arrays não têm o mesmo comprimento.");
     }
   } catch (error) {
     return {

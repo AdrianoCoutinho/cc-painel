@@ -46,7 +46,7 @@ export const CollumChart: React.FC = () => {
       <style>
         {`
           .line-chart-visit {
-            width: 78%;
+            width: 100%;
           }
         `}
       </style>
@@ -55,6 +55,7 @@ export const CollumChart: React.FC = () => {
         series={series}
         type="bar"
         width={"100%"}
+        height={220}
       />
     </div>
   );

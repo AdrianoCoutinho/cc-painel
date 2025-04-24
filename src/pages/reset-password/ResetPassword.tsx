@@ -97,7 +97,7 @@ export const ResetPassword: React.FC = () => {
         <Box id="login-box-card" style={{ width }}>
           <Typography id="login-card-title">Login</Typography>
           <Box id="login-inputs">
-            <form onSubmit={() => console.log("olá")} id="login-form">
+            <form id="login-form">
               <input
                 placeholder="E-mail"
                 type="email"

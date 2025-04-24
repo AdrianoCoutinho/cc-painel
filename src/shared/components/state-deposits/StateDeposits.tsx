@@ -34,16 +34,20 @@ export default function StateDeposits() {
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
           <Typography
-            variant="body2"
+            variant="caption"
             sx={{ display: "flex", alignItems: "center" }}
           >
             <img className="flag-state" src={Alemanha} alt="Alemanha" />
             <span className="state-name">
               Alemanha
-              <img className="green-arrow" src={greenArrow} alt="Alemanha" />
+              <img
+                className="green-arrow-state"
+                src={greenArrow}
+                alt="Alemanha"
+              />
             </span>
           </Typography>
-          <Typography variant="body2">R$ XXX.XXX,XX</Typography>
+          <Typography variant="caption">$ 245.45,56</Typography>
         </ListItemButton>
       </ListItem>
 
@@ -53,16 +57,20 @@ export default function StateDeposits() {
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
           <Typography
-            variant="body2"
+            variant="caption"
             sx={{ display: "flex", alignItems: "center" }}
           >
             <img className="flag-state" src={Angola} alt="Angola" />
             <span className="state-name">
               Angola
-              <img className="green-arrow" src={greenArrow} alt="Angola" />
+              <img
+                className="green-arrow-state"
+                src={greenArrow}
+                alt="Angola"
+              />
             </span>
           </Typography>
-          <Typography variant="body2">R$ 734.789,25</Typography>
+          <Typography variant="caption">$ 245.45,56</Typography>
         </ListItemButton>
       </ListItem>
 
@@ -72,16 +80,20 @@ export default function StateDeposits() {
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
           <Typography
-            variant="body2"
+            variant="caption"
             sx={{ display: "flex", alignItems: "center" }}
           >
             <img className="flag-state" src={Argentina} alt="Argentina" />
             <span className="state-name">
               Argentina
-              <img className="green-arrow" src={greenArrow} alt="Argentina" />
+              <img
+                className="green-arrow-state"
+                src={greenArrow}
+                alt="Argentina"
+              />
             </span>
           </Typography>
-          <Typography variant="body2">R$ XXX.XXX,XX</Typography>
+          <Typography variant="caption">$ 245.45,56</Typography>
         </ListItemButton>
       </ListItem>
 
@@ -91,16 +103,20 @@ export default function StateDeposits() {
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
           <Typography
-            variant="body2"
+            variant="caption"
             sx={{ display: "flex", alignItems: "center" }}
           >
             <img className="flag-state" src={Australia} alt="Austrália" />
             <span className="state-name">
               Austrália
-              <img className="green-arrow" src={greenArrow} alt="Austrália" />
+              <img
+                className="green-arrow-state"
+                src={greenArrow}
+                alt="Austrália"
+              />
             </span>
           </Typography>
-          <Typography variant="body2">$ 245.45,56</Typography>
+          <Typography variant="caption">$ 245.45,56</Typography>
         </ListItemButton>
       </ListItem>
 
@@ -110,16 +126,20 @@ export default function StateDeposits() {
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
           <Typography
-            variant="body2"
+            variant="caption"
             sx={{ display: "flex", alignItems: "center" }}
           >
             <img className="flag-state" src={Brasil} alt="Brasil" />
             <span className="state-name">
               Brasil
-              <img className="green-arrow" src={greenArrow} alt="Brasil" />
+              <img
+                className="green-arrow-state"
+                src={greenArrow}
+                alt="Brasil"
+              />
             </span>
           </Typography>
-          <Typography variant="body2">$ 12.245.454,56</Typography>
+          <Typography variant="caption">$ 12.245.454,56</Typography>
         </ListItemButton>
       </ListItem>
 
@@ -129,16 +149,20 @@ export default function StateDeposits() {
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
           <Typography
-            variant="body2"
+            variant="caption"
             sx={{ display: "flex", alignItems: "center" }}
           >
             <img className="flag-state" src={CaboVerde} alt="Cabo Verde" />
             <span className="state-name">
               Cabo Verde
-              <img className="green-arrow" src={greenArrow} alt="Cabo Verde" />
+              <img
+                className="green-arrow-state"
+                src={greenArrow}
+                alt="Cabo Verde"
+              />
             </span>
           </Typography>
-          <Typography variant="body2">$ 45.45,56</Typography>
+          <Typography variant="caption">$ 45.45,56</Typography>
         </ListItemButton>
       </ListItem>
 
@@ -148,16 +172,20 @@ export default function StateDeposits() {
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
           <Typography
-            variant="body2"
+            variant="caption"
             sx={{ display: "flex", alignItems: "center" }}
           >
             <img className="flag-state" src={Camaroes} alt="Comores" />
             <span className="state-name">
               Camaroes
-              <img className="green-arrow" src={greenArrow} alt="Comores" />
+              <img
+                className="green-arrow-state"
+                src={greenArrow}
+                alt="Comores"
+              />
             </span>
           </Typography>
-          <Typography variant="body2">$ 465.45,00</Typography>
+          <Typography variant="caption">$ 465.45,00</Typography>
         </ListItemButton>
       </ListItem>
 
@@ -167,16 +195,16 @@ export default function StateDeposits() {
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
           <Typography
-            variant="body2"
+            variant="caption"
             sx={{ display: "flex", alignItems: "center" }}
           >
             <img className="flag-state" src={Chile} alt="Chile" />
             <span className="state-name">
               Chile
-              <img className="green-arrow" src={greenArrow} alt="Chile" />
+              <img className="green-arrow-state" src={greenArrow} alt="Chile" />
             </span>
           </Typography>
-          <Typography variant="body2">$ 1.465.45,00</Typography>
+          <Typography variant="caption">$ 1.465.45,00</Typography>
         </ListItemButton>
       </ListItem>
 
@@ -186,16 +214,16 @@ export default function StateDeposits() {
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
           <Typography
-            variant="body2"
+            variant="caption"
             sx={{ display: "flex", alignItems: "center" }}
           >
             <img className="flag-state" src={China} alt="China" />
             <span className="state-name">
               China
-              <img className="green-arrow" src={greenArrow} alt="China" />
+              <img className="green-arrow-state" src={greenArrow} alt="China" />
             </span>
           </Typography>
-          <Typography variant="body2">$ 1.465.45,700</Typography>
+          <Typography variant="caption">$ 1.465.45,700</Typography>
         </ListItemButton>
       </ListItem>
 
@@ -205,16 +233,20 @@ export default function StateDeposits() {
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
           <Typography
-            variant="body2"
+            variant="caption"
             sx={{ display: "flex", alignItems: "center" }}
           >
             <img className="flag-state" src={Espanha} alt="Espanha" />
             <span className="state-name">
               Espanha
-              <img className="green-arrow" src={greenArrow} alt="Espanha" />
+              <img
+                className="green-arrow-state"
+                src={greenArrow}
+                alt="Espanha"
+              />
             </span>
           </Typography>
-          <Typography variant="body2">R$ XXX.XXX,XX</Typography>
+          <Typography variant="caption">$ 245.45,56</Typography>
         </ListItemButton>
       </ListItem>
 
@@ -224,16 +256,20 @@ export default function StateDeposits() {
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
           <Typography
-            variant="body2"
+            variant="caption"
             sx={{ display: "flex", alignItems: "center" }}
           >
             <img className="flag-state" src={Inglaterra} alt="Inglaterra" />
             <span className="state-name">
               Inglaterra
-              <img className="green-arrow" src={greenArrow} alt="Inglaterra" />
+              <img
+                className="green-arrow-state"
+                src={greenArrow}
+                alt="Inglaterra"
+              />
             </span>
           </Typography>
-          <Typography variant="body2">R$ XXX.XXX,XX</Typography>
+          <Typography variant="caption">$ 245.45,56</Typography>
         </ListItemButton>
       </ListItem>
 
@@ -243,16 +279,20 @@ export default function StateDeposits() {
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
           <Typography
-            variant="body2"
+            variant="caption"
             sx={{ display: "flex", alignItems: "center" }}
           >
             <img className="flag-state" src={Irlanda} alt="Irlanda" />
             <span className="state-name">
               Irlanda
-              <img className="green-arrow" src={greenArrow} alt="Irlanda" />
+              <img
+                className="green-arrow-state"
+                src={greenArrow}
+                alt="Irlanda"
+              />
             </span>
           </Typography>
-          <Typography variant="body2">R$ XXX.XXX,XX</Typography>
+          <Typography variant="caption">$ 245.45,56</Typography>
         </ListItemButton>
       </ListItem>
 
@@ -262,16 +302,20 @@ export default function StateDeposits() {
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
           <Typography
-            variant="body2"
+            variant="caption"
             sx={{ display: "flex", alignItems: "center" }}
           >
             <img className="flag-state" src={Italia} alt="Itália" />
             <span className="state-name">
               Itália
-              <img className="green-arrow" src={greenArrow} alt="Itália" />
+              <img
+                className="green-arrow-state"
+                src={greenArrow}
+                alt="Itália"
+              />
             </span>
           </Typography>
-          <Typography variant="body2">R$ XXX.XXX,XX</Typography>
+          <Typography variant="caption">$ 245.45,56</Typography>
         </ListItemButton>
       </ListItem>
 
@@ -281,16 +325,20 @@ export default function StateDeposits() {
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
           <Typography
-            variant="body2"
+            variant="caption"
             sx={{ display: "flex", alignItems: "center" }}
           >
             <img className="flag-state" src={Mexico} alt="México" />
             <span className="state-name">
               México
-              <img className="green-arrow" src={greenArrow} alt="México" />
+              <img
+                className="green-arrow-state"
+                src={greenArrow}
+                alt="México"
+              />
             </span>
           </Typography>
-          <Typography variant="body2">R$ XXX.XXX,XX</Typography>
+          <Typography variant="caption">$ 245.45,56</Typography>
         </ListItemButton>
       </ListItem>
 
@@ -300,16 +348,20 @@ export default function StateDeposits() {
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
           <Typography
-            variant="body2"
+            variant="caption"
             sx={{ display: "flex", alignItems: "center" }}
           >
             <img className="flag-state" src={Mocambique} alt="Moçambique" />
             <span className="state-name">
               Moçambique
-              <img className="green-arrow" src={greenArrow} alt="Moçambique" />
+              <img
+                className="green-arrow-state"
+                src={greenArrow}
+                alt="Moçambique"
+              />
             </span>
           </Typography>
-          <Typography variant="body2">R$ XXX.XXX,XX</Typography>
+          <Typography variant="caption">$ 245.45,56</Typography>
         </ListItemButton>
       </ListItem>
 
@@ -319,16 +371,20 @@ export default function StateDeposits() {
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
           <Typography
-            variant="body2"
+            variant="caption"
             sx={{ display: "flex", alignItems: "center" }}
           >
             <img className="flag-state" src={Paraguai} alt="Paraguai" />
             <span className="state-name">
               Paraguai
-              <img className="green-arrow" src={greenArrow} alt="Paraguai" />
+              <img
+                className="green-arrow-state"
+                src={greenArrow}
+                alt="Paraguai"
+              />
             </span>
           </Typography>
-          <Typography variant="body2">R$ XXX.XXX,XX</Typography>
+          <Typography variant="caption">$ 245.45,56</Typography>
         </ListItemButton>
       </ListItem>
 
@@ -338,16 +394,20 @@ export default function StateDeposits() {
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
           <Typography
-            variant="body2"
+            variant="caption"
             sx={{ display: "flex", alignItems: "center" }}
           >
             <img className="flag-state" src={Portugal} alt="Portugal" />
             <span className="state-name">
               Portugal
-              <img className="green-arrow" src={greenArrow} alt="Portugal" />
+              <img
+                className="green-arrow-state"
+                src={greenArrow}
+                alt="Portugal"
+              />
             </span>
           </Typography>
-          <Typography variant="body2">R$ XXX.XXX,XX</Typography>
+          <Typography variant="caption">$ 245.45,56</Typography>
         </ListItemButton>
       </ListItem>
 
@@ -357,16 +417,20 @@ export default function StateDeposits() {
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
           <Typography
-            variant="body2"
+            variant="caption"
             sx={{ display: "flex", alignItems: "center" }}
           >
             <img className="flag-state" src={Suecia} alt="Suécia" />
             <span className="state-name">
               Suécia
-              <img className="green-arrow" src={greenArrow} alt="Suécia" />
+              <img
+                className="green-arrow-state"
+                src={greenArrow}
+                alt="Suécia"
+              />
             </span>
           </Typography>
-          <Typography variant="body2">R$ XXX.XXX,XX</Typography>
+          <Typography variant="caption">$ 245.45,56</Typography>
         </ListItemButton>
       </ListItem>
 
@@ -376,16 +440,16 @@ export default function StateDeposits() {
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
           <Typography
-            variant="body2"
+            variant="caption"
             sx={{ display: "flex", alignItems: "center" }}
           >
             <img className="flag-state" src={Suica} alt="Suíça" />
             <span className="state-name">
               Suíça
-              <img className="green-arrow" src={greenArrow} alt="Suíça" />
+              <img className="green-arrow-state" src={greenArrow} alt="Suíça" />
             </span>
           </Typography>
-          <Typography variant="body2">R$ XXX.XXX,XX</Typography>
+          <Typography variant="caption">$ 245.45,56</Typography>
         </ListItemButton>
       </ListItem>
       <ListItem component="div" disablePadding>
@@ -393,16 +457,16 @@ export default function StateDeposits() {
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
           <Typography
-            variant="body2"
+            variant="caption"
             sx={{ display: "flex", alignItems: "center" }}
           >
             <img className="flag-state" src={Uruguai} alt="Suíça" />
             <span className="state-name">
               Uruguai
-              <img className="green-arrow" src={greenArrow} alt="Suíça" />
+              <img className="green-arrow-state" src={greenArrow} alt="Suíça" />
             </span>
           </Typography>
-          <Typography variant="body2">R$ XXX.XXX,XX</Typography>
+          <Typography variant="caption">$ 245.45,56</Typography>
         </ListItemButton>
       </ListItem>
       <ListItem component="div" disablePadding>
@@ -410,16 +474,16 @@ export default function StateDeposits() {
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
           <Typography
-            variant="body2"
+            variant="caption"
             sx={{ display: "flex", alignItems: "center" }}
           >
             <img className="flag-state" src={USA} alt="Suíça" />
             <span className="state-name">
               USA
-              <img className="green-arrow" src={greenArrow} alt="Suíça" />
+              <img className="green-arrow-state" src={greenArrow} alt="Suíça" />
             </span>
           </Typography>
-          <Typography variant="body2">R$ XXX.XXX,XX</Typography>
+          <Typography variant="caption">$ 245.45,56</Typography>
         </ListItemButton>
       </ListItem>
     </>

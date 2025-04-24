@@ -1,408 +1,327 @@
 #title-page-dashboard {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
-#entry-box {
-    min-height: 26vh;
-    border-radius: 22px;
-    border: 1px solid rgba(0, 224, 116, 0.50);
-    background:
-    linear-gradient(288deg, rgba(0, 224, 116, 0.04) 15.51%, rgba(0, 224, 116, 0.20) 121.52%);
+.box-transactions {
+  border-radius: 22px;
 }
 
-#exit-box {
-    min-height: 26vh;
-    border-radius: 22px;
-    border: 1px solid rgba(226, 36, 59, 0.50);
-    background:
-    linear-gradient(288deg, rgba(226, 36, 59, 0.04) 15.51%, rgba(226, 36, 59, 0.20) 121.52%);
+.green-info {
+  border: 1px solid rgba(0, 224, 116, 0.5);
+  background: linear-gradient(
+    288deg,
+    rgba(0, 224, 116, 0.04) 15.51%,
+    rgba(0, 224, 116, 0.2) 121.52%
+  );
 }
 
-#box-total-users {
-    min-height: 26vh;
-    border-radius: 22px;
-    border: 1px solid #39445B;
-    background:
-    linear-gradient(108deg, rgba(33, 40, 54, 0.50) 0%, rgba(33, 40, 54, 0.15) 101.49%);            
+.red-info {
+  border: 1px solid rgba(226, 36, 59, 0.5);
+  background: linear-gradient(
+    288deg,
+    rgba(226, 36, 59, 0.04) 15.51%,
+    rgba(226, 36, 59, 0.2) 121.52%
+  );
+}
+
+.red-arrow {
+  border: 0.5px solid #e2243b;
+  background: rgba(224, 0, 0, 0.2);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.green-arrow {
+  border: 0.5px solid #00e074;
+  background: rgba(0, 224, 116, 0.2);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.default-icon {
+  margin-top: 15px;
+  margin-left: 26px;
+  padding: 6px;
+  border-radius: 7px;
+  width: 14.316px;
+  height: 18.156px;
+  border: 0.5px solid #39445b;
+  background: rgba(57, 68, 91, 0.2);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.arrowIcon {
+  margin-top: 15px;
+  margin-left: 26px;
+  padding: 6px 8px;
+  border-radius: 7px;
+  width: 11px;
+  height: 18px;
+}
+
+.rotate180 {
+  transform: rotate(180deg);
+}
+
+.box-value {
+  padding: 0 0 0 25px;
+}
+
+.box-percent {
+  padding: 12px 0 18px 25px;
+}
+
+.green-percent {
+  color: #00e074;
+  border: 1px solid #00e074;
+}
+
+.red-percent {
+  color: #e2243b;
+  border: 1px solid #e2243b;
+}
+
+#overall-profit-chart-collum {
+  display: flex;
+  align-items: center;
 }
 
 #box-total-states {
-    max-height: 78vh;
-    min-height: 713px;
-    border-radius: 22px;
-    border: 1px solid #39445B;
-    background:
-    linear-gradient(108deg, rgba(33, 40, 54, 0.50) 0%, rgba(33, 40, 54, 0.15) 101.49%);            
-}
-
-
-#line-chart-mouth-box {
-    min-height: 100%;
-    max-height: 28vh;
-    border-radius: 22px;
-    border: 1px solid #39445B;
-    background:
-    linear-gradient(108deg, rgba(33, 40, 54, 0.50) 0%, rgba(33, 40, 54, 0.15) 101.49%); 
+  height: 818px;
+  border-radius: 22px;
+  border: 1px solid #39445b;
+  background: linear-gradient(
+    108deg,
+    rgba(33, 40, 54, 0.5) 0%,
+    rgba(33, 40, 54, 0.15) 101.49%
+  );
 }
 
 .general-sample {
-    width: 100%;
-    min-height: 10vh;
-    height: 48%;
-    border-radius: 22px;
-    border: 1px solid #39445B;
-    background:
-    linear-gradient(108deg, rgba(33, 40, 54, 0.50) 0%, rgba(33, 40, 54, 0.15) 101.49%);   
+  width: 100%;
+  min-height: 10vh;
+  height: 48%;
+  border-radius: 22px;
+  border: 1px solid #39445b;
+  background: linear-gradient(
+    108deg,
+    rgba(33, 40, 54, 0.5) 0%,
+    rgba(33, 40, 54, 0.15) 101.49%
+  );
 }
 
-
 #donout-chart-box {
-    min-height: 20vh;
-    border-radius: 22px;
-    border: 1px solid #39445B;
-    background: linear-gradient(108deg, rgba(33, 40, 54, 0.50) 0%, rgba(33, 40, 54, 0.15) 101.49%);
+  min-height: 20vh;
+  border-radius: 22px;
+  border: 1px solid #39445b;
+  background: linear-gradient(
+    108deg,
+    rgba(33, 40, 54, 0.5) 0%,
+    rgba(33, 40, 54, 0.15) 101.49%
+  );
 }
 
 #most-visited-broker-box {
-    min-height: 20vh;
-    border-radius: 22px;
-    border: 1px solid #39445B;
-    background: linear-gradient(108deg, rgba(33, 40, 54, 0.50) 0%, rgba(33, 40, 54, 0.15) 101.49%);
+  min-height: 20vh;
+  border-radius: 22px;
+  border: 1px solid #39445b;
+  background: linear-gradient(
+    108deg,
+    rgba(33, 40, 54, 0.5) 0%,
+    rgba(33, 40, 54, 0.15) 101.49%
+  );
 }
 
-#recipe-of-the-day-box {
-    min-height: 25.92vh;
-    border-radius: 22px;
-    border: 1px solid #39445B;
-    background: linear-gradient(108deg, rgba(33, 40, 54, 0.50) 0%, rgba(33, 40, 54, 0.15) 101.49%);
-}
-
-#box-line-chart-hour{
-    display: flex;
-    justify-content: center;
+#box-line-chart-hour {
+  display: flex;
+  justify-content: center;
 }
 
 .css-u4p24i {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-align-items: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    justify-content: center !important;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  justify-content: center !important;
 }
 
-#arrowEntryIcon {
-    margin-top: 15px;
-    margin-left: 26px;
-    padding: 6px;
-    border-radius: 7px;
-    border: 0.5px solid #00E074;
-    background: rgba(0, 224, 116, 0.20);
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
-    width: 14.316px;
-    height: 18.156px;
+.percent {
+  padding: 6px;
+  font-weight: 400;
+  font-size: 0.8rem;
+  font-style: normal;
+  line-height: normal;
+  border-radius: 15px;
+  font-family: "Sora", sans-serif;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
 }
 
-#entry-sub-title, #exit-sub-title, #totalUsers-sub-title, #total-profit-title, #most-visited-broker-sub-title, #recipe-of-the-day-sub-title, #visits-sub-title {
-    color: rgba(255, 255, 255, 0.30);
-    font-family: 'Sora', sans-serif;
-    font-size: calc(0.5vw + 6px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: 26px;
+#entry-percent {
+  margin: 10px 0;
+  padding: 6px;
+  text-align: center;
+  width: 2rem;
+  margin-left: 26px;
+  font-family: "Sora", sans-serif;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border-radius: 15px;
+  color: #00e074;
+  border: 1px solid #00e074;
 }
-
-#entry-value {
-    margin-left: 26px;
-    color: #FFF;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
-    font-family: 'Sora', sans-serif;
-    font-size: calc(0.5vw + 16px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
-#entry-percent, #totalUsers-percent {
-    margin: 10px 0;
-    padding: 6px;
-    width: 1.2rem;
-    margin-left: 26px;
-    font-family: 'Sora', sans-serif;
-    font-size: 0.8rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    border-radius: 15px;
-    color: #00E074;
-    border: 1px solid #00E074;
-}
-
 
 @media screen and (max-width: 480px) {
-    .css-a5rdam-MuiGrid-root {
-        display: flex;
-        flex-direction: column !important;
-    }
+  .css-a5rdam-MuiGrid-root {
+    display: flex;
+    flex-direction: column !important;
   }
-
-
-
-#arrowExitIcon{
-    margin-top: 15px;
-    margin-left: 26px;
-    padding: 6px;
-    border-radius: 7px;
-    width: 14.316px;
-    height: 18.156px;
-    border: 0.5px solid #E2243B;
-    background: rgba(224, 0, 0, 0.2);
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
-}
-/* #arrowExitIcon {
-    margin-top: 15px;
-    margin-left: 26px;
-    padding: 6px;
-    border-radius: 7px;
-    width: 14.316px;
-    height: 18.156px;
-    border: 0.5px solid #E2243B;
-    background: rgba(224, 0, 0, 0.2);
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
-} */
-
-/* #exit-sub-title {
-    color: rgba(255, 255, 255, 0.30);
-    font-family: 'Sora', sans-serif;
-    font-size: calc(0.5vw + 6px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: 26px;
-} */
-
-/* #exit-value {
-    margin-left: 26px;
-    color: #FFF;
-    font-family: 'Sora', sans-serif;
-    font-size: calc(0.5vw + 16px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
-} */
-
-#exit-percent{
-    margin: 10px 0;
-    padding: 6px;
-    width: 1.2rem;
-    margin-left: 26px;
-    font-family: 'Sora', sans-serif;
-    font-size: 0.8rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    border-radius: 15px;
-    color: #E2243B;
-    border: 1px solid #E2243B;;
 }
 
-/*  {
-    margin-top: 10px;
-    padding: 6px;
-    width: 25px;
-    margin-left: 26px;
-    font-family: 'Sora', sans-serif;
-    font-size: calc(0.5vw + 3px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    border-radius: 15px;
-    color: #E2243B;
-    border: 1px solid #E2243B;;
-} */
-
-
-
-#totalUsersIcon {
-    margin-top: 15px;
-    margin-left: 26px;
-    padding: 6px;
-    border-radius: 7px;
-    width: 14.316px;
-    height: 18.156px;
-    border: 0.5px solid #39445B;
-    background: rgba(57, 68, 91, 0.20);
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+#arrowExitIcon {
+  margin-top: 15px;
+  margin-left: 26px;
+  padding: 6px;
+  border-radius: 7px;
+  width: 14.316px;
+  height: 18.156px;
+  border: 0.5px solid #e2243b;
+  background: rgba(224, 0, 0, 0.2);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
- /* {
-    color: rgba(255, 255, 255, 0.30);
-    font-family: 'Sora', sans-serif;
-    font-size: calc(0.5vw + 6px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: 26px;
-} */
-
-#totalUsers-value{
-    margin-left: 26px;
-    color: #FFF;
-    font-family: 'Sora', sans-serif;
-    font-size: calc(0.5vw + 16px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+#exit-percent {
+  margin: 10px 0;
+  padding: 6px;
+  text-align: center;
+  width: 2rem;
+  margin-left: 26px;
+  font-family: "Sora", sans-serif;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border-radius: 15px;
+  color: #e2243b;
+  border: 1px solid #e2243b;
 }
 
 #recipe-of-the-day-percent {
-    margin-top: 10px;
-    padding: 6px;
-    width: 25px;
-    margin-left: 26px;
-    font-family: 'Sora', sans-serif;
-    font-size: calc(0.5vw + 3px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    border-radius: 15px;
+  margin-top: 10px;
+  padding: 6px;
+  width: 25px;
+  margin-left: 26px;
+  font-family: "Sora", sans-serif;
+  font-size: calc(0.5vw + 3px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border-radius: 15px;
 }
 
 .win-percent {
-    color: #00e074 !important;
-    border: 1px solid #00e074
+  color: #00e074 !important;
+  border: 1px solid #00e074;
 }
 
 .looser-percent {
-    color: #E2243B !important;
-    border: 1px solid #E2243B;
+  color: #e2243b !important;
+  border: 1px solid #e2243b;
 }
 
 #visits-percent {
-    margin-top: 10px;
-    padding: 6px;
-    width: 25px;
-    margin-left: 26px;
-    font-family: 'Sora', sans-serif;
-    font-size: calc(0.5vw + 3px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    border-radius: 15px;
-    color: #00E074;
-    border: 1px solid #00E074;
+  margin-top: 10px;
+  padding: 6px;
+  width: 25px;
+  margin-left: 26px;
+  font-family: "Sora", sans-serif;
+  font-size: calc(0.5vw + 3px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border-radius: 15px;
+  color: #00e074;
+  border: 1px solid #00e074;
 }
 
 #most-visited-broker {
-    color: #BEBEBE;
-    font-family: 'Sora', sans-serif;
-    font-size: calc(0.5vw + 6px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    margin-top: 15px;
-    margin-left: 20px;
-    color: #BEBEBE;
+  color: #bebebe;
+  font-family: "Sora", sans-serif;
+  font-size: calc(0.5vw + 6px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 15px;
+  margin-left: 20px;
+  color: #bebebe;
 }
 
-#look-all-broker{
-    text-align: center;
-    padding: 5px;
-    width: 80px;
-    margin-top: 5px;
-    margin-left: 26px;
-    margin-bottom: 15px;
-    color: #FFF;
-    font-family: 'Sora', sans-serif;
-    font-size: calc(0.5vw + 3px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    border-radius: 15px;
-    border: 1px solid #FFF;
-}
-
-#deposit-title {
-    display: flex;
-    margin: 10px 0 10px 25px;
-    width: 10px;
-    height: 10px;
-    padding: 10px;
-    color: #FFF;
-    font-family: 'Sora', sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    border-radius: 7px;
-    border: 0.5px solid #39445B;
-    background: rgba(57, 68, 91, 0.20);
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+#look-all-broker {
+  text-align: center;
+  padding: 5px;
+  width: 80px;
+  margin-top: 5px;
+  margin-left: 26px;
+  margin-bottom: 15px;
+  color: #fff;
+  font-family: "Sora", sans-serif;
+  font-size: calc(0.5vw + 3px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border-radius: 15px;
+  border: 1px solid #fff;
 }
 
 #deposit-description {
-    color: rgba(255, 255, 255, 0.30);
-    font-family: 'Sora', sans-serif;
-    font-size: calc(0.5vw + 6px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    margin: 0 0 10px 25px;
+  color: rgba(255, 255, 255, 0.3);
+  font-family: "Sora", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0 0 10px 25px;
 }
 
-#visits-number, #recipe-of-the-day-number {
-    margin-left: 13px;
-    color: #FFF;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
-    font-family: 'Sora', sans-serif;
-    font-size: calc(1vw + 20px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+#visits-number,
+#recipe-of-the-day-number {
+  margin-left: 13px;
+  color: #fff;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+  font-family: "Sora", sans-serif;
+  font-size: calc(1vw + 20px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
-#visits-title, #recipe-of-the-day {
-    color: rgba(255, 255, 255, 0.30);
-    font-family: 'Sora', sans-serif;
-    font-size: calc(0.5vw + 6px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    margin-top: 25px;
-    margin-left: 26px;
+#visits-title,
+#recipe-of-the-day {
+  color: rgba(255, 255, 255, 0.3);
+  font-family: "Sora", sans-serif;
+  font-size: calc(0.5vw + 6px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 25px;
+  margin-left: 26px;
 }
 
-/* width */
 #state-box::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-   
-  /* Handle */
-  #state-box::-webkit-scrollbar-thumb {
-    background: #39445B;
-    border-radius: 22px;
-  }
-  
-  /* Handle on hover */
-  #state-box::-webkit-scrollbar-thumb:hover {
-    background: #39445B; 
-  }
+  width: 10px;
+}
+
+#state-box::-webkit-scrollbar-thumb {
+  background: #39445b;
+  border-radius: 22px;
+}
+
+#state-box::-webkit-scrollbar-thumb:hover {
+  background: #39445b;
+}

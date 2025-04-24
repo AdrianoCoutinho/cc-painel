@@ -1,21 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ReactApexChart from "react-apexcharts";
-import { recipeOfTheDay } from "../../../api";
 import "./style.css";
 
 export const LineChartHour: React.FC = () => {
-  const [datatRecipeOfTheDay, setDatatRecipeOfTheDay] = useState([]);
-
-  const getRecipeOfTheDay = async () => {
-    const result = await recipeOfTheDay();
-    setDatatRecipeOfTheDay(result.resultado);
-    return result;
-  };
-
-  useEffect(() => {
-    getRecipeOfTheDay();
-  }, []);
-
   const options = {
     chart: {
       foreColor: "#ffffff",
@@ -77,7 +64,10 @@ export const LineChartHour: React.FC = () => {
   const series = [
     {
       name: "Receita",
-      data: datatRecipeOfTheDay,
+      data: [
+        100, 200, 300, 400, 500, 600, 400, 200, 100, 50, 200, 3000, 100, -200,
+        -500, 0, 2000, 33, 0, -500, 0, 2000, 33, 22000,
+      ],
     },
   ];
 
@@ -88,7 +78,7 @@ export const LineChartHour: React.FC = () => {
         options={options}
         series={series}
         type="line"
-        height={240}
+        height={200}
       />
     </div>
   );

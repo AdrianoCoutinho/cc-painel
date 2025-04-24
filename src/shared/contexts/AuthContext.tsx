@@ -49,7 +49,6 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
   const handleLogin = useCallback(
     async (email: string, password: string) => {
       const result = await login(email, password);
-      console.log(result);
       if (!result.ok) {
         dispatch(
           setMessage({ message: "Email ou senha incorretos!", status: "error" })
