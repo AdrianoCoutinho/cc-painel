@@ -11,8 +11,9 @@ import React from "react";
 import { userCount } from "../../api";
 import brasilRounded from "../../assets/svg/brasil-rounded.svg";
 import portugalRounded from "../../assets/svg/portugal-rounded.svg";
-import thalesRounded from "../../assets/svg/thalesRounded.svg";
 import { UsersTable } from "../../shared/components";
+
+const thalesRounded = "https://i.pravatar.cc/150?img=8";
 import { BaseLayoutPage } from "../../shared/layouts";
 import "./style.css";
 
@@ -121,11 +122,38 @@ export const Users: React.FC = () => {
                 </Typography>
               </Grid>
               <Grid item xs={12}>
+                <Box className="users-filter-search">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.3-4.3" />
+                  </svg>
+                  <input
+                    type="text"
+                    placeholder="Buscar por nome, email ou ID..."
+                    aria-label="Buscar usuário"
+                  />
+                </Box>
+              </Grid>
+              <Grid item xs={12} className="filter-section">
                 <Box
-                  sx={{ display: "flex", justifyContent: "space-between" }}
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    gap: "12px",
+                  }}
                   component={"section"}
                 >
-                  <Box sx={{ width: "48%" }}>
+                  <Box sx={{ flex: 1 }}>
                     <Typography className="grey-text filter-title">
                       País
                     </Typography>
@@ -136,7 +164,7 @@ export const Users: React.FC = () => {
                       <option value="pt">Portugal</option>
                     </select>
                   </Box>
-                  <Box sx={{ width: "48%" }}>
+                  <Box sx={{ flex: 1 }}>
                     <Typography className="grey-text filter-title">
                       Corretora
                     </Typography>
@@ -149,26 +177,35 @@ export const Users: React.FC = () => {
                   </Box>
                 </Box>
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={12} className="filter-section">
                 <Typography className="grey-text filter-title">
                   Ticket Médio
                 </Typography>
                 <Box id="filter-quantity">
-                  <span>De</span>
-                  <input type="number" id="quantity-min" name="quantitymin" />
-                  <span>à</span>
-                  <input type="number" id="quantity-max" name="quantitymax" />
+                  <input
+                    type="number"
+                    id="quantity-min"
+                    name="quantitymin"
+                    placeholder="Mínimo"
+                    aria-label="Ticket médio mínimo"
+                  />
+                  <span className="filter-quantity-separator">—</span>
+                  <input
+                    type="number"
+                    id="quantity-max"
+                    name="quantitymax"
+                    placeholder="Máximo"
+                    aria-label="Ticket médio máximo"
+                  />
                 </Box>
               </Grid>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} className="filter-section">
               <Box
                 component={"section"}
                 sx={{
                   display: "flex",
                   flexDirection: "column",
-                  paddingLeft: "10px",
-                  paddingBottom: "15px",
                 }}
               >
                 <Typography
@@ -261,8 +298,8 @@ export const Users: React.FC = () => {
                     <Box sx={{ marginRight: "5px" }}>
                       <select name="states" id="brokers-users-select">
                         <option value="Global">Geral</option>
-                        <option value="br">Best candle</option>
-                        <option value="usa">iq candle</option>
+                        <option value="br">Best flow</option>
+                        <option value="usa">iq flow</option>
                         <option value="pt">ultron</option>
                       </select>
                     </Box>
@@ -281,7 +318,7 @@ export const Users: React.FC = () => {
                   Novos usuarios
                 </Typography>
                 <Typography id="new-users-value" variant="h2">
-                  {usersNumber.value}
+                  {usersNumber.value.toLocaleString("pt-BR")}
                 </Typography>
                 <Typography id="new-users-percent" component={"span"}>
                   {usersNumber.percent}%
@@ -305,8 +342,8 @@ export const Users: React.FC = () => {
                         id="brokers-podium-select"
                       >
                         <option value="Global">Global</option>
-                        <option value="br">Best candle</option>
-                        <option value="usa">iq candle</option>
+                        <option value="br">Best flow</option>
+                        <option value="usa">iq flow</option>
                         <option value="pt">ultron</option>
                       </select>
                     </Box>
@@ -351,7 +388,7 @@ export const Users: React.FC = () => {
                   </Grid>
                   <Grid item xs={5} sx={{ display: "flex" }}>
                     <Typography align="left" className="broker-top-name">
-                      Bet Candle
+                      TradeFlow
                     </Typography>
                     <img alt="Brasil" src={brasilRounded} />
                   </Grid>
@@ -370,7 +407,7 @@ export const Users: React.FC = () => {
                   </Grid>
                   <Grid item xs={5} sx={{ display: "flex" }}>
                     <Typography align="left" className="broker-top-name">
-                      IQ Candle
+                      IQ Flow
                     </Typography>
                     <img alt="Brasil" src={portugalRounded} />
                   </Grid>
@@ -389,7 +426,7 @@ export const Users: React.FC = () => {
                   </Grid>
                   <Grid item xs={5} sx={{ display: "flex" }}>
                     <Typography align="left" className="broker-top-name">
-                      Bet Candle
+                      TradeFlow
                     </Typography>
                     <img alt="Brasil" src={brasilRounded} />
                   </Grid>
@@ -415,7 +452,7 @@ export const Users: React.FC = () => {
                   <Typography className="grey-text" align="center">
                     Top 3 usuários
                   </Typography>
-                  <Box>
+                  <Box sx={{ display: "flex", gap: "6px" }}>
                     <select name="states" id="user-podium-states-select">
                       <option value="Global">Global</option>
                       <option value="br">Brasil</option>
@@ -454,14 +491,14 @@ export const Users: React.FC = () => {
                     </Typography>
                   </Grid>
                   <Grid item xs={4} className="top-three-names">
-                    <img alt="Thales" src={thalesRounded} />
+                    <img alt="Daniel" src={thalesRounded} />
                     <Typography align="left" className="broker-top-name">
-                      Thales Ramiro
+                      Daniel Costa
                     </Typography>
                     <img alt="Brasil" src={brasilRounded} />
                   </Grid>
                   <Grid item xs={4} className="top-three-brokers">
-                    <Typography variant="body1">IQ Candle</Typography>
+                    <Typography variant="body1">IQ Flow</Typography>
                   </Grid>
                   <Grid item xs={4} className="top-three-money">
                     <Typography className="green-text" variant="body1">
@@ -469,14 +506,14 @@ export const Users: React.FC = () => {
                     </Typography>
                   </Grid>
                   <Grid item xs={4} className="top-three-names">
-                    <img alt="Thales" src={thalesRounded} />
+                    <img alt="Daniel" src={thalesRounded} />
                     <Typography align="left" className="broker-top-name">
-                      Thales Ramiro
+                      Daniel Costa
                     </Typography>
                     <img alt="Brasil" src={brasilRounded} />
                   </Grid>
                   <Grid item xs={4} className="top-three-brokers">
-                    <Typography variant="body1">IQ Candle</Typography>
+                    <Typography variant="body1">IQ Flow</Typography>
                   </Grid>
                   <Grid item xs={4} className="top-three-money">
                     <Typography className="green-text" variant="body1">
@@ -484,14 +521,14 @@ export const Users: React.FC = () => {
                     </Typography>
                   </Grid>
                   <Grid item xs={4} className="top-three-names">
-                    <img alt="Thales" src={thalesRounded} />
+                    <img alt="Daniel" src={thalesRounded} />
                     <Typography align="left" className="broker-top-name">
-                      Thales Ramiro
+                      Daniel Costa
                     </Typography>
                     <img alt="Brasil" src={brasilRounded} />
                   </Grid>
                   <Grid item xs={4} className="top-three-brokers">
-                    <Typography variant="body1">IQ Candle</Typography>
+                    <Typography variant="body1">IQ Flow</Typography>
                   </Grid>
                   <Grid item xs={4} className="top-three-money">
                     <Typography className="green-text" variant="body1">

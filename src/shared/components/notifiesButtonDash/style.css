@@ -1,3 +1,33 @@
 .icon-button-notiify:hover .button-notiify {
     stroke: #fff;
 }
+
+/* Notification dropdown */
+#fade-menu-notifies .MuiPaper-root {
+    background-color: #1a1f2b !important;
+    border: 1px solid #2c3445;
+    border-radius: 12px !important;
+    margin-top: 8px;
+}
+
+#fade-menu-notifies img {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    margin-right: 12px;
+}
+
+#fade-menu-notifies .MuiGrid-container > .MuiGrid-item {
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(57, 68, 91, 0.35);
+    transition: background-color 120ms ease;
+    cursor: pointer;
+}
+
+#fade-menu-notifies .MuiGrid-container > .MuiGrid-item:last-child {
+    border-bottom: none;
+}
+
+#fade-menu-notifies .MuiGrid-container > .MuiGrid-item:hover {
+    background-color: rgba(57, 68, 91, 0.25);
+}

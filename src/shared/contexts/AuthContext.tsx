@@ -27,24 +27,12 @@ interface IAuthProviderProps {
 
 export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
   const dispatch = useAppDispatch();
-  const [acessToken, setAcessToken] = useState<string>();
+  const [accessToken, setAccessToken] = useState<string>();
 
   useEffect(() => {
-    const accessToken = localStorage.getItem(LOCAL_STORAGE_KEY__ACCESS_TOKEN);
-    if (accessToken) {
-      verifyUser();
-    } else {
-      setAcessToken(undefined);
-    }
+    const stored = localStorage.getItem(LOCAL_STORAGE_KEY__ACCESS_TOKEN);
+    setAccessToken(stored ?? undefined);
   }, []);
-
-  const verifyUser = async () => {
-    const accessToken = localStorage.getItem(LOCAL_STORAGE_KEY__ACCESS_TOKEN);
-    if (accessToken === "123") {
-      return setAcessToken(accessToken || undefined);
-    }
-    return setAcessToken(undefined);
-  };
 
   const handleLogin = useCallback(
     async (email: string, password: string) => {
@@ -56,17 +44,17 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
         return;
       }
       localStorage.setItem(LOCAL_STORAGE_KEY__ACCESS_TOKEN, result.token);
-      setAcessToken(result.token);
+      setAccessToken(result.token);
     },
     [dispatch]
   );
 
   const handleLogout = useCallback(() => {
     localStorage.removeItem(LOCAL_STORAGE_KEY__ACCESS_TOKEN);
-    setAcessToken(undefined);
+    setAccessToken(undefined);
   }, []);
 
-  const isAuthenticated = useMemo(() => !!acessToken, [acessToken]);
+  const isAuthenticated = useMemo(() => !!accessToken, [accessToken]);
 
   return (
     <AuthContext.Provider

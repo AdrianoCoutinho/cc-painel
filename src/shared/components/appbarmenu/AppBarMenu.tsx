@@ -15,7 +15,6 @@ import Typography from "@mui/material/Typography";
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "../../../assets/images/optimux-logo.png";
 import { useAuthContext } from "../../contexts";
 import { MessagesDrawer } from "../messagesDrawer/MessagesDrawer";
 import { FadeMenu } from "../notifiesButtonDash/NotifiesButtonDash";
@@ -62,7 +61,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export const AppBarMenu: React.FC = () => {
-  const API_url = "http://localhost:3333";
   const [userDetails, setUserDetails] = useState({
     id: "",
     name: "",
@@ -88,9 +86,9 @@ export const AppBarMenu: React.FC = () => {
     setUserDetails({
       id: "3f35a26d-a5c4-4950-aa7a-e6c13646fca0",
       name: "Administrador",
-      email: "admin@system.com",
+      email: "admin@tradeflow.dev",
       real_balance: 1000,
-      profile_picture_url: `https://static.vecteezy.com/system/resources/previews/043/900/708/non_2x/user-profile-icon-illustration-vector.jpg`,
+      profile_picture_url: `https://i.pravatar.cc/150?img=68`,
     });
   };
 
@@ -133,7 +131,16 @@ export const AppBarMenu: React.FC = () => {
         >
           <Toolbar>
             <div>
-              <img height={23} src={logo} alt="Candle Stop" />
+              <Typography
+                sx={{
+                  fontSize: "20px",
+                  fontWeight: 700,
+                  letterSpacing: "0.5px",
+                  color: "#fff",
+                }}
+              >
+                TradeFlow<span style={{ color: "#137cbd" }}>.</span>
+              </Typography>
             </div>
             <Box sx={{ flexGrow: 1 }} />
             <Search sx={{ display: { xs: "none", sm: "block" } }}>
@@ -159,7 +166,7 @@ export const AppBarMenu: React.FC = () => {
                 <IconButton onClick={handleProfileMenuOpen} sx={{ p: 0 }}>
                   <Avatar
                     alt={userDetails.name}
-                    src={`${API_url}${userDetails.profile_picture_url}`}
+                    src={userDetails.profile_picture_url}
                     id="avatar"
                   />
                   <svg

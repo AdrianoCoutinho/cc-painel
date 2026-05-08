@@ -6,71 +6,265 @@ import {
   CheckboxProps,
   Grid,
   InputBase,
-  Paper,
-  Stack,
   Typography,
   styled,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { BaseLayoutPage } from "../../shared/layouts";
 import "./style.css";
 
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
-  borderRadius: "22px",
-  backgroundColor: "#212836",
-  "&:hover": {
-    backgroundColor: "#212836",
+// =====================================================================
+// Mock data
+// =====================================================================
+
+type EmailLabel = "support" | "financial" | "marketing" | "compliance";
+type EmailFolder = "inbox" | "sent" | "trash" | "archived";
+
+interface Email {
+  id: string;
+  sender: string;
+  avatar: string;
+  subject: string;
+  preview: string;
+  time: string;
+  unread: boolean;
+  starred: boolean;
+  hasAttachment: boolean;
+  label: EmailLabel;
+}
+
+const labelMap: Record<EmailLabel, { text: string; className: string }> = {
+  support: { text: "Suporte", className: "label-support" },
+  financial: { text: "Financeiro", className: "label-financial" },
+  marketing: { text: "Marketing", className: "label-marketing" },
+  compliance: { text: "Compliance", className: "label-compliance" },
+};
+
+const mockEmails: Email[] = [
+  {
+    id: "e01",
+    sender: "Carlos Silva",
+    avatar: "https://i.pravatar.cc/150?img=12",
+    subject: "Solicitação de nova corretora",
+    preview:
+      "Boa tarde, gostaria de saber se é possível adicionar a TradeFlow Pro como corretora autorizada para depósitos via PIX...",
+    time: "14:32",
+    unread: true,
+    starred: true,
+    hasAttachment: false,
+    label: "support",
   },
-  marginRight: theme.spacing(0),
-  marginLeft: 0,
-  width: "100%",
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(0),
-    width: "100%",
+  {
+    id: "e02",
+    sender: "Daniel Costa",
+    avatar: "https://i.pravatar.cc/150?img=8",
+    subject: "Reembolso pendente — TX9817",
+    preview:
+      "Meu saque está pendente desde quinta-feira. Já fiz a verificação KYC e está tudo aprovado. Pode dar uma olhada?",
+    time: "13:18",
+    unread: true,
+    starred: false,
+    hasAttachment: true,
+    label: "financial",
+  },
+  {
+    id: "e03",
+    sender: "Ana Castro",
+    avatar: "https://i.pravatar.cc/150?img=45",
+    subject: "Documentos de KYC enviados",
+    preview:
+      "Segue em anexo o comprovante de residência atualizado e a foto do RG conforme solicitado pela equipe de compliance.",
+    time: "11:47",
+    unread: true,
+    starred: true,
+    hasAttachment: true,
+    label: "compliance",
+  },
+  {
+    id: "e04",
+    sender: "Marcos Lima",
+    avatar: "https://i.pravatar.cc/150?img=13",
+    subject: "Sugestão para a campanha de afiliados",
+    preview:
+      "Notei que a comissão de Q2 não está contemplando os indicados que migraram da plataforma antiga. Sugiro revisar...",
+    time: "10:05",
+    unread: false,
+    starred: false,
+    hasAttachment: false,
+    label: "marketing",
+  },
+  {
+    id: "e05",
+    sender: "Lucas Almeida",
+    avatar: "https://i.pravatar.cc/150?img=14",
+    subject: "Acesso bloqueado após atualização",
+    preview:
+      "Após a atualização da plataforma de ontem não consigo mais acessar o painel de operações. Já tentei limpar cache e reinstalar.",
+    time: "ontem",
+    unread: false,
+    starred: false,
+    hasAttachment: false,
+    label: "support",
+  },
+  {
+    id: "e06",
+    sender: "Camila Reis",
+    avatar: "https://i.pravatar.cc/150?img=32",
+    subject: "Relatório mensal de performance",
+    preview:
+      "Compartilhando o relatório de fechamento de abril. Volume total cresceu 18% MoM, com destaque para o segmento BTC/USD.",
+    time: "ontem",
+    unread: false,
+    starred: true,
+    hasAttachment: true,
+    label: "financial",
+  },
+  {
+    id: "e07",
+    sender: "Felipe Souza",
+    avatar: "https://i.pravatar.cc/150?img=15",
+    subject: "Dúvida sobre conta empresarial",
+    preview:
+      "Trabalho com uma fintech argentina e gostaria de migrar nossa operação. Quais documentos precisamos para abrir uma conta?",
+    time: "ontem",
+    unread: false,
+    starred: false,
+    hasAttachment: false,
+    label: "compliance",
+  },
+  {
+    id: "e08",
+    sender: "Eduardo Gomes",
+    avatar: "https://i.pravatar.cc/150?img=18",
+    subject: "Re: Newsletter de afiliados — abril",
+    preview:
+      "Recebi a newsletter mas o link do banner principal está quebrado. Aproveitando, podem me adicionar na lista de gerentes?",
+    time: "06 mai",
+    unread: false,
+    starred: false,
+    hasAttachment: false,
+    label: "marketing",
+  },
+  {
+    id: "e09",
+    sender: "Beatriz Lima",
+    avatar: "https://i.pravatar.cc/150?img=44",
+    subject: "Confirmação de saque aprovado",
+    preview:
+      "Recebi a confirmação do saque de €1.890,00. Obrigada pela rapidez no processamento. O recibo já caiu na conta.",
+    time: "05 mai",
+    unread: false,
+    starred: false,
+    hasAttachment: false,
+    label: "financial",
+  },
+  {
+    id: "e10",
+    sender: "Tiago Reis",
+    avatar: "https://i.pravatar.cc/150?img=17",
+    subject: "Proposta de parceria — Lisboa",
+    preview:
+      "Represento um grupo de 200 traders ativos em Portugal e gostaria de propor um plano corporativo com benefícios escalonados.",
+    time: "03 mai",
+    unread: false,
+    starred: true,
+    hasAttachment: true,
+    label: "marketing",
+  },
+  {
+    id: "e11",
+    sender: "R. Mendes",
+    avatar: "https://i.pravatar.cc/150?img=16",
+    subject: "Erro no histórico de partidas",
+    preview:
+      "O histórico está mostrando partidas duplicadas no dia 30/04. Já reproduzi em dois navegadores diferentes.",
+    time: "02 mai",
+    unread: false,
+    starred: false,
+    hasAttachment: true,
+    label: "support",
+  },
+  {
+    id: "e12",
+    sender: "Júlia Mendes",
+    avatar: "https://i.pravatar.cc/150?img=47",
+    subject: "Atualização de dados bancários",
+    preview:
+      "Preciso atualizar a conta para recebimento dos saques. Pode me indicar onde fazer ou se precisa abrir um chamado?",
+    time: "28 abr",
+    unread: false,
+    starred: false,
+    hasAttachment: false,
+    label: "compliance",
+  },
+];
+
+// =====================================================================
+// Folder list (sidebar)
+// =====================================================================
+
+interface Folder {
+  id: EmailFolder;
+  label: string;
+  count: number;
+  unreadCount: number;
+}
+
+const folders: Folder[] = [
+  { id: "inbox", label: "Caixa de entrada", count: 234, unreadCount: 3 },
+  { id: "sent", label: "Enviados", count: 53, unreadCount: 0 },
+  { id: "trash", label: "Apagados", count: 18, unreadCount: 0 },
+  { id: "archived", label: "Arquivados", count: 76, unreadCount: 0 },
+];
+
+// =====================================================================
+// Search input (kept from original)
+// =====================================================================
+
+const Search = styled("div")(() => ({
+  position: "relative",
+  borderRadius: "10px",
+  backgroundColor: "rgba(33, 40, 54, 0.6)",
+  border: "1px solid #39445B",
+  width: "320px",
+  transition: "border-color 120ms ease",
+  "&:focus-within": {
+    borderColor: "#137cbd",
   },
 }));
 
 const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 1),
+  padding: theme.spacing(0, 1.5),
   height: "100%",
   position: "absolute",
   pointerEvents: "none",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  color: "rgba(255, 255, 255, 0.4)",
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
+  width: "100%",
   "& .MuiInputBase-input": {
-    padding: theme.spacing(0.5, 0.5, 0.5, 0),
+    padding: theme.spacing(1, 1, 1, 0),
     color: "#fff",
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
+    paddingLeft: `calc(1em + ${theme.spacing(3)})`,
+    fontSize: "13px",
     width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "20ch",
-    },
     "&::placeholder": {
-      color: "rgba(255, 255, 255, 0.30)", // Defina a cor do texto de espaço reservado aqui
+      color: "rgba(255, 255, 255, 0.4)",
+      opacity: 1,
     },
   },
 }));
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: "#181C25",
-  ...theme.typography.body2,
-  boxShadow: "none",
-  padding: theme.spacing(1),
-  // textAlign: "center",
-  color: "#FFF",
-  borderRadius: "15px",
-  border: "1px solid #fff",
-}));
+// =====================================================================
+// Checkbox (kept from original)
+// =====================================================================
 
 const BpIcon = styled("span")(({ theme }) => ({
   borderRadius: 3,
@@ -105,23 +299,62 @@ const BpCheckedIcon = styled(BpIcon)({
 function BpCheckbox(props: CheckboxProps) {
   return (
     <Checkbox
-      sx={{
-        "&:hover": { bgcolor: "transparent" },
-      }}
+      sx={{ "&:hover": { bgcolor: "transparent" } }}
       disableRipple
       color="default"
       checkedIcon={<BpCheckedIcon />}
       icon={<BpIcon />}
-      inputProps={{ "aria-label": "Checkbox demo" }}
+      inputProps={{ "aria-label": "Selecionar email" }}
       {...props}
     />
   );
 }
 
+const StarIcon: React.FC<{ filled: boolean }> = ({ filled }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 17 18"
+    fill="none"
+    className="campaigns-star"
+  >
+    <path
+      d="M8.5 1.07305L10.24 6.42808L10.2797 6.55044H10.4084L16.039 6.55044L11.4837 9.86003L11.3796 9.93565L11.4194 10.058L13.1593 15.413L8.60409 12.1034L8.5 12.0278L8.39591 12.1034L3.84066 15.413L5.58061 10.058L5.62037 9.93565L5.51628 9.86003L0.961026 6.55044L6.59163 6.55044H6.72029L6.76005 6.42808L8.5 1.07305Z"
+      fill={filled ? "#E2C424" : "transparent"}
+      stroke={filled ? "#E2C424" : "rgba(255, 255, 255, 0.35)"}
+      strokeWidth="1.2"
+    />
+  </svg>
+);
+
+const AttachmentIcon: React.FC = () => (
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 17.93 8.8l-8.57 8.57a2 2 0 1 1-2.83-2.83l8.49-8.48" />
+  </svg>
+);
+
+// =====================================================================
+// Page
+// =====================================================================
+
 export const Campaigns: React.FC = () => {
   const theme = useTheme();
   const isLg = useMediaQuery(theme.breakpoints.up("lg"));
-  const height = isLg ? "82vh" : "32vh";
+  const height = isLg ? "82vh" : "auto";
+  const [activeFolder, setActiveFolder] = useState<EmailFolder>("inbox");
+  const [activeFilter, setActiveFilter] = useState("all");
+
+  const unreadCount = mockEmails.filter((e) => e.unread).length;
 
   return (
     <BaseLayoutPage>
@@ -129,561 +362,183 @@ export const Campaigns: React.FC = () => {
         <Grid item xs={12}>
           <Typography className="page-title">Campanhas</Typography>
         </Grid>
+
+        {/* Sidebar */}
         <Grid item sm={12} xs={12} md={12} lg={2}>
           <Box id="campaigns-left-menu" style={{ height }}>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                borderBottom: "1px solid #39445B",
-                alignItems: "center",
-              }}
-            >
+            <Box className="campaigns-compose-wrapper">
               <Button
-                sx={{ margin: "10px 0" }}
-                className="green-button new-email-button"
+                className="campaigns-compose-button"
                 variant="contained"
+                fullWidth
               >
-                Compor novo e-mail
+                + Compor e-mail
               </Button>
             </Box>
-            <Box>
-              <Box className="campaign-left-menu-filter">
-                <Button
-                  className="campaign-left-menu-filter-button campaign-left-menu-filter-button-active"
-                  variant="contained"
+            <Box component="nav" className="campaigns-folder-list">
+              {folders.map((folder) => (
+                <button
+                  key={folder.id}
+                  type="button"
+                  className={`campaigns-folder ${
+                    activeFolder === folder.id ? "campaigns-folder-active" : ""
+                  }`}
+                  onClick={() => setActiveFolder(folder.id)}
                 >
-                  Caixa de entrada
-                </Button>
-                <span className="campaign-left-menu-filter-value">76</span>
-              </Box>
-              <Box className="campaign-left-menu-filter">
-                <Button
-                  className="campaign-left-menu-filter-button"
-                  variant="contained"
-                >
-                  Enviados
-                </Button>
-                <span className="campaign-left-menu-filter-value">53</span>
-              </Box>
-              <Box className="campaign-left-menu-filter">
-                <Button
-                  className="campaign-left-menu-filter-button"
-                  variant="contained"
-                >
-                  Apagados
-                </Button>
-                <span className="campaign-left-menu-filter-value">76</span>
-              </Box>
-              <Box className="campaign-left-menu-filter">
-                <Button
-                  className="campaign-left-menu-filter-button"
-                  variant="contained"
-                >
-                  Arquivados
-                </Button>
-                <span className="campaign-left-menu-filter-value">76</span>
-              </Box>
+                  <span className="campaigns-folder-label">{folder.label}</span>
+                  {folder.unreadCount > 0 ? (
+                    <span className="campaigns-folder-badge">
+                      {folder.unreadCount}
+                    </span>
+                  ) : (
+                    <span className="campaigns-folder-count">
+                      {folder.count}
+                    </span>
+                  )}
+                </button>
+              ))}
             </Box>
           </Box>
         </Grid>
+
+        {/* Main */}
         <Grid item sm={12} xs={12} md={12} lg={10}>
           <Box id="campaigns-right-table" style={{ height }}>
+            {/* Toolbar */}
             <Box id="campaigns-main-head-box">
-              <Box sx={{ display: "flex", padding: "9.3px" }}>
-                <Box>
-                  <Search
-                    sx={
-                      {
-                        // display: { xs: "none", sm: "block" },
-                      }
-                    }
-                  >
-                    <SearchIconWrapper>
-                      <SearchIcon sx={{ color: "rgba(255, 255, 255, 0.30)" }} />
-                    </SearchIconWrapper>
-                    <StyledInputBase
-                      placeholder="Procure aqui…"
-                      inputProps={{ "aria-label": "Procure aqui..." }}
-                    />
-                  </Search>
-                </Box>
+              <Box className="campaigns-toolbar-left">
+                <Search>
+                  <SearchIconWrapper>
+                    <SearchIcon sx={{ fontSize: 18 }} />
+                  </SearchIconWrapper>
+                  <StyledInputBase
+                    placeholder="Buscar por remetente, assunto..."
+                    inputProps={{ "aria-label": "Buscar emails" }}
+                  />
+                </Search>
+
                 <Box
-                  component={"select"}
-                  name="message-filters"
+                  component="select"
                   id="campaigns-select"
-                  sx={{ margin: "0 10px 0 10px" }}
+                  value={activeFilter}
+                  onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                    setActiveFilter(e.target.value)
+                  }
                 >
-                  <option value="all">Tudo</option>
+                  <option value="all">Todos</option>
                   <option value="unread">Não lidos</option>
                   <option value="read">Lidos</option>
-                  <option value="fav">Favoritos</option>
+                  <option value="starred">Favoritos</option>
+                  <option value="attachment">Com anexo</option>
                 </Box>
-                <Box>
+
+                <button className="campaigns-icon-button" aria-label="Arquivar">
                   <svg
-                    id="to-file"
-                    width="33"
-                    height="33"
-                    viewBox="0 0 33 33"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
                     fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   >
-                    <path
-                      d="M14.0554 17.9874H19.6725M9 9H24.7279V13.4937H9V9ZM10.1234 13.4937V23.6045C10.1234 23.9025 10.2418 24.1882 10.4525 24.3989C10.6631 24.6096 10.9489 24.7279 11.2468 24.7279H22.4811C22.779 24.7279 23.0648 24.6096 23.2755 24.3989C23.4861 24.1882 23.6045 23.9025 23.6045 23.6045V13.4937H10.1234Z"
-                      stroke="white"
-                      strokeOpacity="0.5"
-                      strokeWidth="1.12342"
-                    />
-                    <rect
-                      width="33"
-                      height="33"
-                      rx="5.68965"
-                      fill="white"
-                      fillOpacity="0.0"
-                    />
+                    <rect x="2" y="4" width="20" height="5" rx="2" />
+                    <path d="M4 9v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9" />
+                    <path d="M10 13h4" />
                   </svg>
-                </Box>
-                <Box>
+                </button>
+
+                <button className="campaigns-icon-button" aria-label="Excluir">
                   <svg
-                    width="33"
-                    height="33"
-                    viewBox="0 0 33 33"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
                     fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   >
-                    <path d="M9.72803 11.043H24.1361H9.72803Z" fill="black" />
-                    <path
-                      d="M9.72803 11.043H24.1361"
-                      stroke="#8B8D92"
-                      strokeWidth="1.30983"
-                      strokeMiterlimit="10"
-                      strokeLinecap="round"
-                    />
-                    <path
-                      d="M11.0381 11.043L11.8567 24.1412C11.8956 24.8981 12.4462 25.4511 13.1666 25.4511H20.6981C21.4213 25.4511 21.9616 24.8981 22.0079 24.1412L22.8265 11.043"
-                      stroke="#8B8D92"
-                      strokeWidth="1.30983"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M14.3128 11.0435V9.4062C14.3124 9.27709 14.3376 9.14918 14.3868 9.02982C14.4361 8.91046 14.5084 8.80202 14.5997 8.71072C14.691 8.61942 14.7994 8.54708 14.9188 8.49784C15.0382 8.44861 15.1661 8.42345 15.2952 8.42383H18.5697C18.6989 8.42345 18.8268 8.44861 18.9461 8.49784C19.0655 8.54708 19.1739 8.61942 19.2652 8.71072C19.3565 8.80202 19.4289 8.91046 19.4781 9.02982C19.5273 9.14918 19.5525 9.27709 19.5521 9.4062V11.0435M16.9325 13.6631V22.8319M13.9854 13.6631L14.3128 22.8319M19.8796 13.6631L19.5521 22.8319"
-                      stroke="#8B8D92"
-                      strokeWidth="1.30983"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <rect
-                      width="33"
-                      height="33"
-                      rx="5.68965"
-                      fill="white"
-                      fillOpacity="0.00"
-                    />
+                    <path d="M3 6h18" />
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+                    <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                    <line x1="10" y1="11" x2="10" y2="17" />
+                    <line x1="14" y1="11" x2="14" y2="17" />
                   </svg>
-                </Box>
+                </button>
               </Box>
-              <Box className="grey-text" sx={{ marginRight: "10px" }}>
-                <span>1-50 </span>
-                de
-                <span> 234</span>
+
+              <Box className="campaigns-counter">
+                <span className="campaigns-counter-current">1–{mockEmails.length}</span>
+                <span className="campaigns-counter-of">de</span>
+                <span className="campaigns-counter-total">234</span>
+                {unreadCount > 0 && (
+                  <span className="campaigns-counter-unread">
+                    · {unreadCount} não lidos
+                  </span>
+                )}
               </Box>
             </Box>
+
+            {/* Email list */}
             <Box id="campaigns-messages-container">
-              <Stack spacing={1}>
-                <Item
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  }}
+              {mockEmails.map((email) => (
+                <article
+                  key={email.id}
+                  className={`campaigns-email ${
+                    email.unread ? "campaigns-email-unread" : ""
+                  }`}
                 >
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <BpCheckbox
-                      // color="primary"
-                      // indeterminate={numSelected > 0 && numSelected < rowCount}
-                      // checked={rowCount > 0 && numSelected === rowCount}
-                      // onChange={onSelectAllClick}
-                      inputProps={{
-                        "aria-label": "select all desserts",
-                      }}
-                    />
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="17"
-                      height="18"
-                      viewBox="0 0 17 18"
-                      fill="none"
+                  <span
+                    className="campaigns-email-cell-checkbox"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <BpCheckbox />
+                  </span>
+
+                  <span
+                    className="campaigns-email-cell-star"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <StarIcon filled={email.starred} />
+                  </span>
+
+                  <img
+                    className="campaigns-email-avatar"
+                    src={email.avatar}
+                    alt={email.sender}
+                  />
+
+                  <div className="campaigns-email-sender">{email.sender}</div>
+
+                  <div className="campaigns-email-content">
+                    <span
+                      className={`campaigns-label ${
+                        labelMap[email.label].className
+                      }`}
                     >
-                      <path
-                        className="campaings-messages-star-icon"
-                        d="M8.5 1.07305L10.24 6.42808L10.2797 6.55044H10.4084L16.039 6.55044L11.4837 9.86003L11.3796 9.93565L11.4194 10.058L13.1593 15.413L8.60409 12.1034L8.5 12.0278L8.39591 12.1034L3.84066 15.413L5.58061 10.058L5.62037 9.93565L5.51628 9.86003L0.961026 6.55044L6.59163 6.55044H6.72029L6.76005 6.42808L8.5 1.07305Z"
-                        fill="#272B38"
-                        stroke="#525560"
-                        strokeWidth="0.354167"
-                      />
-                    </svg>
-                    <Typography className="campaigns-message-name">
-                      Marcio Moura
-                    </Typography>
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <Typography className="campaigns-message-subject">
-                      Solicitação de nova corretora
-                    </Typography>
-                    <Typography className="campaigns-message-message grey-text">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing
-                      elconsectetur adipi...
-                    </Typography>
-                  </Box>
-                  <Typography className="campaigns-message-message-hour">
-                    5:39PM
-                  </Typography>
-                </Item>
-                <Item
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <BpCheckbox
-                      // color="primary"
-                      // indeterminate={numSelected > 0 && numSelected < rowCount}
-                      // checked={rowCount > 0 && numSelected === rowCount}
-                      // onChange={onSelectAllClick}
-                      inputProps={{
-                        "aria-label": "select all desserts",
-                      }}
-                    />
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="17"
-                      height="18"
-                      viewBox="0 0 17 18"
-                      fill="none"
-                    >
-                      <path
-                        className="campaings-messages-star-icon"
-                        d="M8.5 1.07305L10.24 6.42808L10.2797 6.55044H10.4084L16.039 6.55044L11.4837 9.86003L11.3796 9.93565L11.4194 10.058L13.1593 15.413L8.60409 12.1034L8.5 12.0278L8.39591 12.1034L3.84066 15.413L5.58061 10.058L5.62037 9.93565L5.51628 9.86003L0.961026 6.55044L6.59163 6.55044H6.72029L6.76005 6.42808L8.5 1.07305Z"
-                        fill="#e2c424"
-                        stroke="#525560"
-                        strokeWidth="0.354167"
-                      />
-                    </svg>
-                    <Typography className="campaigns-message-name">
-                      Marcio Moura
-                    </Typography>
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <Typography className="campaigns-message-subject">
-                      Solicitação de nova corretora
-                    </Typography>
-                    <Typography className="campaigns-message-message grey-text">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing
-                      elconsectetur adipi...
-                    </Typography>
-                  </Box>
-                  <Typography className="campaigns-message-message-hour">
-                    5:39PM
-                  </Typography>
-                </Item>
-                <Item
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <BpCheckbox
-                      // color="primary"
-                      // indeterminate={numSelected > 0 && numSelected < rowCount}
-                      // checked={rowCount > 0 && numSelected === rowCount}
-                      // onChange={onSelectAllClick}
-                      inputProps={{
-                        "aria-label": "select all desserts",
-                      }}
-                    />
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="17"
-                      height="18"
-                      viewBox="0 0 17 18"
-                      fill="none"
-                    >
-                      <path
-                        className="campaings-messages-star-icon"
-                        d="M8.5 1.07305L10.24 6.42808L10.2797 6.55044H10.4084L16.039 6.55044L11.4837 9.86003L11.3796 9.93565L11.4194 10.058L13.1593 15.413L8.60409 12.1034L8.5 12.0278L8.39591 12.1034L3.84066 15.413L5.58061 10.058L5.62037 9.93565L5.51628 9.86003L0.961026 6.55044L6.59163 6.55044H6.72029L6.76005 6.42808L8.5 1.07305Z"
-                        fill="#272B38"
-                        stroke="#525560"
-                        strokeWidth="0.354167"
-                      />
-                    </svg>
-                    <Typography className="campaigns-message-name">
-                      Marcio Moura
-                    </Typography>
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <Typography className="campaigns-message-subject">
-                      Solicitação de nova corretora
-                    </Typography>
-                    <Typography className="campaigns-message-message grey-text">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing
-                      elconsectetur adipi...
-                    </Typography>
-                  </Box>
-                  <Typography className="campaigns-message-message-hour">
-                    5:39PM
-                  </Typography>
-                </Item>
-                <Item
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <BpCheckbox
-                      // color="primary"
-                      // indeterminate={numSelected > 0 && numSelected < rowCount}
-                      // checked={rowCount > 0 && numSelected === rowCount}
-                      // onChange={onSelectAllClick}
-                      inputProps={{
-                        "aria-label": "select all desserts",
-                      }}
-                    />
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="17"
-                      height="18"
-                      viewBox="0 0 17 18"
-                      fill="none"
-                    >
-                      <path
-                        className="campaings-messages-star-icon"
-                        d="M8.5 1.07305L10.24 6.42808L10.2797 6.55044H10.4084L16.039 6.55044L11.4837 9.86003L11.3796 9.93565L11.4194 10.058L13.1593 15.413L8.60409 12.1034L8.5 12.0278L8.39591 12.1034L3.84066 15.413L5.58061 10.058L5.62037 9.93565L5.51628 9.86003L0.961026 6.55044L6.59163 6.55044H6.72029L6.76005 6.42808L8.5 1.07305Z"
-                        fill="#e2c424"
-                        stroke="#525560"
-                        strokeWidth="0.354167"
-                      />
-                    </svg>
-                    <Typography className="campaigns-message-name">
-                      Marcio Moura
-                    </Typography>
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <Typography className="campaigns-message-subject">
-                      Solicitação de nova corretora
-                    </Typography>
-                    <Typography className="campaigns-message-message grey-text">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing
-                      elconsectetur adipi...
-                    </Typography>
-                  </Box>
-                  <Typography className="campaigns-message-message-hour">
-                    5:39PM
-                  </Typography>
-                </Item>
-                <Item
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <BpCheckbox
-                      // color="primary"
-                      // indeterminate={numSelected > 0 && numSelected < rowCount}
-                      // checked={rowCount > 0 && numSelected === rowCount}
-                      // onChange={onSelectAllClick}
-                      inputProps={{
-                        "aria-label": "select all desserts",
-                      }}
-                    />
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="17"
-                      height="18"
-                      viewBox="0 0 17 18"
-                      fill="none"
-                    >
-                      <path
-                        className="campaings-messages-star-icon"
-                        d="M8.5 1.07305L10.24 6.42808L10.2797 6.55044H10.4084L16.039 6.55044L11.4837 9.86003L11.3796 9.93565L11.4194 10.058L13.1593 15.413L8.60409 12.1034L8.5 12.0278L8.39591 12.1034L3.84066 15.413L5.58061 10.058L5.62037 9.93565L5.51628 9.86003L0.961026 6.55044L6.59163 6.55044H6.72029L6.76005 6.42808L8.5 1.07305Z"
-                        fill="#272B38"
-                        stroke="#525560"
-                        strokeWidth="0.354167"
-                      />
-                    </svg>
-                    <Typography className="campaigns-message-name">
-                      Marcio Moura
-                    </Typography>
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <Typography className="campaigns-message-subject">
-                      Solicitação de nova corretora
-                    </Typography>
-                    <Typography className="campaigns-message-message grey-text">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing
-                      elconsectetur adipi...
-                    </Typography>
-                  </Box>
-                  <Typography className="campaigns-message-message-hour">
-                    5:39PM
-                  </Typography>
-                </Item>
-                <Item
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <BpCheckbox
-                      // color="primary"
-                      // indeterminate={numSelected > 0 && numSelected < rowCount}
-                      // checked={rowCount > 0 && numSelected === rowCount}
-                      // onChange={onSelectAllClick}
-                      inputProps={{
-                        "aria-label": "select all desserts",
-                      }}
-                    />
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="17"
-                      height="18"
-                      viewBox="0 0 17 18"
-                      fill="none"
-                    >
-                      <path
-                        className="campaings-messages-star-icon"
-                        d="M8.5 1.07305L10.24 6.42808L10.2797 6.55044H10.4084L16.039 6.55044L11.4837 9.86003L11.3796 9.93565L11.4194 10.058L13.1593 15.413L8.60409 12.1034L8.5 12.0278L8.39591 12.1034L3.84066 15.413L5.58061 10.058L5.62037 9.93565L5.51628 9.86003L0.961026 6.55044L6.59163 6.55044H6.72029L6.76005 6.42808L8.5 1.07305Z"
-                        fill="#e2c424"
-                        stroke="#525560"
-                        strokeWidth="0.354167"
-                      />
-                    </svg>
-                    <Typography className="campaigns-message-name">
-                      Marcio Moura
-                    </Typography>
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <Typography className="campaigns-message-subject">
-                      Solicitação de nova corretora
-                    </Typography>
-                    <Typography className="campaigns-message-message grey-text">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing
-                      elconsectetur adipi...
-                    </Typography>
-                  </Box>
-                  <Typography className="campaigns-message-message-hour">
-                    5:39PM
-                  </Typography>
-                </Item>
-                <Item
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <BpCheckbox
-                      // color="primary"
-                      // indeterminate={numSelected > 0 && numSelected < rowCount}
-                      // checked={rowCount > 0 && numSelected === rowCount}
-                      // onChange={onSelectAllClick}
-                      inputProps={{
-                        "aria-label": "select all desserts",
-                      }}
-                    />
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="17"
-                      height="18"
-                      viewBox="0 0 17 18"
-                      fill="none"
-                    >
-                      <path
-                        className="campaings-messages-star-icon"
-                        d="M8.5 1.07305L10.24 6.42808L10.2797 6.55044H10.4084L16.039 6.55044L11.4837 9.86003L11.3796 9.93565L11.4194 10.058L13.1593 15.413L8.60409 12.1034L8.5 12.0278L8.39591 12.1034L3.84066 15.413L5.58061 10.058L5.62037 9.93565L5.51628 9.86003L0.961026 6.55044L6.59163 6.55044H6.72029L6.76005 6.42808L8.5 1.07305Z"
-                        fill="#272B38"
-                        stroke="#525560"
-                        strokeWidth="0.354167"
-                      />
-                    </svg>
-                    <Typography className="campaigns-message-name">
-                      Marcio Moura
-                    </Typography>
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <Typography className="campaigns-message-subject">
-                      Solicitação de nova corretora
-                    </Typography>
-                    <Typography className="campaigns-message-message grey-text">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing
-                      elconsectetur adipi...
-                    </Typography>
-                  </Box>
-                  <Typography className="campaigns-message-message-hour">
-                    5:39PM
-                  </Typography>
-                </Item>
-                <Item
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <BpCheckbox
-                      // color="primary"
-                      // indeterminate={numSelected > 0 && numSelected < rowCount}
-                      // checked={rowCount > 0 && numSelected === rowCount}
-                      // onChange={onSelectAllClick}
-                      inputProps={{
-                        "aria-label": "select all desserts",
-                      }}
-                    />
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="17"
-                      height="18"
-                      viewBox="0 0 17 18"
-                      fill="none"
-                    >
-                      <path
-                        className="campaings-messages-star-icon"
-                        d="M8.5 1.07305L10.24 6.42808L10.2797 6.55044H10.4084L16.039 6.55044L11.4837 9.86003L11.3796 9.93565L11.4194 10.058L13.1593 15.413L8.60409 12.1034L8.5 12.0278L8.39591 12.1034L3.84066 15.413L5.58061 10.058L5.62037 9.93565L5.51628 9.86003L0.961026 6.55044L6.59163 6.55044H6.72029L6.76005 6.42808L8.5 1.07305Z"
-                        fill="#272B38"
-                        stroke="#525560"
-                        strokeWidth="0.354167"
-                      />
-                    </svg>
-                    <Typography className="campaigns-message-name">
-                      Marcio Moura
-                    </Typography>
-                  </Box>
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <Typography className="campaigns-message-subject">
-                      Solicitação de nova corretora
-                    </Typography>
-                    <Typography className="campaigns-message-message grey-text">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing
-                      elconsectetur adipi...
-                    </Typography>
-                  </Box>
-                  <Typography className="campaigns-message-message-hour">
-                    5:39PM
-                  </Typography>
-                </Item>
-              </Stack>
+                      {labelMap[email.label].text}
+                    </span>
+                    <span className="campaigns-email-subject">
+                      {email.subject}
+                    </span>
+                    <span className="campaigns-email-preview">
+                      {" "}
+                      — {email.preview}
+                    </span>
+                  </div>
+
+                  <div className="campaigns-email-meta">
+                    {email.hasAttachment && (
+                      <span className="campaigns-email-attachment">
+                        <AttachmentIcon />
+                      </span>
+                    )}
+                    <span className="campaigns-email-time">{email.time}</span>
+                  </div>
+                </article>
+              ))}
             </Box>
           </Box>
         </Grid>

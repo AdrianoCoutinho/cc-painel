@@ -1,3 +1,217 @@
+/* ===== Drawer (opens on row click) — constrain orphan icons ===== */
+/* money-icon.svg ships with intrinsic 800x800. Without these widths it
+   floods the drawer with a giant "$". The joystick is 40x40 already,
+   we constrain it for symmetry. */
+#drawer-rounds-played-info > img,
+#bank-value > img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+/* ===== Header ===== */
+.finance-table-header {
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(57, 68, 91, 0.6);
+    align-items: center;
+}
+
+.finance-table-header-cell {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.finance-table-cell-right {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+/* Breathing room: value column should not touch the next column (status / actions) */
+.finance-table-header-cell.finance-table-cell-right:not(:last-child),
+.finance-table-row .finance-table-value {
+    padding-right: 18px;
+}
+
+/* ===== Rows ===== */
+.finance-table-row {
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(57, 68, 91, 0.3);
+    cursor: pointer;
+    transition: background-color 120ms ease;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.finance-table-row:hover {
+    background-color: rgba(57, 68, 91, 0.25);
+}
+
+.finance-table-row:hover .finance-table-actions {
+    opacity: 1;
+}
+
+.finance-table-row:last-child {
+    border-bottom: none;
+}
+
+.finance-table-cell {
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow: hidden;
+}
+
+/* ===== Type icon (withdraw / deposit) ===== */
+.finance-tx-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.finance-tx-withdraw {
+    background: rgba(224, 49, 49, 0.15);
+    color: #E03131;
+}
+
+.finance-tx-deposit {
+    background: rgba(0, 224, 116, 0.15);
+    color: #00E074;
+}
+
+/* ===== Date column ===== */
+.finance-table-date-main {
+    font-size: 13px;
+    color: #fff;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.finance-table-date-sub {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ===== Name column ===== */
+.finance-table-cell-name img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.finance-table-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.finance-table-email {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.finance-table-flag {
+    font-size: 18px;
+    line-height: 1;
+}
+
+/* ===== Method tag ===== */
+.finance-table-method {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    background: rgba(57, 68, 91, 0.4);
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* ===== Value (signed) ===== */
+.finance-table-value {
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.finance-table-value-withdraw {
+    color: #E03131;
+}
+
+.finance-table-value-deposit {
+    color: #00E074;
+}
+
+/* ===== Status pills ===== */
+.finance-table-status {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+}
+
+.status-approved {
+    background: rgba(0, 224, 116, 0.12);
+    color: #00E074;
+    border: 1px solid rgba(0, 224, 116, 0.3);
+}
+
+.status-pending {
+    background: rgba(226, 196, 36, 0.12);
+    color: #E2C424;
+    border: 1px solid rgba(226, 196, 36, 0.3);
+}
+
+.status-rejected {
+    background: rgba(224, 49, 49, 0.12);
+    color: #E03131;
+    border: 1px solid rgba(224, 49, 49, 0.3);
+}
+
+.status-processing {
+    background: rgba(19, 124, 189, 0.12);
+    color: #4DABF5;
+    border: 1px solid rgba(19, 124, 189, 0.3);
+}
+
+/* ===== Action button ===== */
+.finance-table-actions {
+    color: rgba(255, 255, 255, 0.55);
+    opacity: 0;
+    transition: opacity 120ms ease;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+}
+
+.finance-table-actions:hover {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* ===== Legacy ===== */
 .users-table-id svg {
     border-radius: 9px;
     background-color: #3a4357;
@@ -5,12 +219,4 @@
     margin-bottom: 10px;
     margin-top: 10px;
     margin-right: 10px;
-}
-
-.status-pending {
-    border-radius: 23px;
-    background: rgba(226, 196, 36, 0.15);
-    display: inline-flex;
-    padding: 4px 8px;
-    color: #E2C424;
 }

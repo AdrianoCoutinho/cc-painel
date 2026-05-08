@@ -13,8 +13,58 @@ import {
 } from "@mui/material";
 import React from "react";
 import brasilRounded from "../../assets/svg/brasil-rounded.svg";
-import betCandleAvatar from "../../assets/temporary-images/bet-candle-avatar.png";
 import { BaseLayoutPage } from "../../shared/layouts";
+
+const brandAvatar =
+  "https://api.dicebear.com/7.x/identicon/svg?seed=tradeflow&backgroundColor=137cbd";
+
+// =====================================================================
+// Mock data — Pagamentos
+// =====================================================================
+
+type PaymentStatus = "paid" | "pending" | "overdue";
+
+interface PaymentRow {
+  id: string;
+  dueDate: string;
+  broker: string;
+  brokerLogo: string;
+  country: string;
+  countryFlag: string;
+  roi: string;
+  value: number;
+  currency: string;
+  status: PaymentStatus;
+}
+
+const paymentStatusMap: Record<
+  PaymentStatus,
+  { label: string; className: string }
+> = {
+  paid: { label: "Pago", className: "wl-status-paid" },
+  pending: { label: "Pendente", className: "wl-status-pending" },
+  overdue: { label: "Em atraso", className: "wl-status-overdue" },
+};
+
+const brokerLogo = (seed: string) =>
+  `https://api.dicebear.com/7.x/identicon/svg?seed=${seed}&backgroundColor=137cbd`;
+
+const fmtMoney = (value: number, currency: string) =>
+  `${currency} ${value.toLocaleString("pt-BR", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })}`;
+
+const mockPayments: PaymentRow[] = [
+  { id: "p01", dueDate: "28 out 2025", broker: "TradeFlow", brokerLogo: brokerLogo("tradeflow"), country: "Brasil", countryFlag: "🇧🇷", roi: "2,3%", value: 372_000, currency: "R$", status: "pending" },
+  { id: "p02", dueDate: "25 out 2025", broker: "IQ Flow", brokerLogo: brokerLogo("iqflow"), country: "Brasil", countryFlag: "🇧🇷", roi: "3,1%", value: 521_500, currency: "R$", status: "paid" },
+  { id: "p03", dueDate: "20 out 2025", broker: "Pix Flow", brokerLogo: brokerLogo("pixflow"), country: "Portugal", countryFlag: "🇵🇹", roi: "1,8%", value: 89_400, currency: "€", status: "overdue" },
+  { id: "p04", dueDate: "18 out 2025", broker: "Ultron Flow", brokerLogo: brokerLogo("ultron"), country: "Argentina", countryFlag: "🇦🇷", roi: "4,2%", value: 1_240_000, currency: "AR$", status: "paid" },
+  { id: "p05", dueDate: "15 out 2025", broker: "TradeFlow", brokerLogo: brokerLogo("tradeflow2"), country: "Espanha", countryFlag: "🇪🇸", roi: "2,7%", value: 156_300, currency: "€", status: "pending" },
+  { id: "p06", dueDate: "12 out 2025", broker: "Best Flow", brokerLogo: brokerLogo("bestflow"), country: "Brasil", countryFlag: "🇧🇷", roi: "2,0%", value: 245_800, currency: "R$", status: "paid" },
+  { id: "p07", dueDate: "08 out 2025", broker: "IQ Flow", brokerLogo: brokerLogo("iqflow2"), country: "México", countryFlag: "🇲🇽", roi: "3,5%", value: 98_750, currency: "MX$", status: "overdue" },
+  { id: "p08", dueDate: "05 out 2025", broker: "TradeFlow", brokerLogo: brokerLogo("tradeflow3"), country: "Brasil", countryFlag: "🇧🇷", roi: "2,9%", value: 412_900, currency: "R$", status: "paid" },
+];
 import "./style.css";
 
 const BpIcon = styled("span")(({ theme }) => ({
@@ -160,9 +210,9 @@ export const WhiteLabel: React.FC = () => {
             >
               <Box component={"div"} className="white-label-broker-content">
                 <Box sx={{ display: "flex" }}>
-                  <img src={betCandleAvatar} alt="Bet Candle" />
+                  <img src={brandAvatar} alt="TradeFlow" />
                   <Box sx={{ marginLeft: "10px" }}>
-                    <Typography>Bet Candle</Typography>
+                    <Typography>TradeFlow</Typography>
                     <Typography className="grey-text" sx={{ fontSize: "12px" }}>
                       ID 0034
                     </Typography>
@@ -202,9 +252,9 @@ export const WhiteLabel: React.FC = () => {
               </Box>
               <Box component={"div"} className="white-label-broker-content">
                 <Box sx={{ display: "flex" }}>
-                  <img src={betCandleAvatar} alt="Bet Candle" />
+                  <img src={brandAvatar} alt="TradeFlow" />
                   <Box sx={{ marginLeft: "10px" }}>
-                    <Typography>Bet Candle</Typography>
+                    <Typography>TradeFlow</Typography>
                     <Typography className="grey-text" sx={{ fontSize: "12px" }}>
                       ID 0034
                     </Typography>
@@ -244,9 +294,9 @@ export const WhiteLabel: React.FC = () => {
               </Box>
               <Box component={"div"} className="white-label-broker-content">
                 <Box sx={{ display: "flex" }}>
-                  <img src={betCandleAvatar} alt="Bet Candle" />
+                  <img src={brandAvatar} alt="TradeFlow" />
                   <Box sx={{ marginLeft: "10px" }}>
-                    <Typography>Bet Candle</Typography>
+                    <Typography>TradeFlow</Typography>
                     <Typography className="grey-text" sx={{ fontSize: "12px" }}>
                       ID 0034
                     </Typography>
@@ -286,9 +336,9 @@ export const WhiteLabel: React.FC = () => {
               </Box>
               <Box component={"div"} className="white-label-broker-content">
                 <Box sx={{ display: "flex" }}>
-                  <img src={betCandleAvatar} alt="Bet Candle" />
+                  <img src={brandAvatar} alt="TradeFlow" />
                   <Box sx={{ marginLeft: "10px" }}>
-                    <Typography>Bet Candle</Typography>
+                    <Typography>TradeFlow</Typography>
                     <Typography className="grey-text" sx={{ fontSize: "12px" }}>
                       ID 0034
                     </Typography>
@@ -328,9 +378,9 @@ export const WhiteLabel: React.FC = () => {
               </Box>
               <Box component={"div"} className="white-label-broker-content">
                 <Box sx={{ display: "flex" }}>
-                  <img src={betCandleAvatar} alt="Bet Candle" />
+                  <img src={brandAvatar} alt="TradeFlow" />
                   <Box sx={{ marginLeft: "10px" }}>
-                    <Typography>Bet Candle</Typography>
+                    <Typography>TradeFlow</Typography>
                     <Typography className="grey-text" sx={{ fontSize: "12px" }}>
                       ID 0034
                     </Typography>
@@ -370,9 +420,9 @@ export const WhiteLabel: React.FC = () => {
               </Box>
               <Box component={"div"} className="white-label-broker-content">
                 <Box sx={{ display: "flex" }}>
-                  <img src={betCandleAvatar} alt="Bet Candle" />
+                  <img src={brandAvatar} alt="TradeFlow" />
                   <Box sx={{ marginLeft: "10px" }}>
-                    <Typography>Bet Candle</Typography>
+                    <Typography>TradeFlow</Typography>
                     <Typography className="grey-text" sx={{ fontSize: "12px" }}>
                       ID 0034
                     </Typography>
@@ -412,9 +462,9 @@ export const WhiteLabel: React.FC = () => {
               </Box>
               <Box component={"div"} className="white-label-broker-content">
                 <Box sx={{ display: "flex" }}>
-                  <img src={betCandleAvatar} alt="Bet Candle" />
+                  <img src={brandAvatar} alt="TradeFlow" />
                   <Box sx={{ marginLeft: "10px" }}>
-                    <Typography>Bet Candle</Typography>
+                    <Typography>TradeFlow</Typography>
                     <Typography className="grey-text" sx={{ fontSize: "12px" }}>
                       ID 0034
                     </Typography>
@@ -454,9 +504,9 @@ export const WhiteLabel: React.FC = () => {
               </Box>
               <Box component={"div"} className="white-label-broker-content">
                 <Box sx={{ display: "flex" }}>
-                  <img src={betCandleAvatar} alt="Bet Candle" />
+                  <img src={brandAvatar} alt="TradeFlow" />
                   <Box sx={{ marginLeft: "10px" }}>
-                    <Typography>Bet Candle</Typography>
+                    <Typography>TradeFlow</Typography>
                     <Typography className="grey-text" sx={{ fontSize: "12px" }}>
                       ID 0034
                     </Typography>
@@ -496,9 +546,9 @@ export const WhiteLabel: React.FC = () => {
               </Box>
               <Box component={"div"} className="white-label-broker-content">
                 <Box sx={{ display: "flex" }}>
-                  <img src={betCandleAvatar} alt="Bet Candle" />
+                  <img src={brandAvatar} alt="TradeFlow" />
                   <Box sx={{ marginLeft: "10px" }}>
-                    <Typography>Bet Candle</Typography>
+                    <Typography>TradeFlow</Typography>
                     <Typography className="grey-text" sx={{ fontSize: "12px" }}>
                       ID 0034
                     </Typography>
@@ -538,9 +588,9 @@ export const WhiteLabel: React.FC = () => {
               </Box>
               <Box component={"div"} className="white-label-broker-content">
                 <Box sx={{ display: "flex" }}>
-                  <img src={betCandleAvatar} alt="Bet Candle" />
+                  <img src={brandAvatar} alt="TradeFlow" />
                   <Box sx={{ marginLeft: "10px" }}>
-                    <Typography>Bet Candle</Typography>
+                    <Typography>TradeFlow</Typography>
                     <Typography className="grey-text" sx={{ fontSize: "12px" }}>
                       ID 0034
                     </Typography>
@@ -697,7 +747,7 @@ export const WhiteLabel: React.FC = () => {
                     Corretora com
                     <br /> maior volume
                   </Typography>
-                  <Typography sx={{ margin: "15px 0" }}>Bet Candle</Typography>
+                  <Typography sx={{ margin: "15px 0" }}>TradeFlow</Typography>
                   <Typography variant="h4">$ 234.234,00</Typography>
                 </Box>
               </Box>
@@ -727,7 +777,7 @@ export const WhiteLabel: React.FC = () => {
                     Corretora com
                     <br /> maior volume
                   </Typography>
-                  <Typography sx={{ margin: "15px 0" }}>Bet Candle</Typography>
+                  <Typography sx={{ margin: "15px 0" }}>TradeFlow</Typography>
                   <Typography variant="h4">$ 234.234,00</Typography>
                 </Box>
               </Box>
@@ -780,7 +830,7 @@ export const WhiteLabel: React.FC = () => {
                       <Typography
                         sx={{ marginLeft: "3px", marginRight: "5px" }}
                       >
-                        Bet Candle
+                        TradeFlow
                       </Typography>
                       <svg
                         width="17"
@@ -806,7 +856,7 @@ export const WhiteLabel: React.FC = () => {
                       <Typography
                         sx={{ marginLeft: "3px", marginRight: "5px" }}
                       >
-                        Bet Candle
+                        TradeFlow
                       </Typography>
                       <svg
                         width="17"
@@ -832,7 +882,7 @@ export const WhiteLabel: React.FC = () => {
                       <Typography
                         sx={{ marginLeft: "3px", marginRight: "5px" }}
                       >
-                        Bet Candle
+                        TradeFlow
                       </Typography>
                       <svg
                         width="17"
@@ -858,7 +908,7 @@ export const WhiteLabel: React.FC = () => {
                       <Typography
                         sx={{ marginLeft: "3px", marginRight: "5px" }}
                       >
-                        Bet Candle
+                        TradeFlow
                       </Typography>
                       <svg
                         width="17"
@@ -884,7 +934,7 @@ export const WhiteLabel: React.FC = () => {
                       <Typography
                         sx={{ marginLeft: "3px", marginRight: "5px" }}
                       >
-                        Bet Candle
+                        TradeFlow
                       </Typography>
                       <svg
                         width="17"
@@ -910,7 +960,7 @@ export const WhiteLabel: React.FC = () => {
                       <Typography
                         sx={{ marginLeft: "3px", marginRight: "5px" }}
                       >
-                        Bet Candle
+                        TradeFlow
                       </Typography>
                       <svg
                         width="17"
@@ -936,7 +986,7 @@ export const WhiteLabel: React.FC = () => {
                       <Typography
                         sx={{ marginLeft: "3px", marginRight: "5px" }}
                       >
-                        Bet Candle
+                        TradeFlow
                       </Typography>
                       <svg
                         width="17"
@@ -962,7 +1012,7 @@ export const WhiteLabel: React.FC = () => {
                       <Typography
                         sx={{ marginLeft: "3px", marginRight: "5px" }}
                       >
-                        Bet Candle
+                        TradeFlow
                       </Typography>
                       <svg
                         width="17"
@@ -1025,43 +1075,75 @@ export const WhiteLabel: React.FC = () => {
                       className="white-label-payments-filter"
                     >
                       <option value="Global">Geral</option>
-                      <option value="bet">Bet Candle</option>
-                      <option value="pix">Pix Candle</option>
-                      <option value="iq">IQ Candle</option>
+                      <option value="tradeflow">TradeFlow</option>
+                      <option value="pix">Pix Flow</option>
+                      <option value="iq">IQ Flow</option>
                     </select>
                   </Box>
                 </Box>
                 <Box id="white-label-payments-item">
-                  <Grid container spacing={1}>
-                    <Grid item xs={12}>
-                      <Box className="white-label-payment-item-tr">
-                        <Typography
-                          sx={{ paddingLeft: "30px " }}
-                          className="white-label-payment-item-date"
+                  <Box className="wl-payments-header">
+                    <span className="wl-col-checkbox" />
+                    <span className="wl-col-date">Vencimento</span>
+                    <span className="wl-col-broker">Corretora</span>
+                    <span className="wl-col-country">País</span>
+                    <span className="wl-col-roi">ROI</span>
+                    <span className="wl-col-value">Valor</span>
+                    <span className="wl-col-status">Status</span>
+                    <span className="wl-col-actions" />
+                  </Box>
+                  <Box className="wl-payments-rows">
+                    {mockPayments.map((p) => (
+                      <Box key={p.id} className="wl-payment-row">
+                        <span
+                          className="wl-col-checkbox"
+                          onClick={(e) => e.stopPropagation()}
                         >
-                          Vencimento
-                        </Typography>
-
-                        <Typography
-                          sx={{ marginLeft: "-30px " }}
-                          className="white-label-payment-item-name"
+                          <BpCheckbox />
+                        </span>
+                        <span className="wl-col-date">{p.dueDate}</span>
+                        <span className="wl-col-broker">
+                          <img src={p.brokerLogo} alt={p.broker} />
+                          {p.broker}
+                        </span>
+                        <span className="wl-col-country">
+                          <span className="wl-flag">{p.countryFlag}</span>
+                          {p.country}
+                        </span>
+                        <span className="wl-col-roi">{p.roi}</span>
+                        <span className="wl-col-value">
+                          {fmtMoney(p.value, p.currency)}
+                        </span>
+                        <span className="wl-col-status">
+                          <span
+                            className={`wl-status-pill ${
+                              paymentStatusMap[p.status].className
+                            }`}
+                          >
+                            {paymentStatusMap[p.status].label}
+                          </span>
+                        </span>
+                        <span
+                          className="wl-col-actions"
+                          onClick={(e) => e.stopPropagation()}
                         >
-                          Corretora
-                        </Typography>
-                        <Typography className="white-label-payment-item-state">
-                          País
-                        </Typography>
-                        <Typography className="white-label-payment-item-roi">
-                          ROI
-                        </Typography>
-                        <Typography className="white-label-payment-item-value">
-                          Valor
-                        </Typography>
-                        <Typography className="white-label-payment-item-status-tr">
-                          Status
-                        </Typography>
+                          <svg
+                            width="4"
+                            height="14"
+                            viewBox="0 0 5 17"
+                            fill="none"
+                          >
+                            <ellipse cx="2.231" cy="14.976" rx="2.231" ry="2.024" fill="currentColor" />
+                            <ellipse cx="2.231" cy="8.5" rx="2.231" ry="2.024" fill="currentColor" />
+                            <ellipse cx="2.231" cy="2.024" rx="2.231" ry="2.024" fill="currentColor" />
+                          </svg>
+                        </span>
                       </Box>
-                    </Grid>
+                    ))}
+                  </Box>
+                  {/* Legacy markup removed — start sentinel */}
+                  <Grid container spacing={1} sx={{ display: "none" }}>
+                    <Grid item xs={12} />
                     <Grid item xs={12}>
                       <Box className="white-label-payment-item">
                         <Box
@@ -1072,7 +1154,7 @@ export const WhiteLabel: React.FC = () => {
                           <Typography>28 oct 2023</Typography>
                         </Box>
                         <Typography className="white-label-payment-item-name">
-                          Bet Candle
+                          TradeFlow
                         </Typography>
                         <Typography className="white-label-payment-item-state">
                           Brasil
@@ -1131,7 +1213,7 @@ export const WhiteLabel: React.FC = () => {
                           <Typography>28 oct 2023</Typography>
                         </Box>
                         <Typography className="white-label-payment-item-name">
-                          Bet Candle
+                          TradeFlow
                         </Typography>
                         <Typography className="white-label-payment-item-state">
                           Brasil
@@ -1187,7 +1269,7 @@ export const WhiteLabel: React.FC = () => {
                           <Typography>28 oct 2023</Typography>
                         </Box>
                         <Typography className="white-label-payment-item-name">
-                          Bet Candle
+                          TradeFlow
                         </Typography>
                         <Typography className="white-label-payment-item-state">
                           Brasil
@@ -1243,7 +1325,7 @@ export const WhiteLabel: React.FC = () => {
                           <Typography>28 oct 2023</Typography>
                         </Box>
                         <Typography className="white-label-payment-item-name">
-                          Bet Candle
+                          TradeFlow
                         </Typography>
                         <Typography className="white-label-payment-item-state">
                           Brasil

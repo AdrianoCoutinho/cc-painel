@@ -2,20 +2,213 @@
     font-size: 1.5rem;
 }
 
-#users-filter-box { 
+/* ===== Filters column ===== */
+#users-filter-box {
     border-radius: 22px;
     border: 1px solid #39445B;
     background: rgba(33, 40, 54, 0.50);
-    padding: 15px;
+    padding: 20px 18px;
     min-height: 85vh;
 }
 
+#users-filter-box .MuiTypography-caption {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+    gap: 8px;
+}
+
+/* Search input on top of filters */
+.users-filter-search {
+    position: relative;
+    margin: 16px 0 24px;
+}
+
+.users-filter-search input {
+    width: 100%;
+    height: 36px;
+    padding: 0 12px 0 36px;
+    border-radius: 10px;
+    border: 1px solid #39445B;
+    background: rgba(33, 40, 54, 0.6);
+    color: #fff;
+    font-size: 13px;
+    transition: border-color 120ms ease, background-color 120ms ease;
+    box-sizing: border-box;
+}
+
+.users-filter-search input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.users-filter-search input:focus {
+    outline: none;
+    border-color: #137cbd;
+    background: rgba(33, 40, 54, 0.8);
+}
+
+.users-filter-search svg {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.4);
+    pointer-events: none;
+}
+
+/* Spacing between filter sections */
+.filter-section {
+    margin-bottom: 20px;
+}
+
+.filter-section:last-child {
+    margin-bottom: 0;
+}
+
+/* Filter selects */
+.filter-title {
+    margin-bottom: 6px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+}
+
+/* Filter column selects (full width, generous height) */
+#states-select,
+#broker-select {
+    width: 100%;
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid #39445B;
+    background: rgba(33, 40, 54, 0.6);
+    padding: 0 10px;
+    color: #fff;
+    font-size: 13px;
+    box-sizing: border-box;
+    transition: border-color 120ms ease;
+}
+
+#states-select:focus,
+#broker-select:focus {
+    outline: none;
+    border-color: #137cbd;
+}
+
+/* Top-card selects (compact, in the header of KPI/podium cards) */
+#brokers-users-select,
+#brokers-users-time-select,
+#brokers-podium-select,
+#brokers-podium-day-select,
+#user-podium-states-select,
+#user-broker-select,
+#user-podium-day-select {
+    height: 28px;
+    border-radius: 8px;
+    border: 1px solid #39445B;
+    background: rgba(33, 40, 54, 0.8);
+    padding: 0 8px;
+    color: #fff;
+    font-size: 11px;
+    box-sizing: border-box;
+    transition: border-color 120ms ease;
+}
+
+#brokers-users-select,
+#brokers-users-time-select,
+#brokers-podium-select,
+#brokers-podium-day-select,
+#user-podium-states-select,
+#user-broker-select,
+#user-podium-day-select {
+    cursor: pointer;
+}
+
+#brokers-users-select:focus,
+#brokers-users-time-select:focus,
+#brokers-podium-select:focus,
+#brokers-podium-day-select:focus,
+#user-podium-states-select:focus,
+#user-broker-select:focus,
+#user-podium-day-select:focus {
+    outline: none;
+    border-color: #137cbd;
+}
+
+#brokers-podium-select { width: 84px; }
+#brokers-podium-day-select { width: 118px; }
+#brokers-users-select { width: 78px; }
+#brokers-users-time-select { width: 108px; }
+#user-podium-states-select { width: 84px; }
+#user-broker-select { width: 78px; }
+#user-podium-day-select { width: 118px; }
+
+/* Range inputs */
+#filter-quantity {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#filter-quantity input {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 34px;
+    border-radius: 8px;
+    border: 1px solid #39445B;
+    font-size: 12px;
+    background: rgba(33, 40, 54, 0.6);
+    color: #fff;
+    padding: 0 10px;
+    box-sizing: border-box;
+    transition: border-color 120ms ease;
+}
+
+#filter-quantity input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 12px;
+}
+
+#filter-quantity input:focus {
+    outline: none;
+    border-color: #137cbd;
+}
+
+.filter-quantity-separator {
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+#quantity-min, #quantity-max {
+    margin: 0;
+}
+
+#filter-quantity input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Status checkboxes column */
+.task-left-title {
+    margin: 0 0 8px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+}
+
+.form-control-label-tasks-checkbox-label .MuiFormControlLabel-label {
+    font-size: 13px !important;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* ===== Top KPI cards ===== */
 #top-card-new-users, #top-card-three-brokers, #top-card-three-users {
     height: 219px;
     border-radius: 22px;
     border: 1px solid #39445B;
     background: rgba(33, 40, 54, 0.50);
-    padding: 10px 10px 0 10px;
+    padding: 14px;
 }
 
 #top-three-body {
@@ -29,90 +222,10 @@
     text-align: center;
 }
 
-#brokers-podium-select {
-    border-radius: 14px;
-    border: 1px solid #39445B;
-    background: #212836;
-    padding: 5px 0 5px 5px;
-    color: #fff;
-    width: 67px;
-}
-
-#brokers-users-select, #brokers-users-time-select {
-    font-size: 11px;
-}
-
-.filter-title {
-    margin-top: 15px !important;
-    margin-bottom: 5px !important;
-    font-size: 13px !important;
-}
-
-#brokers-podium-day-select{
-    border-radius: 14px;
-    border: 1px solid #39445B;
-    background: #212836;
-    padding: 5px 0 5px 5px;
-    color: #fff;
-    width: 120px;
-}
-
-#user-podium-states-select, #user-broker-select {
-    border-radius: 14px;
-    border: 1px solid #39445B;
-    background: #212836;
-    padding: 5px 0 5px 5px;
-    color: #fff;
-    margin-right: 5px;
-}
-
-#states-select, #broker-select, #brokers-users-select, #brokers-users-time-select,  #user-podium-day-select{
-    border-radius: 14px;
-    border: 1px solid #39445B;
-    background: #212836;
-    padding: 5px 0 5px 5px;
-    color: #fff;
-}
-
 .podium-titles {
-    font-size: 13px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
 }
-
-#filter-quantity {
-    display: flex;
-    align-items: center;
-    color: #fff;
-}
-
-#filter-quantity input {
-    width: 50%;
-    height: 18px;
-    border-radius: 7px;
-    border: 1px solid #39445B;
-    font-size: 12px;
-    background: rgba(33, 40, 54, 0.50);
-    color: #fff;
-}
-
-#filter-quantity span {
-    font-size: 12px;
-}
-
-#quantity-min {
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-#quantity-max {
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-#filter-quantity input[type="number"]::-webkit-inner-spin-button,
-    input[type="number"]::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
 
 #brokers-podium-top-selects {
     display: flex;
@@ -125,11 +238,12 @@
     width: 100%;
     justify-content: flex-end;
     align-items: center;
+    gap: 6px;
 }
 
 #new-users-icon-card {
-    padding: 5px 8px;
-    border-radius: 7px;
+    padding: 6px 9px;
+    border-radius: 8px;
     border: 0.5px solid #39445B;
     background: rgba(57, 68, 91, 0.20);
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
@@ -148,6 +262,15 @@
     padding-right: 10px;
 }
 
+.top-three-names img:first-of-type {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    padding-right: 0;
+    margin-right: 10px;
+}
+
 .broker-top-1 {
     font-size: 13px !important;
 }
@@ -157,36 +280,35 @@
 }
 
 #new-users-percent {
-    padding: 6px;
+    padding: 5px 10px;
     font-family: 'Sora', sans-serif;
-    font-size: 0.8rem;
-    font-style: normal;
-    font-weight: 400;
+    font-size: 0.75rem;
+    font-weight: 500;
     line-height: normal;
-    border-radius: 15px;
+    border-radius: 999px;
     color: #00E074;
-    border: 1px solid #00E074;
+    background: rgba(0, 224, 116, 0.1);
+    border: 1px solid rgba(0, 224, 116, 0.4);
 }
 
 .top-three-names, .top-three-brokers, .top-three-money {
     display: flex;
     align-items: center;
-}
-
-.top-three-names, .top-three-brokers, .top-three-money {
     padding-top: 10px;
     text-align: center;
-    display: flex;
     justify-content: center;
 }
 
 #podium-users-select {
     display: flex;
+    gap: 6px;
 }
 
+/* ===== Table wrapper ===== */
 #users-table-box {
     border-radius: 22px;
     border: 1px solid #39445B;
     background: linear-gradient(108deg, rgba(33, 40, 54, 0.50) 0%, rgba(33, 40, 54, 0.15) 101.49%);
     box-shadow: 0px 0px 123.1px 0px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
 }

@@ -15,9 +15,9 @@ import closeDrawerIcon from "../../../assets/svg/close-drawer-icon.svg";
 import fixIcon from "../../../assets/svg/fixIcon.svg";
 import notesIcon from "../../../assets/svg/notes-icon.svg";
 import suportIcon from "../../../assets/svg/suport-icon.svg";
-import profileOne from "../../../assets/temporary-images/bruno-souza.png";
-
 import "./style.css";
+
+const profileOne = "https://i.pravatar.cc/150?img=18";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -103,24 +103,31 @@ const CustomDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
             variant="dot"
           >
             <Avatar
-              sx={{ width: "70px", height: "70px" }}
-              alt="Bruno Souza"
+              sx={{ width: "44px", height: "44px", marginLeft: "16px" }}
+              alt="Eduardo Gomes"
               src={profileOne}
             />
           </StyledBadge>
-          <Box>
+          <Box sx={{ marginLeft: "12px", flex: 1, minWidth: 0 }}>
             <Typography
               variant="body2"
               sx={{
                 width: "280px",
                 display: "flex",
                 justifyContent: "space-between",
+                alignItems: "baseline",
               }}
             >
               <span>
-                Bruno Souza - <span className="grey-text">ID 3420</span>
+                <span style={{ fontWeight: 600 }}>Eduardo Gomes</span>
+                <span className="grey-text"> · ID 3420</span>
               </span>
-              <span className="grey-text text-align-right">05:24PM</span>
+              <span
+                className="grey-text text-align-right"
+                style={{ fontSize: "11px", flexShrink: 0 }}
+              >
+                05:24PM
+              </span>
             </Typography>
             <Box
               sx={{ display: "flex", justifyContent: "space-between" }}
@@ -155,24 +162,31 @@ const CustomDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
             variant="dot"
           >
             <Avatar
-              sx={{ width: "70px", height: "70px" }}
-              alt="Bruno Souza"
+              sx={{ width: "44px", height: "44px", marginLeft: "16px" }}
+              alt="Eduardo Gomes"
               src={profileOne}
             />
           </StyledBadge>
-          <Box>
+          <Box sx={{ marginLeft: "12px", flex: 1, minWidth: 0 }}>
             <Typography
               variant="body2"
               sx={{
                 width: "280px",
                 display: "flex",
                 justifyContent: "space-between",
+                alignItems: "baseline",
               }}
             >
               <span>
-                Bruno Souza - <span className="grey-text">ID 3420</span>
+                <span style={{ fontWeight: 600 }}>Eduardo Gomes</span>
+                <span className="grey-text"> · ID 3420</span>
               </span>
-              <span className="grey-text text-align-right">05:24PM</span>
+              <span
+                className="grey-text text-align-right"
+                style={{ fontSize: "11px", flexShrink: 0 }}
+              >
+                05:24PM
+              </span>
             </Typography>
             <Box
               sx={{ display: "flex", justifyContent: "space-between" }}
@@ -207,24 +221,31 @@ const CustomDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
             variant="dot"
           >
             <Avatar
-              sx={{ width: "70px", height: "70px" }}
-              alt="Bruno Souza"
+              sx={{ width: "44px", height: "44px", marginLeft: "16px" }}
+              alt="Eduardo Gomes"
               src={profileOne}
             />
           </StyledBadge>
-          <Box>
+          <Box sx={{ marginLeft: "12px", flex: 1, minWidth: 0 }}>
             <Typography
               variant="body2"
               sx={{
                 width: "280px",
                 display: "flex",
                 justifyContent: "space-between",
+                alignItems: "baseline",
               }}
             >
               <span>
-                Bruno Souza - <span className="grey-text">ID 3420</span>
+                <span style={{ fontWeight: 600 }}>Eduardo Gomes</span>
+                <span className="grey-text"> · ID 3420</span>
               </span>
-              <span className="grey-text text-align-right">05:24PM</span>
+              <span
+                className="grey-text text-align-right"
+                style={{ fontSize: "11px", flexShrink: 0 }}
+              >
+                05:24PM
+              </span>
             </Typography>
             <Box
               sx={{ display: "flex", justifyContent: "space-between" }}
@@ -259,24 +280,31 @@ const CustomDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
             variant="dot"
           >
             <Avatar
-              sx={{ width: "70px", height: "70px" }}
-              alt="Bruno Souza"
+              sx={{ width: "44px", height: "44px", marginLeft: "16px" }}
+              alt="Eduardo Gomes"
               src={profileOne}
             />
           </StyledBadge>
-          <Box>
+          <Box sx={{ marginLeft: "12px", flex: 1, minWidth: 0 }}>
             <Typography
               variant="body2"
               sx={{
                 width: "280px",
                 display: "flex",
                 justifyContent: "space-between",
+                alignItems: "baseline",
               }}
             >
               <span>
-                Bruno Souza - <span className="grey-text">ID 3420</span>
+                <span style={{ fontWeight: 600 }}>Eduardo Gomes</span>
+                <span className="grey-text"> · ID 3420</span>
               </span>
-              <span className="grey-text text-align-right">05:24PM</span>
+              <span
+                className="grey-text text-align-right"
+                style={{ fontSize: "11px", flexShrink: 0 }}
+              >
+                05:24PM
+              </span>
             </Typography>
             <Box
               sx={{ display: "flex", justifyContent: "space-between" }}
@@ -311,24 +339,31 @@ const CustomDrawer: React.FC<DrawerProps> = ({ open, onClose }) => {
             variant="dot"
           >
             <Avatar
-              sx={{ width: "70px", height: "70px" }}
-              alt="Bruno Souza"
+              sx={{ width: "44px", height: "44px", marginLeft: "16px" }}
+              alt="Eduardo Gomes"
               src={profileOne}
             />
           </StyledBadge>
-          <Box>
+          <Box sx={{ marginLeft: "12px", flex: 1, minWidth: 0 }}>
             <Typography
               variant="body2"
               sx={{
                 width: "280px",
                 display: "flex",
                 justifyContent: "space-between",
+                alignItems: "baseline",
               }}
             >
               <span>
-                Bruno Souza - <span className="grey-text">ID 3420</span>
+                <span style={{ fontWeight: 600 }}>Eduardo Gomes</span>
+                <span className="grey-text"> · ID 3420</span>
               </span>
-              <span className="grey-text text-align-right">05:24PM</span>
+              <span
+                className="grey-text text-align-right"
+                style={{ fontSize: "11px", flexShrink: 0 }}
+              >
+                05:24PM
+              </span>
             </Typography>
             <Box
               sx={{ display: "flex", justifyContent: "space-between" }}

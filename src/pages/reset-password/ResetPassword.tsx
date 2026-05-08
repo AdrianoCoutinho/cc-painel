@@ -8,7 +8,6 @@ import {
   useTheme,
 } from "@mui/material";
 import React from "react";
-import logo from "../../assets/images/optimux-logo.png";
 import { SnackBars } from "../../shared/components";
 // import { useAppDispatch } from "../../store/hooks";
 import "./style.css";
@@ -93,7 +92,17 @@ export const ResetPassword: React.FC = () => {
   return (
     <React.Fragment>
       <Box id="login-container-box">
-        <img src={logo} alt="OPTIMUX" width={189} height={30} />
+        <Typography
+          sx={{
+            fontSize: "26px",
+            fontWeight: 700,
+            letterSpacing: "1px",
+            color: "#fff",
+            mb: "10px",
+          }}
+        >
+          TradeFlow<span style={{ color: "#137cbd" }}>.</span>
+        </Typography>
         <Box id="login-box-card" style={{ width }}>
           <Typography id="login-card-title">Login</Typography>
           <Box id="login-inputs">

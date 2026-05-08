@@ -9,8 +9,9 @@ import {
 } from "@mui/material";
 import React from "react";
 import brasilRounded from "../../assets/svg/brasil-rounded.svg";
-import thalesRounded from "../../assets/svg/thalesRounded.svg";
 import { FinancialTable } from "../../shared/components";
+
+const thalesRounded = "https://i.pravatar.cc/150?img=8";
 import { BaseLayoutPage } from "../../shared/layouts";
 import "./style.css";
 
@@ -305,14 +306,14 @@ export const Financial: React.FC = () => {
                     </Typography>
                   </Grid>
                   <Grid item xs={4} className="top-three-names">
-                    <img alt="Thales" src={thalesRounded} />
+                    <img alt="Daniel" src={thalesRounded} />
                     <Typography align="left" className="broker-top-name">
-                      Thales Ramiro
+                      Daniel Costa
                     </Typography>
                     <img alt="Brasil" src={brasilRounded} />
                   </Grid>
                   <Grid item xs={4} className="top-three-brokers">
-                    <Typography variant="body1">IQ Candle</Typography>
+                    <Typography variant="body1">IQ Flow</Typography>
                   </Grid>
                   <Grid item xs={4} className="top-three-money">
                     <Typography className="green-text" variant="body1">
@@ -320,14 +321,14 @@ export const Financial: React.FC = () => {
                     </Typography>
                   </Grid>
                   <Grid item xs={4} className="top-three-names">
-                    <img alt="Thales" src={thalesRounded} />
+                    <img alt="Daniel" src={thalesRounded} />
                     <Typography align="left" className="broker-top-name">
-                      Thales Ramiro
+                      Daniel Costa
                     </Typography>
                     <img alt="Brasil" src={brasilRounded} />
                   </Grid>
                   <Grid item xs={4} className="top-three-brokers">
-                    <Typography variant="body1">IQ Candle</Typography>
+                    <Typography variant="body1">IQ Flow</Typography>
                   </Grid>
                   <Grid item xs={4} className="top-three-money">
                     <Typography className="green-text" variant="body1">
@@ -335,14 +336,14 @@ export const Financial: React.FC = () => {
                     </Typography>
                   </Grid>
                   <Grid item xs={4} className="top-three-names">
-                    <img alt="Thales" src={thalesRounded} />
+                    <img alt="Daniel" src={thalesRounded} />
                     <Typography align="left" className="broker-top-name">
-                      Thales Ramiro
+                      Daniel Costa
                     </Typography>
                     <img alt="Brasil" src={brasilRounded} />
                   </Grid>
                   <Grid item xs={4} className="top-three-brokers">
-                    <Typography variant="body1">IQ Candle</Typography>
+                    <Typography variant="body1">IQ Flow</Typography>
                   </Grid>
                   <Grid item xs={4} className="top-three-money">
                     <Typography className="green-text" variant="body1">
@@ -477,7 +478,7 @@ export const Financial: React.FC = () => {
                 </Typography>
                 <Box id="top-card-financial-pending-requests-bottom-info">
                   <div className="top-card-financial-pending-requests-bottom-broker">
-                    Bet Candle
+                    TradeFlow
                   </div>
                   <Box
                     sx={{ marginLeft: "6px" }}

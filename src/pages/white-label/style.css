@@ -31,7 +31,24 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 2px;
-    padding: 8px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 120ms ease;
+}
+
+.white-label-broker-content:hover {
+    background-color: rgba(57, 68, 91, 0.25);
+}
+
+/* Broker logo: DiceBear identicon ships large by default — clamp it */
+.white-label-broker-content img {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: rgba(19, 124, 189, 0.15);
 }
 
 #white-label-brokers-list {
@@ -194,7 +211,34 @@
     border-radius: 22px;
     border: 1px solid #39445B;
     background: linear-gradient(108deg, rgba(33, 40, 54, 0.50) 0%, rgba(33, 40, 54, 0.15) 101.49%);
-    border: 1px solid #39445B;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* The header row (status filters) inside the payments card stays fixed */
+#white-label-payments-card > .MuiBox-root:first-of-type {
+    flex-shrink: 0;
+}
+
+#white-label-payments-item {
+    flex: 1 1 0;
+    min-height: 0;
+    overflow-y: auto;
+    padding-bottom: 0;
+}
+
+#white-label-payments-item::-webkit-scrollbar {
+    width: 8px;
+}
+
+#white-label-payments-item::-webkit-scrollbar-thumb {
+    background: rgba(57, 68, 91, 0.6);
+    border-radius: 999px;
+}
+
+#white-label-payments-item::-webkit-scrollbar-track {
+    background: transparent;
 }
 
 .white-label-payments-filter {
@@ -208,6 +252,160 @@
 
 #white-label-payments-item {
     padding-bottom: 10px;
+}
+
+/* =====================================================================
+   Payments table — refactored
+   ===================================================================== */
+
+.wl-payments-header,
+.wl-payment-row {
+    display: grid;
+    grid-template-columns: 40px 1.2fr 1.6fr 1.1fr 0.7fr 1.3fr 1.2fr 40px;
+    align-items: center;
+    gap: 16px;
+    padding: 0 20px;
+}
+
+.wl-payments-header {
+    height: 44px;
+    border-bottom: 1px solid rgba(57, 68, 91, 0.6);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.wl-payments-rows {
+    display: flex;
+    flex-direction: column;
+}
+
+.wl-payment-row {
+    min-height: 68px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 13px;
+    border-bottom: 1px solid rgba(57, 68, 91, 0.3);
+    transition: background-color 120ms ease;
+}
+
+.wl-payment-row:hover {
+    background-color: rgba(57, 68, 91, 0.25);
+}
+
+.wl-payment-row:hover .wl-col-actions {
+    opacity: 1;
+}
+
+.wl-payment-row:last-child {
+    border-bottom: none;
+}
+
+.wl-col-checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wl-col-date {
+    color: rgba(255, 255, 255, 0.85);
+    font-variant-numeric: tabular-nums;
+}
+
+.wl-col-broker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    color: #fff;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.wl-col-broker img {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: rgba(19, 124, 189, 0.15);
+}
+
+.wl-col-country {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.wl-flag {
+    font-size: 16px;
+    line-height: 1;
+}
+
+.wl-col-roi {
+    font-variant-numeric: tabular-nums;
+    color: #00E074;
+    font-weight: 500;
+}
+
+.wl-col-value {
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.wl-col-status {
+    display: flex;
+    align-items: center;
+}
+
+.wl-status-pill {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+}
+
+.wl-status-paid {
+    color: #00E074;
+    background: rgba(0, 224, 116, 0.12);
+    border: 1px solid rgba(0, 224, 116, 0.3);
+}
+
+.wl-status-pending {
+    color: #E2C424;
+    background: rgba(226, 196, 36, 0.12);
+    border: 1px solid rgba(226, 196, 36, 0.3);
+}
+
+.wl-status-overdue {
+    color: #E2243B;
+    background: rgba(226, 36, 59, 0.12);
+    border: 1px solid rgba(226, 36, 59, 0.3);
+}
+
+.wl-col-actions {
+    color: rgba(255, 255, 255, 0.55);
+    opacity: 0;
+    transition: opacity 120ms ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    border-radius: 6px;
+}
+
+.wl-col-actions:hover {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.06);
 }
 
 .white-label-payments-item-names-table {
@@ -240,12 +438,11 @@
 
 #white-label-payments-item-title {
     display: flex;
-    color: "#ffff"
+    color: #fff;
 }
 
-#white-label-payments-item-title p{
+#white-label-payments-item-title p {
     color: #fff !important;
-    background-color: red;
 }
 
 .white-label-payment-title {

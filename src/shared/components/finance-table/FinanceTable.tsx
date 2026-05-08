@@ -12,35 +12,80 @@ import { getAllWithdraws } from "../../../api";
 import usaBtc from "../../../assets/images/usa-btc.png";
 import joystickicon from "../../../assets/svg/joystickicon.svg";
 import moneyIcon from "../../../assets/svg/money-icon.svg";
-import profilecover from "../../../assets/temporary-images/drawer-profile-cover.jpeg";
-import vitorrounded from "../../../assets/temporary-images/vitorcabral.svg";
 import WithdrawTable from "../../interfaces/WithdrawTable.interface";
 import { DonoutChart } from "../donout-chart/DonoutChart";
 import "./style.css";
 
-export const FinancialTable: React.FC = () => {
-  const [withdraw, setWithdraw] = useState<WithdrawTable[]>();
+const profilecover =
+  "https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=800&h=200&fit=crop&auto=format";
+const vitorrounded = "https://i.pravatar.cc/150?img=12";
 
-  const listAllWithdraws = async () => {
-    const result = await getAllWithdraws();
-    const formatedWithdraw = result.withdraw.map(
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (withdraw: any, index: number) => ({
-        idKey: index,
-        date: withdraw.created_at,
-        name: "FALTA",
-        state: "Falta",
-        broker: "Bet Candle",
-        method: "FALTA",
-        value: withdraw.value,
-        status: withdraw.transaction_status,
-      })
-    );
-    setWithdraw(formatedWithdraw);
-  };
+type TxStatus = "pending" | "approved" | "rejected" | "processing";
+type TxType = "withdraw" | "deposit";
+type TxMethod = "PIX" | "Boleto" | "Transferência" | "Crédito" | "Cripto";
+
+interface MockTransaction {
+  id: string;
+  type: TxType;
+  date: Date;
+  name: string;
+  email: string;
+  avatar: string;
+  country: string;
+  countryFlag: string;
+  broker: string;
+  method: TxMethod;
+  value: number;
+  status: TxStatus;
+}
+
+const statusLabels: Record<TxStatus, string> = {
+  pending: "Pendente",
+  approved: "Aprovado",
+  rejected: "Recusado",
+  processing: "Processando",
+};
+
+const formatDate = (d: Date) => {
+  const months = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
+  const day = d.getDate().toString().padStart(2, "0");
+  const month = months[d.getMonth()];
+  const hours = d.getHours().toString().padStart(2, "0");
+  const minutes = d.getMinutes().toString().padStart(2, "0");
+  return { date: `${day} ${month}`, time: `${hours}:${minutes}` };
+};
+
+const formatCurrency = (value: number) =>
+  value.toLocaleString("pt-BR", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
+const now = Date.now();
+const hoursAgo = (h: number) => new Date(now - h * 60 * 60 * 1000);
+
+const mockTransactions: MockTransaction[] = [
+  { id: "TX9821", type: "withdraw", date: hoursAgo(0.2), name: "Carlos Silva", email: "carlos.silva@example.com", avatar: "https://i.pravatar.cc/150?img=12", country: "Brasil", countryFlag: "🇧🇷", broker: "TradeFlow", method: "PIX", value: 1245.80, status: "pending" },
+  { id: "TX9820", type: "deposit", date: hoursAgo(1), name: "Daniel Costa", email: "daniel.costa@example.com", avatar: "https://i.pravatar.cc/150?img=8", country: "Brasil", countryFlag: "🇧🇷", broker: "IQ Flow", method: "Cripto", value: 5800.00, status: "approved" },
+  { id: "TX9819", type: "withdraw", date: hoursAgo(3), name: "Ana Castro", email: "ana.castro@example.com", avatar: "https://i.pravatar.cc/150?img=45", country: "Brasil", countryFlag: "🇧🇷", broker: "TradeFlow", method: "PIX", value: 320.50, status: "approved" },
+  { id: "TX9818", type: "deposit", date: hoursAgo(5), name: "Marcos Lima", email: "marcos.lima@example.com", avatar: "https://i.pravatar.cc/150?img=13", country: "Portugal", countryFlag: "🇵🇹", broker: "TradeFlow", method: "Transferência", value: 2100.00, status: "processing" },
+  { id: "TX9817", type: "withdraw", date: hoursAgo(7), name: "Lucas Almeida", email: "lucas.almeida@example.com", avatar: "https://i.pravatar.cc/150?img=14", country: "Brasil", countryFlag: "🇧🇷", broker: "TradeFlow", method: "PIX", value: 4120.00, status: "approved" },
+  { id: "TX9816", type: "withdraw", date: hoursAgo(11), name: "Felipe Souza", email: "felipe.souza@example.com", avatar: "https://i.pravatar.cc/150?img=15", country: "Argentina", countryFlag: "🇦🇷", broker: "Ultron Flow", method: "Cripto", value: 980.30, status: "rejected" },
+  { id: "TX9815", type: "deposit", date: hoursAgo(14), name: "Camila Reis", email: "camila.reis@example.com", avatar: "https://i.pravatar.cc/150?img=32", country: "Brasil", countryFlag: "🇧🇷", broker: "IQ Flow", method: "Boleto", value: 750.00, status: "approved" },
+  { id: "TX9814", type: "withdraw", date: hoursAgo(20), name: "Beatriz Lima", email: "beatriz.lima@example.com", avatar: "https://i.pravatar.cc/150?img=44", country: "Espanha", countryFlag: "🇪🇸", broker: "TradeFlow", method: "Transferência", value: 1890.00, status: "pending" },
+  { id: "TX9813", type: "deposit", date: hoursAgo(28), name: "Tiago Reis", email: "tiago.reis@example.com", avatar: "https://i.pravatar.cc/150?img=17", country: "Portugal", countryFlag: "🇵🇹", broker: "TradeFlow", method: "Crédito", value: 3450.75, status: "approved" },
+  { id: "TX9812", type: "withdraw", date: hoursAgo(36), name: "R. Mendes", email: "r.mendes@example.com", avatar: "https://i.pravatar.cc/150?img=16", country: "Brasil", countryFlag: "🇧🇷", broker: "Pix Flow", method: "PIX", value: 645.30, status: "approved" },
+  { id: "TX9811", type: "deposit", date: hoursAgo(48), name: "Júlia Mendes", email: "julia.mendes@example.com", avatar: "https://i.pravatar.cc/150?img=47", country: "Brasil", countryFlag: "🇧🇷", broker: "TradeFlow", method: "Cripto", value: 6780.00, status: "approved" },
+  { id: "TX9810", type: "withdraw", date: hoursAgo(56), name: "Eduardo Gomes", email: "eduardo.gomes@example.com", avatar: "https://i.pravatar.cc/150?img=18", country: "Brasil", countryFlag: "🇧🇷", broker: "TradeFlow", method: "PIX", value: 870.00, status: "rejected" },
+  { id: "TX9809", type: "deposit", date: hoursAgo(72), name: "Pedro Rocha", email: "pedro.rocha@example.com", avatar: "https://i.pravatar.cc/150?img=51", country: "Brasil", countryFlag: "🇧🇷", broker: "Pix Flow", method: "PIX", value: 1230.00, status: "approved" },
+];
+
+export const FinancialTable: React.FC = () => {
+  const [withdraw] = useState<WithdrawTable[] | undefined>(undefined);
+  void withdraw;
 
   useEffect(() => {
-    listAllWithdraws();
+    void getAllWithdraws();
   }, []);
 
   ////DRAWER USER
@@ -73,9 +118,9 @@ export const FinancialTable: React.FC = () => {
           </Box>
           <Box id="drawer-profile-details">
             <Box id="drawer-user-data">
-              <img id="drawer-profile-rounded" src={vitorrounded} alt="Vitor" />
+              <img id="drawer-profile-rounded" src={vitorrounded} alt="Carlos" />
               <Box sx={{ paddingLeft: "10px" }}>
-                <Typography sx={{ fontSize: "16px" }}>Vitor Cabral</Typography>
+                <Typography sx={{ fontSize: "16px" }}>Carlos Silva</Typography>
                 <Typography sx={{ fontSize: "14px", display: "flex" }}>
                   <Box
                     sx={{
@@ -125,14 +170,14 @@ export const FinancialTable: React.FC = () => {
             </Box>
             <Box className="drawer-list-item-info">
               <Typography className="grey-text">E-mail</Typography>
-              <Typography>vitor.cabral23@outlook.com</Typography>
+              <Typography>carlos.silva@example.com</Typography>
             </Box>
             <Typography sx={{ paddingLeft: "18px", paddingTop: "10px" }}>
               Informações da plataforma
             </Typography>
             <Box className="drawer-list-item-info">
               <Typography className="grey-text">Casa</Typography>
-              <Typography>Bet Candle</Typography>
+              <Typography>TradeFlow</Typography>
             </Box>
             <Box className="drawer-list-item-info">
               <Typography className="grey-text">Data de cadastro</Typography>
@@ -1283,185 +1328,131 @@ export const FinancialTable: React.FC = () => {
       >
         {list()}
       </Drawer>
-      <Box
-        sx={{
-          padding: "15px 15px 5px 15px",
-          borderBottom: "1px solid #39445B",
-        }}
-      >
-        <Grid
-          container
-          sx={{
-            cursor: "pointer",
-            display: "flex",
-            alignItems: "center",
-            padding: "5px",
-            fontSize: "13px",
-          }}
-        >
-          <Grid item lg={0.5}>
-            <BpCheckbox />
-          </Grid>
-          <Grid item lg={0.5}></Grid>
-          <Grid item lg={1}>
-            <span>Data</span>
-          </Grid>
-          <Grid item lg={2} sx={{ textAlign: "center" }}>
-            Nome
-          </Grid>
-          <Grid item lg={0.5} sx={{ textAlign: "center" }}>
-            País
-          </Grid>
-          <Grid item lg={2} sx={{ textAlign: "center" }}>
-            Corretora
-          </Grid>
-          <Grid item lg={2} sx={{ textAlign: "center" }}>
-            Método
-          </Grid>
-          <Grid item lg={2} sx={{ textAlign: "center" }}>
-            Valor
-          </Grid>
-          <Grid item lg={1}>
-            Status
-          </Grid>
-          <Grid
-            item
-            lg={0.5}
-            onClick={() => {
-              alert("opções");
-            }}
-            sx={{
-              paddingRight: "15px",
-              textAlign: "right",
-            }}
-          >
-            Ação
-          </Grid>
+      <Grid container className="finance-table-header">
+        <Grid item lg={0.5} className="finance-table-header-cell">
+          <BpCheckbox />
         </Grid>
-      </Box>
-      <Box sx={{ padding: "15px" }}>
-        {withdraw &&
-          withdraw.map((item, index) => (
+        <Grid item lg={0.5} className="finance-table-header-cell">
+          {""}
+        </Grid>
+        <Grid item lg={1.2} className="finance-table-header-cell">
+          Data
+        </Grid>
+        <Grid item lg={2.4} className="finance-table-header-cell">
+          Cliente
+        </Grid>
+        <Grid item lg={1.4} className="finance-table-header-cell">
+          País
+        </Grid>
+        <Grid item lg={1.3} className="finance-table-header-cell">
+          Corretora
+        </Grid>
+        <Grid item lg={1.2} className="finance-table-header-cell">
+          Método
+        </Grid>
+        <Grid item lg={1.4} className="finance-table-header-cell finance-table-cell-right">
+          Valor
+        </Grid>
+        <Grid item lg={1.4} className="finance-table-header-cell">
+          Status
+        </Grid>
+        <Grid item lg={0.7} className="finance-table-header-cell finance-table-cell-right">
+          {""}
+        </Grid>
+      </Grid>
+      <Box>
+        {mockTransactions.map((tx) => {
+          const dt = formatDate(tx.date);
+          return (
             <Grid
               container
-              key={index}
-              sx={{
-                cursor: "pointer",
-                borderRadius: "15px",
-                border: "1px solid #39445B",
-                display: "flex",
-                alignItems: "center",
-                padding: "5px",
-                marginBottom: "8px",
-                fontSize: "13px",
-              }}
+              key={tx.id}
+              className="finance-table-row"
+              onClick={toggleDrawer("left", true)}
             >
-              <Grid item lg={0.5}>
+              <Grid
+                item
+                lg={0.5}
+                className="finance-table-cell"
+                onClick={(e) => e.stopPropagation()}
+              >
                 <BpCheckbox />
               </Grid>
-              <Grid item lg={0.5} onClick={toggleDrawer("left", true)}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="13"
-                  height="14"
-                  viewBox="0 0 13 14"
-                  fill="none"
-                >
-                  <path
-                    d="M7.44097 1.15142C7.20302 0.913761 6.88047 0.780273 6.54417 0.780273C6.20787 0.780273 5.88531 0.913761 5.64736 1.15142L0.859612 5.93663C0.62154 6.1747 0.487793 6.4976 0.487793 6.83428C0.487793 7.17097 0.62154 7.49386 0.859612 7.73193C1.09768 7.97 1.42058 8.10375 1.75726 8.10375C2.09395 8.10375 2.41684 7.97 2.65491 7.73193L5.27511 5.11259L5.27511 12.3336C5.27511 12.6701 5.40881 12.9929 5.64681 13.2309C5.8848 13.4689 6.20759 13.6026 6.54417 13.6026C6.88075 13.6026 7.20354 13.4689 7.44153 13.2309C7.67953 12.9929 7.81323 12.6701 7.81323 12.3336L7.81323 5.11259L10.4326 7.73193C10.5505 7.84981 10.6904 7.94332 10.8444 8.00712C10.9984 8.07092 11.1635 8.10375 11.3302 8.10375C11.4969 8.10375 11.662 8.07092 11.816 8.00712C11.9701 7.94332 12.11 7.84981 12.2279 7.73193C12.3458 7.61405 12.4393 7.47411 12.5031 7.32009C12.5669 7.16607 12.5997 7.00099 12.5997 6.83428C12.5997 6.66757 12.5669 6.5025 12.5031 6.34848C12.4393 6.19446 12.3458 6.05451 12.2279 5.93663L7.44097 1.15142Z"
-                    fill="white"
-                  />
-                </svg>
+              <Grid item lg={0.5} className="finance-table-cell">
+                <span className={`finance-tx-icon finance-tx-${tx.type}`}>
+                  {tx.type === "withdraw" ? (
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <path
+                        d="M6 1.5v9M3 4.5L6 1.5l3 3"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  ) : (
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <path
+                        d="M6 10.5v-9M3 7.5l3 3 3-3"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  )}
+                </span>
               </Grid>
-              <Grid item lg={1}>
-                <span onClick={toggleDrawer("left", true)}>{item.date}</span>
+              <Grid item lg={1.2} className="finance-table-cell">
+                <Box className="finance-table-date">
+                  <div className="finance-table-date-main">{dt.date}</div>
+                  <div className="finance-table-date-sub">{dt.time}</div>
+                </Box>
               </Grid>
-              <Grid
-                onClick={toggleDrawer("left", true)}
-                item
-                lg={2}
-                sx={{ textAlign: "center" }}
-              >
-                {item.name}
+              <Grid item lg={2.4} className="finance-table-cell finance-table-cell-name">
+                <img src={tx.avatar} alt={tx.name} />
+                <Box sx={{ minWidth: 0 }}>
+                  <div className="finance-table-name">{tx.name}</div>
+                  <div className="finance-table-email">{tx.email}</div>
+                </Box>
               </Grid>
-              <Grid
-                onClick={toggleDrawer("left", true)}
-                item
-                lg={0.5}
-                sx={{ textAlign: "center" }}
-              >
-                {item.state}
+              <Grid item lg={1.4} className="finance-table-cell">
+                <span className="finance-table-flag">{tx.countryFlag}</span>
+                {tx.country}
               </Grid>
-              <Grid
-                onClick={toggleDrawer("left", true)}
-                item
-                lg={2}
-                sx={{ textAlign: "center" }}
-              >
-                {item.broker}
+              <Grid item lg={1.3} className="finance-table-cell">
+                {tx.broker}
               </Grid>
-              <Grid
-                onClick={toggleDrawer("left", true)}
-                item
-                lg={2}
-                sx={{ textAlign: "center" }}
-              >
-                {item.method}
-              </Grid>
-              <Grid
-                onClick={toggleDrawer("left", true)}
-                item
-                lg={2}
-                sx={{ textAlign: "center" }}
-              >
-                R${item.value}
-              </Grid>
-              <Grid onClick={toggleDrawer("left", true)} item lg={1}>
-                <span className="status-pending">{item.status}</span>
+              <Grid item lg={1.2} className="finance-table-cell">
+                <span className="finance-table-method">{tx.method}</span>
               </Grid>
               <Grid
                 item
-                lg={0.5}
-                onClick={() => {
-                  alert("opções");
-                }}
-                sx={{
-                  paddingRight: "15px",
-                  textAlign: "right",
-                }}
+                lg={1.4}
+                className={`finance-table-cell finance-table-cell-right finance-table-value finance-table-value-${tx.type}`}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="5"
-                  height="17"
-                  viewBox="0 0 5 17"
-                  fill="none"
-                >
-                  <ellipse
-                    cx="2.23101"
-                    cy="14.9762"
-                    rx="2.23095"
-                    ry="2.02381"
-                    fill="white"
-                  />
-                  <ellipse
-                    cx="2.23101"
-                    cy="8.5"
-                    rx="2.23095"
-                    ry="2.02381"
-                    fill="white"
-                  />
-                  <ellipse
-                    cx="2.23095"
-                    cy="2.02381"
-                    rx="2.23095"
-                    ry="2.02381"
-                    fill="white"
-                  />
+                {tx.type === "withdraw" ? "−" : "+"} R$ {formatCurrency(tx.value)}
+              </Grid>
+              <Grid item lg={1.4} className="finance-table-cell">
+                <span className={`finance-table-status status-${tx.status}`}>
+                  {statusLabels[tx.status]}
+                </span>
+              </Grid>
+              <Grid
+                item
+                lg={0.7}
+                className="finance-table-cell finance-table-cell-right finance-table-actions"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <svg width="4" height="16" viewBox="0 0 5 17" fill="none">
+                  <ellipse cx="2.231" cy="14.976" rx="2.231" ry="2.024" fill="currentColor" />
+                  <ellipse cx="2.231" cy="8.5" rx="2.231" ry="2.024" fill="currentColor" />
+                  <ellipse cx="2.231" cy="2.024" rx="2.231" ry="2.024" fill="currentColor" />
                 </svg>
               </Grid>
             </Grid>
-          ))}
+          );
+        })}
       </Box>
     </React.Fragment>
   );

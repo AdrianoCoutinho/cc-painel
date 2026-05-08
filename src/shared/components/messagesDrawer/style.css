@@ -51,7 +51,7 @@
 }
 
 .grey-text {
-    color: rgba(255, 255, 255, 0.30) !important;
+    color: rgba(255, 255, 255, 0.65) !important;
 }
 
 .text-align-right {
@@ -59,13 +59,12 @@
 }
 
 .pre-text-message {
-    width: 240px ;
-    height: 25px ;
-    text-overflow: ellipsis ;
-    overflow: hidden ;
-    line-height: 1 !important;
+    width: 240px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    line-height: 1.4 !important;
     font-size: 12px !important;
-    word-wrap: break-word;
 }
 
 #new-message-number {

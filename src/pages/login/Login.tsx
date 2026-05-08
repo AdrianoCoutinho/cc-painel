@@ -9,7 +9,7 @@ import {
   useTheme,
 } from "@mui/material";
 import React, { useState } from "react";
-import logo from "../../assets/images/optimux-logo.png";
+import { DEMO_CREDENTIALS } from "../../api";
 import { SnackBars } from "../../shared/components";
 import { useAuthContext } from "../../shared/contexts/AuthContext";
 import { useAppDispatch } from "../../store/hooks";
@@ -76,9 +76,9 @@ export const Login: React.FC<ILoginProps> = ({ children }) => {
   const dispatch = useAppDispatch();
   const { isAuthenticated, login } = useAuthContext();
 
-  const [user, setUser] = useState({
-    email: "",
-    password: "",
+  const [user, setUser] = useState<{ email: string; password: string }>({
+    email: DEMO_CREDENTIALS.email,
+    password: DEMO_CREDENTIALS.password,
   });
 
   ////para retirar após produção
@@ -109,7 +109,17 @@ export const Login: React.FC<ILoginProps> = ({ children }) => {
     return (
       <React.Fragment>
         <Box id="login-container-box">
-          <img src={logo} alt="OPTIMUX" width={189} height={30} />
+          <Typography
+            sx={{
+              fontSize: "26px",
+              fontWeight: 700,
+              letterSpacing: "1px",
+              color: "#fff",
+              mb: "10px",
+            }}
+          >
+            TradeFlow<span style={{ color: "#137cbd" }}>.</span>
+          </Typography>
           <Box id="login-box-card" style={{ width }}>
             <Typography id="login-card-title-reset">
               Recuperação de senha
@@ -151,7 +161,17 @@ export const Login: React.FC<ILoginProps> = ({ children }) => {
     return (
       <React.Fragment>
         <Box id="login-container-box">
-          <img src={logo} alt="OPTIMUX" width={189} height={30} />
+          <Typography
+            sx={{
+              fontSize: "26px",
+              fontWeight: 700,
+              letterSpacing: "1px",
+              color: "#fff",
+              mb: "10px",
+            }}
+          >
+            TradeFlow<span style={{ color: "#137cbd" }}>.</span>
+          </Typography>
           <Box id="login-box-card" style={{ width }}>
             <Typography id="login-card-title-reset">
               Recuperação de senha
@@ -275,7 +295,17 @@ export const Login: React.FC<ILoginProps> = ({ children }) => {
     return (
       <React.Fragment>
         <Box id="login-container-box">
-          <img src={logo} alt="OPTIMUX" width={189} height={30} />
+          <Typography
+            sx={{
+              fontSize: "26px",
+              fontWeight: 700,
+              letterSpacing: "1px",
+              color: "#fff",
+              mb: "10px",
+            }}
+          >
+            TradeFlow<span style={{ color: "#137cbd" }}>.</span>
+          </Typography>
           <Box id="login-box-card" style={{ width }}>
             <Typography id="login-card-title-reset">Concluído!</Typography>
             <Typography id="success-card-caption-recovery">
@@ -300,9 +330,37 @@ export const Login: React.FC<ILoginProps> = ({ children }) => {
   return (
     <React.Fragment>
       <Box id="login-container-box">
-        <img src={logo} alt="OPTIMUX" width={189} height={30} />
+        <Typography
+            sx={{
+              fontSize: "26px",
+              fontWeight: 700,
+              letterSpacing: "1px",
+              color: "#fff",
+              mb: "10px",
+            }}
+          >
+            TradeFlow<span style={{ color: "#137cbd" }}>.</span>
+          </Typography>
         <Box id="login-box-card" style={{ width }}>
           <Typography id="login-card-title">Login</Typography>
+          <Box
+            sx={{
+              backgroundColor: "rgba(19, 124, 189, 0.08)",
+              border: "1px solid rgba(19, 124, 189, 0.4)",
+              borderRadius: "8px",
+              padding: "10px 14px",
+              margin: "0 0 16px",
+              fontSize: "13px",
+              color: "rgba(255, 255, 255, 0.85)",
+              lineHeight: 1.5,
+            }}
+          >
+            <strong>Demo</strong> — preenchemos os campos automaticamente:
+            <br />
+            <code>{DEMO_CREDENTIALS.email}</code>
+            {" / "}
+            <code>{DEMO_CREDENTIALS.password}</code>
+          </Box>
           <Box id="login-inputs">
             <form onSubmit={auth} id="login-form">
               <input
@@ -310,6 +368,7 @@ export const Login: React.FC<ILoginProps> = ({ children }) => {
                 type="email"
                 id="email"
                 name="email"
+                value={user.email}
                 onChange={(ev) =>
                   setUser({
                     ...user,
@@ -322,6 +381,7 @@ export const Login: React.FC<ILoginProps> = ({ children }) => {
                 type="password"
                 id="password"
                 name="password"
+                value={user.password}
                 onChange={(ev) =>
                   setUser({
                     ...user,

@@ -5,10 +5,12 @@ import * as React from "react";
 import usaBtc from "../../../assets/images/usa-btc.png";
 import joystickicon from "../../../assets/svg/joystickicon.svg";
 import moneyIcon from "../../../assets/svg/money-icon.svg";
-import profilecover from "../../../assets/temporary-images/drawer-profile-cover.jpeg";
-import vitorrounded from "../../../assets/temporary-images/vitorcabral.svg";
 import { DonoutChart } from "../donout-chart/DonoutChart";
 import "./style.css";
+
+const profilecover =
+  "https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=800&h=200&fit=crop&auto=format";
+const vitorrounded = "https://i.pravatar.cc/150?img=12";
 
 type Anchor = "left";
 
@@ -42,9 +44,9 @@ export const DrawerUser = () => {
           </Box>
           <Box id="drawer-profile-details">
             <Box id="drawer-user-data">
-              <img id="drawer-profile-rounded" src={vitorrounded} alt="Vitor" />
+              <img id="drawer-profile-rounded" src={vitorrounded} alt="Carlos" />
               <Box sx={{ paddingLeft: "10px" }}>
-                <Typography sx={{ fontSize: "16px" }}>Vitor Cabral</Typography>
+                <Typography sx={{ fontSize: "16px" }}>Carlos Silva</Typography>
                 <Typography sx={{ fontSize: "14px", display: "flex" }}>
                   <Box
                     sx={{
@@ -94,14 +96,14 @@ export const DrawerUser = () => {
             </Box>
             <Box className="drawer-list-item-info">
               <Typography className="grey-text">E-mail</Typography>
-              <Typography>vitor.cabral23@outlook.com</Typography>
+              <Typography>carlos.silva@example.com</Typography>
             </Box>
             <Typography sx={{ paddingLeft: "18px", paddingTop: "10px" }}>
               Informações da plataforma
             </Typography>
             <Box className="drawer-list-item-info">
               <Typography className="grey-text">Casa</Typography>
-              <Typography>Bet Candle</Typography>
+              <Typography>TradeFlow</Typography>
             </Box>
             <Box className="drawer-list-item-info">
               <Typography className="grey-text">Data de cadastro</Typography>

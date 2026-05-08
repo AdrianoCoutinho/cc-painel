@@ -7,16 +7,54 @@ import {
   Typography,
   styled,
 } from "@mui/material";
-import React, { useEffect } from "react";
-// import { getAllUsers } from "../../../api";
+import React from "react";
 import usaBtc from "../../../assets/images/usa-btc.png";
 import joystickicon from "../../../assets/svg/joystickicon.svg";
 import moneyIcon from "../../../assets/svg/money-icon.svg";
-import profilecover from "../../../assets/temporary-images/drawer-profile-cover.jpeg";
-import vitorrounded from "../../../assets/temporary-images/vitorcabral.svg";
-// import UserData from "../../interfaces/UserTable.interface";
 import { DonoutChart } from "../donout-chart/DonoutChart";
 import "./style.css";
+
+const profilecover =
+  "https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=800&h=200&fit=crop&auto=format";
+const vitorrounded = "https://i.pravatar.cc/150?img=12";
+
+type UserStatus = "active" | "pending" | "suspended";
+
+interface MockUser {
+  id: string;
+  name: string;
+  email: string;
+  country: string;
+  countryFlag: string;
+  broker: string;
+  averageTicket: string;
+  lastAccess: string;
+  status: UserStatus;
+  avatar: string;
+}
+
+const mockUsers: MockUser[] = [
+  { id: "8421", name: "Carlos Silva", email: "carlos.silva@example.com", country: "Brasil", countryFlag: "🇧🇷", broker: "TradeFlow", averageTicket: "R$ 2.345,80", lastAccess: "há 2 horas", status: "active", avatar: "https://i.pravatar.cc/150?img=12" },
+  { id: "8422", name: "Daniel Costa", email: "daniel.costa@example.com", country: "Brasil", countryFlag: "🇧🇷", broker: "IQ Flow", averageTicket: "R$ 1.890,50", lastAccess: "há 5 horas", status: "active", avatar: "https://i.pravatar.cc/150?img=8" },
+  { id: "8423", name: "Marcos Lima", email: "marcos.lima@example.com", country: "Portugal", countryFlag: "🇵🇹", broker: "TradeFlow", averageTicket: "€ 980,00", lastAccess: "ontem", status: "pending", avatar: "https://i.pravatar.cc/150?img=13" },
+  { id: "8424", name: "Lucas Almeida", email: "lucas.almeida@example.com", country: "Brasil", countryFlag: "🇧🇷", broker: "TradeFlow", averageTicket: "R$ 4.120,00", lastAccess: "há 30 min", status: "active", avatar: "https://i.pravatar.cc/150?img=14" },
+  { id: "8425", name: "Felipe Souza", email: "felipe.souza@example.com", country: "Argentina", countryFlag: "🇦🇷", broker: "Ultron Flow", averageTicket: "AR$ 3.200,00", lastAccess: "há 3 dias", status: "suspended", avatar: "https://i.pravatar.cc/150?img=15" },
+  { id: "8426", name: "R. Mendes", email: "r.mendes@example.com", country: "Brasil", countryFlag: "🇧🇷", broker: "Pix Flow", averageTicket: "R$ 645,30", lastAccess: "há 1 hora", status: "active", avatar: "https://i.pravatar.cc/150?img=16" },
+  { id: "8427", name: "Tiago Reis", email: "tiago.reis@example.com", country: "Portugal", countryFlag: "🇵🇹", broker: "TradeFlow", averageTicket: "€ 1.560,75", lastAccess: "há 2 dias", status: "active", avatar: "https://i.pravatar.cc/150?img=17" },
+  { id: "8428", name: "Ana Castro", email: "ana.castro@example.com", country: "Brasil", countryFlag: "🇧🇷", broker: "TradeFlow", averageTicket: "R$ 5.890,00", lastAccess: "há 15 min", status: "active", avatar: "https://i.pravatar.cc/150?img=45" },
+  { id: "8429", name: "Camila Reis", email: "camila.reis@example.com", country: "Brasil", countryFlag: "🇧🇷", broker: "IQ Flow", averageTicket: "R$ 2.100,40", lastAccess: "há 4 horas", status: "pending", avatar: "https://i.pravatar.cc/150?img=32" },
+  { id: "8430", name: "Eduardo Gomes", email: "eduardo.gomes@example.com", country: "Brasil", countryFlag: "🇧🇷", broker: "TradeFlow", averageTicket: "R$ 870,00", lastAccess: "há 6 horas", status: "active", avatar: "https://i.pravatar.cc/150?img=18" },
+  { id: "8431", name: "Beatriz Lima", email: "beatriz.lima@example.com", country: "Espanha", countryFlag: "🇪🇸", broker: "TradeFlow", averageTicket: "€ 2.450,00", lastAccess: "há 1 dia", status: "active", avatar: "https://i.pravatar.cc/150?img=44" },
+  { id: "8432", name: "Rafael Pereira", email: "rafael.pereira@example.com", country: "Brasil", countryFlag: "🇧🇷", broker: "Ultron Flow", averageTicket: "R$ 320,00", lastAccess: "há 1 semana", status: "suspended", avatar: "https://i.pravatar.cc/150?img=33" },
+  { id: "8433", name: "Júlia Mendes", email: "julia.mendes@example.com", country: "Brasil", countryFlag: "🇧🇷", broker: "TradeFlow", averageTicket: "R$ 6.780,00", lastAccess: "agora", status: "active", avatar: "https://i.pravatar.cc/150?img=47" },
+  { id: "8434", name: "Pedro Rocha", email: "pedro.rocha@example.com", country: "Brasil", countryFlag: "🇧🇷", broker: "Pix Flow", averageTicket: "R$ 1.230,00", lastAccess: "há 12 horas", status: "pending", avatar: "https://i.pravatar.cc/150?img=51" },
+];
+
+const statusLabels: Record<UserStatus, string> = {
+  active: "Ativo",
+  pending: "Pendente",
+  suspended: "Suspenso",
+};
 
 export const UsersTable: React.FC = () => {
   const seriesData = [30, 70]; // Sua série dinâmica
@@ -49,9 +87,9 @@ export const UsersTable: React.FC = () => {
           </Box>
           <Box id="drawer-profile-details">
             <Box id="drawer-user-data">
-              <img id="drawer-profile-rounded" src={vitorrounded} alt="Vitor" />
+              <img id="drawer-profile-rounded" src={vitorrounded} alt="Carlos" />
               <Box sx={{ paddingLeft: "10px" }}>
-                <Typography sx={{ fontSize: "16px" }}>Vitor Cabral</Typography>
+                <Typography sx={{ fontSize: "16px" }}>Carlos Silva</Typography>
                 <Typography sx={{ fontSize: "14px", display: "flex" }}>
                   <Box
                     sx={{
@@ -101,14 +139,14 @@ export const UsersTable: React.FC = () => {
             </Box>
             <Box className="drawer-list-item-info">
               <Typography className="grey-text">E-mail</Typography>
-              <Typography>vitor.cabral23@outlook.com</Typography>
+              <Typography>carlos.silva@example.com</Typography>
             </Box>
             <Typography sx={{ paddingLeft: "18px", paddingTop: "10px" }}>
               Informações da plataforma
             </Typography>
             <Box className="drawer-list-item-info">
               <Typography className="grey-text">Casa</Typography>
-              <Typography>Bet Candle</Typography>
+              <Typography>TradeFlow</Typography>
             </Box>
             <Box className="drawer-list-item-info">
               <Typography className="grey-text">Data de cadastro</Typography>
@@ -1187,23 +1225,6 @@ export const UsersTable: React.FC = () => {
   // const [userDetail, setUserDetail] = useState<UserData[]>();
   // const [userDetailDrawer, setUserDetailDrawer] = useState<UserDrawerInfo>();
 
-  const getUsersDetail = async () => {
-    // const result = await getAllUsers();
-    // const formatedUser = result.user.map((user: UserData, index: number) => ({
-    //   idKey: index,
-    //   id: user.id,
-    //   name: user.name,
-    //   country: "Brazil",
-    //   broker: "BetCandle",
-    //   averageTicket: "R$1.000.0000,00",
-    //   lastAccess: "2024-01-27",
-    // }));
-    // setUserDetail(formatedUser);
-  };
-
-  useEffect(() => {
-    getUsersDetail();
-  }, []);
 
   const BpIcon = styled("span")(({ theme }) => ({
     borderRadius: 3,
@@ -1291,127 +1312,92 @@ export const UsersTable: React.FC = () => {
       >
         {list()}
       </Drawer>
-      <Box
-        sx={{
-          padding: "15px 15px 5px 15px",
-          borderBottom: "1px solid #39445B",
-        }}
-      >
-        <Grid
-          container
-          spacing={0}
-          sx={{
-            cursor: "pointer",
-            display: "flex",
-            alignItems: "center",
-            padding: "5px",
-            fontSize: "13px",
-          }}
-        >
-          <Grid item lg={1.2}>
-            <BpCheckbox />
-            User ID
-          </Grid>
-          <Grid item lg={2}>
-            Nome
-          </Grid>
-          <Grid item lg={1}>
-            País
-          </Grid>
-          <Grid item lg={2} sx={{ textAlign: "center" }}>
-            Corretora
-          </Grid>
-          <Grid item lg={3.3} sx={{ textAlign: "center" }}>
-            Ticket Médio
-          </Grid>
-          <Grid item lg={2}>
-            Último acesso
-          </Grid>
-          <Grid item lg={0.5} sx={{ textAlign: "center" }}>
-            Ação
-          </Grid>
+      <Grid container className="users-table-header">
+        <Grid item lg={1.4} className="users-table-header-cell">
+          <BpCheckbox />
+          ID
         </Grid>
-      </Box>
-      <Box sx={{ padding: "15px" }}>
-        {/* {userDetail &&
-          userDetail.map((user) => (
-            <Grid container key={user.idKey} className="usersContainer">
-              <Grid className="users-table-id" item lg={1.2}>
-                <BpCheckbox />
-                <span onClick={() => getUserDrawerDetails("123")}>
-                  #{user.idKey}
-                </span>
-              </Grid>
-              <Grid onClick={() => getUserDrawerDetails("123")} item lg={2}>
-                {user.name}
-              </Grid>
-              <Grid onClick={() => getUserDrawerDetails("123")} item lg={1}>
-                {user.country}
-              </Grid>
-              <Grid
-                onClick={() => getUserDrawerDetails("123")}
-                item
-                lg={2}
-                sx={{ textAlign: "center" }}
-              >
-                {user.broker}
-              </Grid>
-              <Grid
-                onClick={() => getUserDrawerDetails("123")}
-                item
-                lg={3.3}
-                sx={{ textAlign: "center" }}
-              >
-                {user.averageTicket}
-              </Grid>
-              <Grid
-                onClick={() => getUserDrawerDetails("123")}
-                item
-                lg={2}
-                sx={{ paddingLeft: "12px" }}
-              >
-                {user.lastAccess}
-              </Grid>
-              <Grid
-                item
-                lg={0.5}
-                sx={{ padding: "7px 0 0 25px" }}
-                onClick={() => {
-                  alert("opções");
-                }}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="5"
-                  height="17"
-                  viewBox="0 0 5 17"
-                  fill="none"
-                >
-                  <ellipse
-                    cx="2.23101"
-                    cy="14.9762"
-                    rx="2.23095"
-                    ry="2.02381"
-                    fill="white"
-                  />
-                  <ellipse
-                    cx="2.23101"
-                    cy="8.5"
-                    rx="2.23095"
-                    ry="2.02381"
-                    fill="white"
-                  />
-                  <ellipse
-                    cx="2.23095"
-                    cy="2.02381"
-                    rx="2.23095"
-                    ry="2.02381"
-                    fill="white"
-                  />
-                </svg>
-              </Grid>
+        <Grid item lg={2.4} className="users-table-header-cell">
+          Nome
+        </Grid>
+        <Grid item lg={1.4} className="users-table-header-cell">
+          País
+        </Grid>
+        <Grid item lg={1.6} className="users-table-header-cell">
+          Corretora
+        </Grid>
+        <Grid item lg={1.8} className="users-table-header-cell">
+          Ticket médio
+        </Grid>
+        <Grid item lg={1.4} className="users-table-header-cell">
+          Último acesso
+        </Grid>
+        <Grid item lg={1.4} className="users-table-header-cell">
+          Status
+        </Grid>
+        <Grid item lg={0.6} className="users-table-header-cell users-table-cell-right">
+          {""}
+        </Grid>
+      </Grid>
+      <Box>
+        {mockUsers.map((user) => (
+          <Grid
+            container
+            key={user.id}
+            className="users-table-row"
+            onClick={() => setState({ left: true })}
+          >
+            <Grid item lg={1.4} className="users-table-cell users-table-cell-id">
+              <BpCheckbox />
+              <span>#{user.id}</span>
             </Grid>
-          ))} */}
+            <Grid item lg={2.4} className="users-table-cell users-table-cell-name">
+              <img src={user.avatar} alt={user.name} />
+              <Box sx={{ minWidth: 0 }}>
+                <div className="users-table-name">{user.name}</div>
+                <div className="users-table-email">{user.email}</div>
+              </Box>
+            </Grid>
+            <Grid item lg={1.4} className="users-table-cell">
+              <span className="users-table-flag">{user.countryFlag}</span>
+              {user.country}
+            </Grid>
+            <Grid item lg={1.6} className="users-table-cell">
+              {user.broker}
+            </Grid>
+            <Grid item lg={1.8} className="users-table-cell users-table-cell-money">
+              {user.averageTicket}
+            </Grid>
+            <Grid item lg={1.4} className="users-table-cell users-table-cell-muted">
+              {user.lastAccess}
+            </Grid>
+            <Grid item lg={1.4} className="users-table-cell">
+              <span className={`users-table-status status-${user.status}`}>
+                {statusLabels[user.status]}
+              </span>
+            </Grid>
+            <Grid
+              item
+              lg={0.6}
+              className="users-table-cell users-table-cell-right users-table-actions"
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="4"
+                height="16"
+                viewBox="0 0 5 17"
+                fill="none"
+              >
+                <ellipse cx="2.231" cy="14.976" rx="2.231" ry="2.024" fill="currentColor" />
+                <ellipse cx="2.231" cy="8.5" rx="2.231" ry="2.024" fill="currentColor" />
+                <ellipse cx="2.231" cy="2.024" rx="2.231" ry="2.024" fill="currentColor" />
+              </svg>
+            </Grid>
+          </Grid>
+        ))}
       </Box>
     </React.Fragment>
   );

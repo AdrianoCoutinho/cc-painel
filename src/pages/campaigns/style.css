@@ -2,129 +2,357 @@
     margin-top: 10px !important;
     color: #FFF;
     font-size: 24px !important;
-    font-style: normal;
-    font-weight: 400;
+    font-weight: 500 !important;
     line-height: normal;
 }
 
-#campaigns-left-menu, #campaigns-right-table {
-    height: 500px;
+#campaigns-left-menu,
+#campaigns-right-table {
     border-radius: 22px;
     border: 1px solid #39445B;
     background: rgba(33, 40, 54, 0.50);
 }
 
-.green-button {
+/* Make right pane a vertical flex so the email list scrolls inside the card
+   instead of overflowing past the rounded background. */
+#campaigns-right-table {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* =====================================================================
+   Sidebar
+   ===================================================================== */
+
+#campaigns-left-menu {
+    padding: 12px 0;
+    overflow: hidden;
+}
+
+.campaigns-compose-wrapper {
+    padding: 4px 14px 14px;
+    border-bottom: 1px solid #39445B;
+    margin-bottom: 8px;
+}
+
+.campaigns-compose-button {
     text-transform: none !important;
     color: #1C212C !important;
-    border-radius: 539.102px !important;
+    border-radius: 999px !important;
     background: #00E074 !important;
     box-shadow: 0px 0px 1.324px 0px rgba(0, 0, 0, 0.15) !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    padding: 8px 16px !important;
+    transition: filter 120ms ease;
 }
 
-.new-email-button {
-    width: 85%;
+.campaigns-compose-button:hover {
+    filter: brightness(1.05);
 }
 
-.campaign-left-menu-filter {
+.campaigns-folder-list {
     display: flex;
-    margin-top: 10px;
+    flex-direction: column;
+    padding: 4px 8px;
+}
+
+.campaigns-folder {
+    display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.75);
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 120ms ease, color 120ms ease;
 }
 
-.campaign-left-menu-filter-value {
-    background-color: red;
+.campaigns-folder:hover {
+    background-color: rgba(57, 68, 91, 0.35);
     color: #fff;
-    padding: 3px 6px 3px 6px;
-    border-radius: 100px;
-    font-size: 0.6rem;
-    font-style: normal;
+}
+
+.campaigns-folder-active {
+    background-color: rgba(19, 124, 189, 0.15);
+    color: #fff;
+}
+
+.campaigns-folder-label {
+    font-size: 13px;
     font-weight: 500;
-    line-height: normal;
 }
 
-.campaign-left-menu-filter-button {
-    text-transform: none !important;
-    padding: 3px 10px 0 10px !important;
-    border-radius: 100px !important;
-    font-size: 0.6rem !important;
-    background: none !important;
-    box-shadow: none !important;
+.campaigns-folder-active .campaigns-folder-label {
+    font-weight: 600;
 }
 
-.campaign-left-menu-filter-button:hover {
-    background-color: #212836 !important;
+.campaigns-folder-count {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.4);
+    font-variant-numeric: tabular-nums;
 }
 
-.campaign-left-menu-filter-button-active{
-    background-color: #212836 !important;
-}
-
-
-
-#campaigns-select{
-    border-radius: 14px;
-    border: 1px solid #39445B;
-    background: #212836;
-    padding: 5px 0 5px 5px;
+.campaigns-folder-badge {
+    background: #137cbd;
     color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 999px;
+    line-height: 1.4;
+    font-variant-numeric: tabular-nums;
 }
 
-#to-file {
-    margin-right: 8px;
-}
+/* =====================================================================
+   Toolbar (top of email list)
+   ===================================================================== */
 
-#campaigns-main-head-box{
+#campaigns-main-head-box {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid  #39445B;
+    border-bottom: 1px solid #39445B;
+    padding: 12px 18px;
+    flex-shrink: 0;
 }
+
+.campaigns-toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#campaigns-select {
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid #39445B;
+    background: rgba(33, 40, 54, 0.6);
+    padding: 0 10px;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+    transition: border-color 120ms ease;
+}
+
+#campaigns-select:focus {
+    outline: none;
+    border-color: #137cbd;
+}
+
+.campaigns-icon-button {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid #39445B;
+    background: rgba(33, 40, 54, 0.6);
+    color: rgba(255, 255, 255, 0.65);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 120ms ease, color 120ms ease;
+}
+
+.campaigns-icon-button:hover {
+    background-color: rgba(57, 68, 91, 0.5);
+    color: #fff;
+}
+
+.campaigns-counter {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.campaigns-counter-current,
+.campaigns-counter-total {
+    color: rgba(255, 255, 255, 0.85);
+    font-variant-numeric: tabular-nums;
+}
+
+.campaigns-counter-unread {
+    color: #4DABF5;
+    margin-left: 4px;
+}
+
+/* =====================================================================
+   Email list rows
+   ===================================================================== */
 
 #campaigns-messages-container {
-    width: 99%;
-    margin: 10px auto;
+    flex: 1 1 0;
+    min-height: 0;
+    overflow-y: auto;
 }
 
-.campaings-messages-star-icon:hover  {
-    fill: #525560;
+#campaigns-messages-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+#campaigns-messages-container::-webkit-scrollbar-thumb {
+    background: rgba(57, 68, 91, 0.6);
+    border-radius: 999px;
+}
+
+#campaigns-messages-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.campaigns-email {
+    display: grid;
+    grid-template-columns: 36px 28px 32px 160px 1fr auto;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    border-bottom: 1px solid rgba(57, 68, 91, 0.3);
     cursor: pointer;
+    transition: background-color 120ms ease;
 }
 
-.campaigns-message-name {
-    margin-left: 5px !important;
-    color: #FFF !important;
-    font-size: 16px !important;
-    font-style: normal !important;
-    font-weight: 500 !important;
-    line-height: normal !important;
+.campaigns-email:hover {
+    background-color: rgba(57, 68, 91, 0.25);
 }
 
-
-.campaigns-message-unread-border{
-    border: 1px solid #39445B !important;
+.campaigns-email:last-child {
+    border-bottom: none;
 }
 
-.campaigns-message-subject {
-    margin-left: 5px !important;
-    color: #FFF !important;
-    font-size: 16px !important;
-    font-style: normal !important;
-    font-weight: 500 !important;
-    line-height: normal !important;
+/* Unread state: brighter background, blue accent on the left */
+.campaigns-email-unread {
+    background-color: rgba(19, 124, 189, 0.05);
+    box-shadow: inset 3px 0 0 #137cbd;
 }
 
-.campaigns-message-message {
-    margin-left: 10px !important;
+.campaigns-email-cell-checkbox,
+.campaigns-email-cell-star {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.campaigns-message-message-hour {
-    color: #FFF !important;
-    text-align: right !important;
-    font-size: 16px !important;
-    font-style: normal v;
-    font-weight: 500 !important;
-    line-height: normal !important;
+.campaigns-star {
+    cursor: pointer;
+    transition: opacity 120ms ease;
+}
+
+.campaigns-star:hover {
+    opacity: 0.8;
+}
+
+.campaigns-email-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.campaigns-email-sender {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.campaigns-email-unread .campaigns-email-sender {
+    color: #fff;
+    font-weight: 700;
+}
+
+/* Subject + preview share a single line, truncate together */
+.campaigns-email-content {
+    font-size: 13px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    min-width: 0;
+}
+
+.campaigns-email-subject {
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+}
+
+.campaigns-email-unread .campaigns-email-subject {
+    color: #fff;
+    font-weight: 600;
+}
+
+.campaigns-email-preview {
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
+}
+
+/* =====================================================================
+   Labels (category pills)
+   ===================================================================== */
+
+.campaigns-label {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 999px;
+    margin-right: 8px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    vertical-align: middle;
+}
+
+.label-support {
+    background: rgba(19, 124, 189, 0.15);
+    color: #4DABF5;
+}
+
+.label-financial {
+    background: rgba(0, 224, 116, 0.12);
+    color: #00E074;
+}
+
+.label-marketing {
+    background: rgba(204, 92, 224, 0.15);
+    color: #CC5CE0;
+}
+
+.label-compliance {
+    background: rgba(226, 196, 36, 0.15);
+    color: #E2C424;
+}
+
+/* =====================================================================
+   Right side meta (attachment + time)
+   ===================================================================== */
+
+.campaigns-email-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.campaigns-email-attachment {
+    color: rgba(255, 255, 255, 0.55);
+    display: inline-flex;
+    align-items: center;
+}
+
+.campaigns-email-time {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.55);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.campaigns-email-unread .campaigns-email-time {
+    color: #4DABF5;
+    font-weight: 600;
 }

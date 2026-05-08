@@ -1,5 +1,144 @@
-/* *{color: #fff;} */
+/* ===== Header ===== */
+.users-table-header {
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(57, 68, 91, 0.6);
+    align-items: center;
+}
 
+.users-table-header-cell {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ===== Rows ===== */
+.users-table-row {
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(57, 68, 91, 0.3);
+    cursor: pointer;
+    transition: background-color 120ms ease;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.users-table-row:hover {
+    background-color: rgba(57, 68, 91, 0.25);
+}
+
+.users-table-row:hover .users-table-actions {
+    opacity: 1;
+}
+
+.users-table-row:last-child {
+    border-bottom: none;
+}
+
+.users-table-cell {
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow: hidden;
+}
+
+.users-table-cell-right {
+    justify-content: flex-end;
+}
+
+.users-table-cell-id span {
+    color: rgba(255, 255, 255, 0.6);
+    font-variant-numeric: tabular-nums;
+}
+
+.users-table-cell-name img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.users-table-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.users-table-email {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.users-table-flag {
+    font-size: 18px;
+    line-height: 1;
+}
+
+.users-table-cell-money {
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+}
+
+.users-table-cell-muted {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+}
+
+/* ===== Status pills ===== */
+.users-table-status {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+}
+
+.status-active {
+    background: rgba(0, 224, 116, 0.12);
+    color: #00E074;
+    border: 1px solid rgba(0, 224, 116, 0.3);
+}
+
+.status-pending {
+    background: rgba(226, 196, 36, 0.12);
+    color: #E2C424;
+    border: 1px solid rgba(226, 196, 36, 0.3);
+}
+
+.status-suspended {
+    background: rgba(224, 49, 49, 0.12);
+    color: #E03131;
+    border: 1px solid rgba(224, 49, 49, 0.3);
+}
+
+/* ===== Action button (3 dots) — visible on hover ===== */
+.users-table-actions {
+    color: rgba(255, 255, 255, 0.55);
+    opacity: 0;
+    transition: opacity 120ms ease;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+}
+
+.users-table-actions:hover {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* ===== Legacy classes still referenced ===== */
 .users-table-id {
     text-align: left;
 }

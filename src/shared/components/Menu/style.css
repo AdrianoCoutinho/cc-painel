@@ -43,15 +43,18 @@
 }
 
 
-.svg-link:hover .svg-path {
-    fill: #000 
+.svg-link:hover .svg-path,
+.menu-active .svg-path {
+    fill: #000;
 }
 
-.svg-link:hover .svg-path-stroke {
-    stroke: #000
+.svg-link:hover .svg-path-stroke,
+.menu-active .svg-path-stroke {
+    stroke: #000;
 }
 
-#vertical-menu li:hover {
+#vertical-menu li:hover,
+#vertical-menu li.menu-active {
     background-color: #00E074 !important;
     background-image: url("../../../assets/images/bg-menu-item.png") !important;
     background-size: contain;

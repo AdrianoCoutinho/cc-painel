@@ -1,6 +1,5 @@
 import { Box, Grid, Typography, useMediaQuery, useTheme } from "@mui/material";
 import React, { useEffect, useState } from "react";
-// import { getTotalRecipeOfTheDay } from "../../api";
 import ArrowIcon from "../../assets/svg/arrow.svg";
 import MoneyIcon from "../../assets/svg/money-icon.svg";
 import TotalUsersIcon from "../../assets/svg/totalUsersIcon.svg";

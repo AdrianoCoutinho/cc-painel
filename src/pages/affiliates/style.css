@@ -109,6 +109,16 @@
 
 .affiliates-manager-info {
     display: flex;
+    align-items: center;
+}
+
+.affiliates-manager-info img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 8px;
+    flex-shrink: 0;
 }
 
 .affiliates-manager-info span {
@@ -200,6 +210,14 @@
 .affiliates-ranking-name {
     display: flex;
     align-items: center;
+}
+
+.affiliates-ranking-name img:first-of-type {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
 }
 
 .affiliates-ranking-name span {

@@ -9,12 +9,13 @@ import {
 } from "@mui/material";
 import React from "react";
 import roundedBrasil from "../../assets/svg/brasil-rounded.svg";
-import avatarAfonso from "../../assets/temporary-images/afonso-lira.png";
-import avatarAntonio from "../../assets/temporary-images/antonio-anjos.png";
-import avatarJoao from "../../assets/temporary-images/joao-carlos.png";
-import avatarJota from "../../assets/temporary-images/jota-m.png";
-import avatarVinicius from "../../assets/temporary-images/vinicius-nunes.png";
 import { BaseLayoutPage } from "../../shared/layouts";
+
+const avatarAfonso = "https://i.pravatar.cc/150?img=13";
+const avatarAntonio = "https://i.pravatar.cc/150?img=14";
+const avatarJoao = "https://i.pravatar.cc/150?img=15";
+const avatarJota = "https://i.pravatar.cc/150?img=16";
+const avatarVinicius = "https://i.pravatar.cc/150?img=17";
 import "./style.css";
 
 const Search = styled("div")(({ theme }) => ({
@@ -235,13 +236,13 @@ export const Affiliates: React.FC = () => {
                 <Box id="affiliates-managers-list">
                   <Box className="affiliates-manager-sections">
                     <Box component={"div"} className="affiliates-manager-info">
-                      <img src={avatarJoao} alt="João Carlos" />
+                      <img src={avatarJoao} alt="Felipe Souza" />
                       <Box
                         component={"div"}
                         className="affiliates-name-and-broker"
                       >
-                        <Typography>João Carlos</Typography>
-                        <span className="grey-text">Bet Candle</span>
+                        <Typography>Felipe Souza</Typography>
+                        <span className="grey-text">TradeFlow</span>
                       </Box>
                     </Box>
                     <Box className="affiliates-manager-mail-icon">
@@ -281,13 +282,13 @@ export const Affiliates: React.FC = () => {
                   </Box>
                   <Box className="affiliates-manager-sections">
                     <Box component={"div"} className="affiliates-manager-info">
-                      <img src={avatarAfonso} alt="Afonso Lira" />
+                      <img src={avatarAfonso} alt="Marcos Lima" />
                       <Box
                         component={"div"}
                         className="affiliates-name-and-broker"
                       >
-                        <Typography>Afonso Lira</Typography>
-                        <span className="grey-text">Bet Candle</span>
+                        <Typography>Marcos Lima</Typography>
+                        <span className="grey-text">TradeFlow</span>
                       </Box>
                     </Box>
                     <Box className="affiliates-manager-mail-icon">
@@ -327,13 +328,13 @@ export const Affiliates: React.FC = () => {
                   </Box>
                   <Box className="affiliates-manager-sections">
                     <Box component={"div"} className="affiliates-manager-info">
-                      <img src={avatarAntonio} alt="Antônio Anjos" />
+                      <img src={avatarAntonio} alt="Lucas Almeida" />
                       <Box
                         component={"div"}
                         className="affiliates-name-and-broker"
                       >
-                        <Typography>Antônio Anjos</Typography>
-                        <span className="grey-text">Bet Candle</span>
+                        <Typography>Lucas Almeida</Typography>
+                        <span className="grey-text">TradeFlow</span>
                       </Box>
                     </Box>
                     <Box className="affiliates-manager-mail-icon">
@@ -373,13 +374,13 @@ export const Affiliates: React.FC = () => {
                   </Box>
                   <Box className="affiliates-manager-sections">
                     <Box component={"div"} className="affiliates-manager-info">
-                      <img src={avatarJota} alt="Jota M" />
+                      <img src={avatarJota} alt="R. Mendes" />
                       <Box
                         component={"div"}
                         className="affiliates-name-and-broker"
                       >
-                        <Typography>Jota M</Typography>
-                        <span className="grey-text">Bet Candle</span>
+                        <Typography>R. Mendes</Typography>
+                        <span className="grey-text">TradeFlow</span>
                       </Box>
                     </Box>
                     <Box className="affiliates-manager-mail-icon">
@@ -419,13 +420,13 @@ export const Affiliates: React.FC = () => {
                   </Box>
                   <Box className="affiliates-manager-sections">
                     <Box component={"div"} className="affiliates-manager-info">
-                      <img src={avatarAfonso} alt="Afonso Lira" />
+                      <img src={avatarAfonso} alt="Marcos Lima" />
                       <Box
                         component={"div"}
                         className="affiliates-name-and-broker"
                       >
-                        <Typography>Afonso Lira</Typography>
-                        <span className="grey-text">Bet Candle</span>
+                        <Typography>Marcos Lima</Typography>
+                        <span className="grey-text">TradeFlow</span>
                       </Box>
                     </Box>
                     <Box className="affiliates-manager-mail-icon">
@@ -465,13 +466,13 @@ export const Affiliates: React.FC = () => {
                   </Box>
                   <Box className="affiliates-manager-sections">
                     <Box component={"div"} className="affiliates-manager-info">
-                      <img src={avatarAntonio} alt="Antônio Anjos" />
+                      <img src={avatarAntonio} alt="Lucas Almeida" />
                       <Box
                         component={"div"}
                         className="affiliates-name-and-broker"
                       >
-                        <Typography>Antônio Anjos</Typography>
-                        <span className="grey-text">Bet Candle</span>
+                        <Typography>Lucas Almeida</Typography>
+                        <span className="grey-text">TradeFlow</span>
                       </Box>
                     </Box>
                     <Box className="affiliates-manager-mail-icon">
@@ -511,13 +512,13 @@ export const Affiliates: React.FC = () => {
                   </Box>
                   <Box className="affiliates-manager-sections">
                     <Box component={"div"} className="affiliates-manager-info">
-                      <img src={avatarJota} alt="Jota M" />
+                      <img src={avatarJota} alt="R. Mendes" />
                       <Box
                         component={"div"}
                         className="affiliates-name-and-broker"
                       >
-                        <Typography>Jota M</Typography>
-                        <span className="grey-text">Bet Candle</span>
+                        <Typography>R. Mendes</Typography>
+                        <span className="grey-text">TradeFlow</span>
                       </Box>
                     </Box>
                     <Box className="affiliates-manager-mail-icon">
@@ -557,13 +558,13 @@ export const Affiliates: React.FC = () => {
                   </Box>
                   <Box className="affiliates-manager-sections">
                     <Box component={"div"} className="affiliates-manager-info">
-                      <img src={avatarJota} alt="Jota M" />
+                      <img src={avatarJota} alt="R. Mendes" />
                       <Box
                         component={"div"}
                         className="affiliates-name-and-broker"
                       >
-                        <Typography>Jota M</Typography>
-                        <span className="grey-text">Bet Candle</span>
+                        <Typography>R. Mendes</Typography>
+                        <span className="grey-text">TradeFlow</span>
                       </Box>
                     </Box>
                     <Box className="affiliates-manager-mail-icon">
@@ -603,13 +604,13 @@ export const Affiliates: React.FC = () => {
                   </Box>
                   <Box className="affiliates-manager-sections">
                     <Box component={"div"} className="affiliates-manager-info">
-                      <img src={avatarJota} alt="Jota M" />
+                      <img src={avatarJota} alt="R. Mendes" />
                       <Box
                         component={"div"}
                         className="affiliates-name-and-broker"
                       >
-                        <Typography>Jota M</Typography>
-                        <span className="grey-text">Bet Candle</span>
+                        <Typography>R. Mendes</Typography>
+                        <span className="grey-text">TradeFlow</span>
                       </Box>
                     </Box>
                     <Box className="affiliates-manager-mail-icon">
@@ -703,13 +704,13 @@ export const Affiliates: React.FC = () => {
                 <Box id="affiliates-affiliates-list">
                   <Box className="affiliates-manager-sections">
                     <Box component={"div"} className="affiliates-manager-info">
-                      <img src={avatarJoao} alt="João Carlos" />
+                      <img src={avatarJoao} alt="Felipe Souza" />
                       <Box
                         component={"div"}
                         className="affiliates-name-and-broker"
                       >
-                        <Typography>João Carlos</Typography>
-                        <span className="grey-text">Bet Candle</span>
+                        <Typography>Felipe Souza</Typography>
+                        <span className="grey-text">TradeFlow</span>
                       </Box>
                     </Box>
                     <Box className="affiliates-affiliates-mail-icon">
@@ -749,13 +750,13 @@ export const Affiliates: React.FC = () => {
                   </Box>
                   <Box className="affiliates-manager-sections">
                     <Box component={"div"} className="affiliates-manager-info">
-                      <img src={avatarAfonso} alt="Afonso Lira" />
+                      <img src={avatarAfonso} alt="Marcos Lima" />
                       <Box
                         component={"div"}
                         className="affiliates-name-and-broker"
                       >
-                        <Typography>Afonso Lira</Typography>
-                        <span className="grey-text">Bet Candle</span>
+                        <Typography>Marcos Lima</Typography>
+                        <span className="grey-text">TradeFlow</span>
                       </Box>
                     </Box>
                     <Box className="affiliates-affiliates-mail-icon">
@@ -795,13 +796,13 @@ export const Affiliates: React.FC = () => {
                   </Box>
                   <Box className="affiliates-manager-sections">
                     <Box component={"div"} className="affiliates-manager-info">
-                      <img src={avatarAntonio} alt="Antônio Anjos" />
+                      <img src={avatarAntonio} alt="Lucas Almeida" />
                       <Box
                         component={"div"}
                         className="affiliates-name-and-broker"
                       >
-                        <Typography>Antônio Anjos</Typography>
-                        <span className="grey-text">Bet Candle</span>
+                        <Typography>Lucas Almeida</Typography>
+                        <span className="grey-text">TradeFlow</span>
                       </Box>
                     </Box>
                     <Box className="affiliates-affiliates-mail-icon">
@@ -841,13 +842,13 @@ export const Affiliates: React.FC = () => {
                   </Box>
                   <Box className="affiliates-manager-sections">
                     <Box component={"div"} className="affiliates-manager-info">
-                      <img src={avatarJota} alt="Jota M" />
+                      <img src={avatarJota} alt="R. Mendes" />
                       <Box
                         component={"div"}
                         className="affiliates-name-and-broker"
                       >
-                        <Typography>Jota M</Typography>
-                        <span className="grey-text">Bet Candle</span>
+                        <Typography>R. Mendes</Typography>
+                        <span className="grey-text">TradeFlow</span>
                       </Box>
                     </Box>
                     <Box className="affiliates-affiliates-mail-icon">
@@ -887,13 +888,13 @@ export const Affiliates: React.FC = () => {
                   </Box>
                   <Box className="affiliates-manager-sections">
                     <Box component={"div"} className="affiliates-manager-info">
-                      <img src={avatarJoao} alt="João Carlos" />
+                      <img src={avatarJoao} alt="Felipe Souza" />
                       <Box
                         component={"div"}
                         className="affiliates-name-and-broker"
                       >
-                        <Typography>João Carlos</Typography>
-                        <span className="grey-text">Bet Candle</span>
+                        <Typography>Felipe Souza</Typography>
+                        <span className="grey-text">TradeFlow</span>
                       </Box>
                     </Box>
                     <Box className="affiliates-affiliates-mail-icon">
@@ -933,13 +934,13 @@ export const Affiliates: React.FC = () => {
                   </Box>
                   <Box className="affiliates-manager-sections">
                     <Box component={"div"} className="affiliates-manager-info">
-                      <img src={avatarAfonso} alt="Afonso Lira" />
+                      <img src={avatarAfonso} alt="Marcos Lima" />
                       <Box
                         component={"div"}
                         className="affiliates-name-and-broker"
                       >
-                        <Typography>Afonso Lira</Typography>
-                        <span className="grey-text">Bet Candle</span>
+                        <Typography>Marcos Lima</Typography>
+                        <span className="grey-text">TradeFlow</span>
                       </Box>
                     </Box>
                     <Box className="affiliates-affiliates-mail-icon">
@@ -979,13 +980,13 @@ export const Affiliates: React.FC = () => {
                   </Box>
                   <Box className="affiliates-manager-sections">
                     <Box component={"div"} className="affiliates-manager-info">
-                      <img src={avatarAntonio} alt="Antônio Anjos" />
+                      <img src={avatarAntonio} alt="Lucas Almeida" />
                       <Box
                         component={"div"}
                         className="affiliates-name-and-broker"
                       >
-                        <Typography>Antônio Anjos</Typography>
-                        <span className="grey-text">Bet Candle</span>
+                        <Typography>Lucas Almeida</Typography>
+                        <span className="grey-text">TradeFlow</span>
                       </Box>
                     </Box>
                     <Box className="affiliates-affiliates-mail-icon">
@@ -1025,13 +1026,13 @@ export const Affiliates: React.FC = () => {
                   </Box>
                   <Box className="affiliates-manager-sections">
                     <Box component={"div"} className="affiliates-manager-info">
-                      <img src={avatarJota} alt="Jota M" />
+                      <img src={avatarJota} alt="R. Mendes" />
                       <Box
                         component={"div"}
                         className="affiliates-name-and-broker"
                       >
-                        <Typography>Jota M</Typography>
-                        <span className="grey-text">Bet Candle</span>
+                        <Typography>R. Mendes</Typography>
+                        <span className="grey-text">TradeFlow</span>
                       </Box>
                     </Box>
                     <Box className="affiliates-affiliates-mail-icon">
@@ -1132,13 +1133,13 @@ export const Affiliates: React.FC = () => {
                 <Box id="affiliates-sub-affiliates-list">
                   <Box className="affiliates-manager-sections">
                     <Box component={"div"} className="affiliates-manager-info">
-                      <img src={avatarJoao} alt="João Carlos" />
+                      <img src={avatarJoao} alt="Felipe Souza" />
                       <Box
                         component={"div"}
                         className="affiliates-name-and-broker"
                       >
-                        <Typography>João Carlos</Typography>
-                        <span className="grey-text">Bet Candle</span>
+                        <Typography>Felipe Souza</Typography>
+                        <span className="grey-text">TradeFlow</span>
                       </Box>
                     </Box>
                     <Box className="affiliates-sub-affiliates-mail-icon">
@@ -1178,13 +1179,13 @@ export const Affiliates: React.FC = () => {
                   </Box>
                   <Box className="affiliates-manager-sections">
                     <Box component={"div"} className="affiliates-manager-info">
-                      <img src={avatarAfonso} alt="Afonso Lira" />
+                      <img src={avatarAfonso} alt="Marcos Lima" />
                       <Box
                         component={"div"}
                         className="affiliates-name-and-broker"
                       >
-                        <Typography>Afonso Lira</Typography>
-                        <span className="grey-text">Bet Candle</span>
+                        <Typography>Marcos Lima</Typography>
+                        <span className="grey-text">TradeFlow</span>
                       </Box>
                     </Box>
                     <Box className="affiliates-sub-affiliates-mail-icon">
@@ -1224,13 +1225,13 @@ export const Affiliates: React.FC = () => {
                   </Box>
                   <Box className="affiliates-manager-sections">
                     <Box component={"div"} className="affiliates-manager-info">
-                      <img src={avatarAntonio} alt="Antônio Anjos" />
+                      <img src={avatarAntonio} alt="Lucas Almeida" />
                       <Box
                         component={"div"}
                         className="affiliates-name-and-broker"
                       >
-                        <Typography>Antônio Anjos</Typography>
-                        <span className="grey-text">Bet Candle</span>
+                        <Typography>Lucas Almeida</Typography>
+                        <span className="grey-text">TradeFlow</span>
                       </Box>
                     </Box>
                     <Box className="affiliates-sub-affiliates-mail-icon">
@@ -1270,13 +1271,13 @@ export const Affiliates: React.FC = () => {
                   </Box>
                   <Box className="affiliates-manager-sections">
                     <Box component={"div"} className="affiliates-manager-info">
-                      <img src={avatarJota} alt="Jota M" />
+                      <img src={avatarJota} alt="R. Mendes" />
                       <Box
                         component={"div"}
                         className="affiliates-name-and-broker"
                       >
-                        <Typography>Jota M</Typography>
-                        <span className="grey-text">Bet Candle</span>
+                        <Typography>R. Mendes</Typography>
+                        <span className="grey-text">TradeFlow</span>
                       </Box>
                     </Box>
                     <Box className="affiliates-sub-affiliates-mail-icon">
@@ -1316,13 +1317,13 @@ export const Affiliates: React.FC = () => {
                   </Box>
                   <Box className="affiliates-manager-sections">
                     <Box component={"div"} className="affiliates-manager-info">
-                      <img src={avatarJoao} alt="João Carlos" />
+                      <img src={avatarJoao} alt="Felipe Souza" />
                       <Box
                         component={"div"}
                         className="affiliates-name-and-broker"
                       >
-                        <Typography>João Carlos</Typography>
-                        <span className="grey-text">Bet Candle</span>
+                        <Typography>Felipe Souza</Typography>
+                        <span className="grey-text">TradeFlow</span>
                       </Box>
                     </Box>
                     <Box className="affiliates-sub-affiliates-mail-icon">
@@ -1362,13 +1363,13 @@ export const Affiliates: React.FC = () => {
                   </Box>
                   <Box className="affiliates-manager-sections">
                     <Box component={"div"} className="affiliates-manager-info">
-                      <img src={avatarAfonso} alt="Afonso Lira" />
+                      <img src={avatarAfonso} alt="Marcos Lima" />
                       <Box
                         component={"div"}
                         className="affiliates-name-and-broker"
                       >
-                        <Typography>Afonso Lira</Typography>
-                        <span className="grey-text">Bet Candle</span>
+                        <Typography>Marcos Lima</Typography>
+                        <span className="grey-text">TradeFlow</span>
                       </Box>
                     </Box>
                     <Box className="affiliates-sub-affiliates-mail-icon">
@@ -1408,13 +1409,13 @@ export const Affiliates: React.FC = () => {
                   </Box>
                   <Box className="affiliates-manager-sections">
                     <Box component={"div"} className="affiliates-manager-info">
-                      <img src={avatarAntonio} alt="Antônio Anjos" />
+                      <img src={avatarAntonio} alt="Lucas Almeida" />
                       <Box
                         component={"div"}
                         className="affiliates-name-and-broker"
                       >
-                        <Typography>Antônio Anjos</Typography>
-                        <span className="grey-text">Bet Candle</span>
+                        <Typography>Lucas Almeida</Typography>
+                        <span className="grey-text">TradeFlow</span>
                       </Box>
                     </Box>
                     <Box className="affiliates-sub-affiliates-mail-icon">
@@ -1454,13 +1455,13 @@ export const Affiliates: React.FC = () => {
                   </Box>
                   <Box className="affiliates-manager-sections">
                     <Box component={"div"} className="affiliates-manager-info">
-                      <img src={avatarJota} alt="Jota M" />
+                      <img src={avatarJota} alt="R. Mendes" />
                       <Box
                         component={"div"}
                         className="affiliates-name-and-broker"
                       >
-                        <Typography>Jota M</Typography>
-                        <span className="grey-text">Bet Candle</span>
+                        <Typography>R. Mendes</Typography>
+                        <span className="grey-text">TradeFlow</span>
                       </Box>
                     </Box>
                     <Box className="affiliates-sub-affiliates-mail-icon">
@@ -1536,10 +1537,10 @@ export const Affiliates: React.FC = () => {
                 </select>
                 <select name="brokers" className="affilitates-selects">
                   <option value="Global">Geral</option>
-                  <option value="BetCandle">Bet Candle</option>
-                  <option value="PixCandle">Pix Candle</option>
-                  <option value="IQCandle">IQ Candle</option>
-                  <option value="UltronCandle">Ultron Candle</option>
+                  <option value="TradeFlow">TradeFlow</option>
+                  <option value="PixFlow">Pix Flow</option>
+                  <option value="IQFlow">IQ Flow</option>
+                  <option value="UltronFlow">Ultron Flow</option>
                 </select>
                 <select name="times" className="affilitates-selects">
                   <option value="ultimas24h">Últimas 24 horas</option>
@@ -1579,12 +1580,12 @@ export const Affiliates: React.FC = () => {
                       <Grid item xs={12}>
                         <Box className="affiliates-ranking-content">
                           <Box className="affiliates-ranking-name">
-                            <img src={avatarVinicius} alt="Vinicius Nunes" />
-                            <span>Thales Ramiro</span>
+                            <img src={avatarVinicius} alt="Tiago Reis" />
+                            <span>Daniel Costa</span>
                             <img src={roundedBrasil} alt="Brasil" />
                           </Box>
                           <Box className="affiliates-ranking-broker-name">
-                            Bet Candle
+                            TradeFlow
                           </Box>
                           <Box className="affiliates-ranking-value">
                             $28.764,00
@@ -1594,12 +1595,12 @@ export const Affiliates: React.FC = () => {
                       <Grid item xs={12}>
                         <Box className="affiliates-ranking-content">
                           <Box className="affiliates-ranking-name">
-                            <img src={avatarVinicius} alt="Vinicius Nunes" />
-                            <span>Thales Ramiro</span>
+                            <img src={avatarVinicius} alt="Tiago Reis" />
+                            <span>Daniel Costa</span>
                             <img src={roundedBrasil} alt="Brasil" />
                           </Box>
                           <Box className="affiliates-ranking-broker-name">
-                            Bet Candle
+                            TradeFlow
                           </Box>
                           <Box className="affiliates-ranking-value">
                             $28.764,00
@@ -1609,12 +1610,12 @@ export const Affiliates: React.FC = () => {
                       <Grid item xs={12}>
                         <Box className="affiliates-ranking-content">
                           <Box className="affiliates-ranking-name">
-                            <img src={avatarVinicius} alt="Vinicius Nunes" />
-                            <span>Thales Ramiro</span>
+                            <img src={avatarVinicius} alt="Tiago Reis" />
+                            <span>Daniel Costa</span>
                             <img src={roundedBrasil} alt="Brasil" />
                           </Box>
                           <Box className="affiliates-ranking-broker-name">
-                            Bet Candle
+                            TradeFlow
                           </Box>
                           <Box className="affiliates-ranking-value">
                             $28.764,00
@@ -1624,12 +1625,12 @@ export const Affiliates: React.FC = () => {
                       <Grid item xs={12}>
                         <Box className="affiliates-ranking-content">
                           <Box className="affiliates-ranking-name">
-                            <img src={avatarVinicius} alt="Vinicius Nunes" />
-                            <span>Thales Ramiro</span>
+                            <img src={avatarVinicius} alt="Tiago Reis" />
+                            <span>Daniel Costa</span>
                             <img src={roundedBrasil} alt="Brasil" />
                           </Box>
                           <Box className="affiliates-ranking-broker-name">
-                            Bet Candle
+                            TradeFlow
                           </Box>
                           <Box className="affiliates-ranking-value">
                             $28.764,00
@@ -1639,12 +1640,12 @@ export const Affiliates: React.FC = () => {
                       <Grid item xs={12}>
                         <Box className="affiliates-ranking-content">
                           <Box className="affiliates-ranking-name">
-                            <img src={avatarVinicius} alt="Vinicius Nunes" />
-                            <span>Thales Ramiro</span>
+                            <img src={avatarVinicius} alt="Tiago Reis" />
+                            <span>Daniel Costa</span>
                             <img src={roundedBrasil} alt="Brasil" />
                           </Box>
                           <Box className="affiliates-ranking-broker-name">
-                            Bet Candle
+                            TradeFlow
                           </Box>
                           <Box className="affiliates-ranking-value">
                             $28.764,00
@@ -1654,12 +1655,12 @@ export const Affiliates: React.FC = () => {
                       <Grid item xs={12}>
                         <Box className="affiliates-ranking-content">
                           <Box className="affiliates-ranking-name">
-                            <img src={avatarVinicius} alt="Vinicius Nunes" />
-                            <span>Thales Ramiro</span>
+                            <img src={avatarVinicius} alt="Tiago Reis" />
+                            <span>Daniel Costa</span>
                             <img src={roundedBrasil} alt="Brasil" />
                           </Box>
                           <Box className="affiliates-ranking-broker-name">
-                            Bet Candle
+                            TradeFlow
                           </Box>
                           <Box className="affiliates-ranking-value">
                             $28.764,00
@@ -1669,12 +1670,12 @@ export const Affiliates: React.FC = () => {
                       <Grid item xs={12}>
                         <Box className="affiliates-ranking-content">
                           <Box className="affiliates-ranking-name">
-                            <img src={avatarVinicius} alt="Vinicius Nunes" />
-                            <span>Thales Ramiro</span>
+                            <img src={avatarVinicius} alt="Tiago Reis" />
+                            <span>Daniel Costa</span>
                             <img src={roundedBrasil} alt="Brasil" />
                           </Box>
                           <Box className="affiliates-ranking-broker-name">
-                            Bet Candle
+                            TradeFlow
                           </Box>
                           <Box className="affiliates-ranking-value">
                             $28.764,00
@@ -1684,12 +1685,12 @@ export const Affiliates: React.FC = () => {
                       <Grid item xs={12}>
                         <Box className="affiliates-ranking-content">
                           <Box className="affiliates-ranking-name">
-                            <img src={avatarVinicius} alt="Vinicius Nunes" />
-                            <span>Thales Ramiro</span>
+                            <img src={avatarVinicius} alt="Tiago Reis" />
+                            <span>Daniel Costa</span>
                             <img src={roundedBrasil} alt="Brasil" />
                           </Box>
                           <Box className="affiliates-ranking-broker-name">
-                            Bet Candle
+                            TradeFlow
                           </Box>
                           <Box className="affiliates-ranking-value">
                             $28.764,00
@@ -1699,12 +1700,12 @@ export const Affiliates: React.FC = () => {
                       <Grid item xs={12}>
                         <Box className="affiliates-ranking-content">
                           <Box className="affiliates-ranking-name">
-                            <img src={avatarVinicius} alt="Vinicius Nunes" />
-                            <span>Thales Ramiro</span>
+                            <img src={avatarVinicius} alt="Tiago Reis" />
+                            <span>Daniel Costa</span>
                             <img src={roundedBrasil} alt="Brasil" />
                           </Box>
                           <Box className="affiliates-ranking-broker-name">
-                            Bet Candle
+                            TradeFlow
                           </Box>
                           <Box className="affiliates-ranking-value">
                             $28.764,00
@@ -1714,12 +1715,12 @@ export const Affiliates: React.FC = () => {
                       <Grid item xs={12}>
                         <Box className="affiliates-ranking-content">
                           <Box className="affiliates-ranking-name">
-                            <img src={avatarVinicius} alt="Vinicius Nunes" />
-                            <span>Thales Ramiro</span>
+                            <img src={avatarVinicius} alt="Tiago Reis" />
+                            <span>Daniel Costa</span>
                             <img src={roundedBrasil} alt="Brasil" />
                           </Box>
                           <Box className="affiliates-ranking-broker-name">
-                            Bet Candle
+                            TradeFlow
                           </Box>
                           <Box className="affiliates-ranking-value">
                             $28.764,00
@@ -1729,12 +1730,12 @@ export const Affiliates: React.FC = () => {
                       <Grid item xs={12}>
                         <Box className="affiliates-ranking-content">
                           <Box className="affiliates-ranking-name">
-                            <img src={avatarVinicius} alt="Vinicius Nunes" />
-                            <span>Thales Ramiro</span>
+                            <img src={avatarVinicius} alt="Tiago Reis" />
+                            <span>Daniel Costa</span>
                             <img src={roundedBrasil} alt="Brasil" />
                           </Box>
                           <Box className="affiliates-ranking-broker-name">
-                            Bet Candle
+                            TradeFlow
                           </Box>
                           <Box className="affiliates-ranking-value">
                             $28.764,00
@@ -1744,12 +1745,12 @@ export const Affiliates: React.FC = () => {
                       <Grid item xs={12}>
                         <Box className="affiliates-ranking-content">
                           <Box className="affiliates-ranking-name">
-                            <img src={avatarVinicius} alt="Vinicius Nunes" />
-                            <span>Thales Ramiro</span>
+                            <img src={avatarVinicius} alt="Tiago Reis" />
+                            <span>Daniel Costa</span>
                             <img src={roundedBrasil} alt="Brasil" />
                           </Box>
                           <Box className="affiliates-ranking-broker-name">
-                            Bet Candle
+                            TradeFlow
                           </Box>
                           <Box className="affiliates-ranking-value">
                             $28.764,00
@@ -1759,12 +1760,12 @@ export const Affiliates: React.FC = () => {
                       <Grid item xs={12}>
                         <Box className="affiliates-ranking-content">
                           <Box className="affiliates-ranking-name">
-                            <img src={avatarVinicius} alt="Vinicius Nunes" />
-                            <span>Thales Ramiro</span>
+                            <img src={avatarVinicius} alt="Tiago Reis" />
+                            <span>Daniel Costa</span>
                             <img src={roundedBrasil} alt="Brasil" />
                           </Box>
                           <Box className="affiliates-ranking-broker-name">
-                            Bet Candle
+                            TradeFlow
                           </Box>
                           <Box className="affiliates-ranking-value">
                             $28.764,00
@@ -1774,12 +1775,12 @@ export const Affiliates: React.FC = () => {
                       <Grid item xs={12}>
                         <Box className="affiliates-ranking-content">
                           <Box className="affiliates-ranking-name">
-                            <img src={avatarVinicius} alt="Vinicius Nunes" />
-                            <span>Thales Ramiro</span>
+                            <img src={avatarVinicius} alt="Tiago Reis" />
+                            <span>Daniel Costa</span>
                             <img src={roundedBrasil} alt="Brasil" />
                           </Box>
                           <Box className="affiliates-ranking-broker-name">
-                            Bet Candle
+                            TradeFlow
                           </Box>
                           <Box className="affiliates-ranking-value">
                             $28.764,00
