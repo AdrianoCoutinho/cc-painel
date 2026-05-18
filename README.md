@@ -4,6 +4,29 @@ Painel administrativo de demonstração para uma corretora online (estilo tradin
 Construído como peça de portfólio: roda inteiramente no front-end, com dados mockados,
 sem depender de backend.
 
+## Contexto
+
+Projeto desenvolvido **do zero, sem qualquer uso de I.A.**, logo após a conclusão
+do meu curso de Full Stack Web Developer. Todo o código foi escrito manualmente,
+aplicando na prática os conceitos aprendidos durante a formação.
+
+**Growdev — Programa Web Full Stack Developer (9ª Edição)**
+Formação Full Stack Web Developer · jul/2022 – jun/2023
+
+Formação completa em Desenvolvimento Web Full Stack, com **1000 horas** e
+aproximadamente **11 meses** de aulas ao vivo, somando conteúdos síncronos e
+assíncronos. Conteúdo programático:
+
+- Introdução ao desenvolvimento de sistemas;
+- Programação Front-End (HTML, CSS, JavaScript e ReactJS);
+- Programação Back-End (Node.js, TypeScript);
+- Banco de dados relacional e não relacional (TypeORM, PostgreSQL, Redis);
+- Arquitetura (MVC, Clean Architecture);
+- Engenharia e Qualidade de software (PaaS, PWA, TDD, JEST).
+
+Além do projeto aplicado, a formação incluiu uma experiência real na construção
+de um projeto de software junto à equipe de engenharia da Growdev.
+
 ## Stack
 
 - React 18 + TypeScript + Vite
@@ -41,12 +64,12 @@ preenchidos com as credenciais de demonstração:
 
 ## Scripts
 
-| Script           | Descrição                          |
-| ---------------- | ---------------------------------- |
-| `npm run dev`    | Servidor de desenvolvimento (HMR). |
-| `npm run build`  | Type-check + build de produção.    |
-| `npm run preview`| Servir o build localmente.         |
-| `npm run lint`   | ESLint nos arquivos `.ts`/`.tsx`.  |
+| Script            | Descrição                          |
+| ----------------- | ---------------------------------- |
+| `npm run dev`     | Servidor de desenvolvimento (HMR). |
+| `npm run build`   | Type-check + build de produção.    |
+| `npm run preview` | Servir o build localmente.         |
+| `npm run lint`    | ESLint nos arquivos `.ts`/`.tsx`.  |
 
 ## Estrutura
 
@@ -68,7 +91,3 @@ src/
 Projeto reaproveitado como peça de portfólio. Os dados exibidos são fictícios
 e gerados localmente. Não há integração com nenhum sistema real de pagamento,
 KYC ou trading.
-
-## Licença
-
-MIT.
